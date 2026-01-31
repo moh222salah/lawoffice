@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Legal Office | Premier Legal Services</title>
+    <meta name="description" content="Premium legal services with expertise in corporate law, civil litigation, international arbitration, and more.">
+
+<style> 
+
+/* ================================================
+   ELITE LEGAL OFFICE - LUXURY GLASSMORPHISM DESIGN
+   ================================================ */
+
+/* CSS Variables */
+:root {
+    /* Primary Colors - Luxury Gold & Deep Navy */
+    --primary-gold: #D4AF37;
+    --primary-gold-light: #E6C964;
+    --primary-gold-dark: #B8941F;
+    --primary-navy: #0A1929;
+    --primary-navy-light: #1A2F42;
+    --secondary-blue: #2E5C8A;
+    
+    /* Neutral Colors */
+    --white: #FFFFFF;
+    --off-white: #F8F9FA;
+    --light-gray: #E5E7EB;
+    --gray: #9CA3AF;
+    --dark-gray: #4B5563;
+    --black: #000000;
+    
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-shadow: rgba(0, 0, 0, 0.1);
+    
+    /* Typography */
+    --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-heading: 'Georgia', serif;
+    
+    /* Spacing */
+    --container-max: 1280px;
+    --section-padding: 120px;
+    --section-padding-mobile: 60px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    --primary-navy: #FFFFFF;
+    --primary-navy-light: #F8F9FA;
+    --off-white: #0A1929;
+    --light-gray: #1A2F42;
+    --dark-gray: #E5E7EB;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.12);
+}
+
+/* ================================================
+   RESET & BASE STYLES
+   ================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--primary-navy);
+    background: var(--off-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* RTL Support */
+[dir="rtl"] {
+    direction: rtl;
+}
+
+[dir="rtl"] .nav-menu {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+/* ================================================
+   ANIMATED BACKGROUND
+   ================================================ */
+
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0A1929 0%, #1A2F42 50%, #2E5C8A 100%);
+}
+
+[data-theme="dark"] .animated-background {
+    background: linear-gradient(135deg, #000000 0%, #0A1929 50%, #1A2F42 100%);
+}
+
+.gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    animation: float 20s infinite ease-in-out;
+}
+
+.orb-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--primary-gold) 0%, transparent 70%);
+    top: -200px;
+    left: -200px;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--secondary-blue) 0%, transparent 70%);
+    bottom: -150px;
+    right: -150px;
+    animation-delay: -7s;
+}
+
+.orb-3 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--primary-gold-light) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -14s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(50px, -50px) scale(1.1); }
+    50% { transform: translate(-30px, 30px) scale(0.9); }
+    75% { transform: translate(30px, 50px) scale(1.05); }
+}
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* ================================================
+   LANGUAGE & THEME TOGGLES
+   ================================================ */
+
+.lang-toggle,
+.theme-toggle {
+    position: fixed;
+    bottom: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px var(--glass-shadow);
+    transition: all var(--transition-normal);
+}
+
+.lang-toggle {
+    right: 30px;
+}
+
+.theme-toggle {
+    left: 30px;
+}
+
+.lang-toggle:hover,
+.theme-toggle:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.3);
+    border-color: var(--primary-gold);
+}
+
+.lang-text,
+.theme-icon {
+    font-weight: 700;
+    user-select: none;
+}
+
+/* ================================================
+   NAVIGATION
+   ================================================ */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    padding: 20px 0;
+    transition: all var(--transition-normal);
+}
+
+.navbar.scrolled {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: 0 4px 20px var(--glass-shadow);
+    padding: 15px 0;
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--white);
+    font-size: 24px;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    transition: all var(--transition-normal);
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-icon {
+    font-size: 32px;
+    filter: drop-shadow(0 0 10px var(--primary-gold));
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--white);
+    border-radius: 3px;
+    transition: all var(--transition-normal);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 500;
+    font-size: 16px;
+    position: relative;
+    padding: 8px 0;
+    transition: all var(--transition-normal);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-gold);
+    transition: width var(--transition-normal);
+}
+
+.nav-link:hover {
+    color: var(--primary-gold);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-cta {
+    padding: 10px 24px;
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-light));
+    border-radius: 25px;
+    color: var(--primary-navy) !important;
+    font-weight: 600;
+}
+
+.nav-cta::after {
+    display: none;
+}
+
+.nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* ================================================
+   CONTAINER
+   ================================================ */
+
+.container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* ================================================
+   SECTIONS
+   ================================================ */
+
+.section {
+    padding: var(--section-padding) 0;
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    color: var(--primary-gold);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 48px;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.section-subtitle {
+    font-size: 20px;
+    color: var(--gray);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ================================================
+   HERO SECTION
+   ================================================ */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.hero-content {
+    text-align: center;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 10px 24px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    color: var(--primary-gold);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 30px;
+}
+
+.hero-title {
+    font-size: 64px;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 30px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    color: var(--gray);
+    max-width: 700px;
+    margin: 0 auto 50px;
+    line-height: 1.8;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+
+.hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ================================================
+   BUTTONS
+   ================================================ */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-light));
+    color: var(--primary-navy);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--primary-gold);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-gold);
+    color: var(--primary-navy);
+    transform: translateY(-3px);
+}
+
+/* ================================================
+   ABOUT SECTION
+   ================================================ */
+
+.about-content {
+    display: grid;
+    gap: 60px;
+}
+
+.about-text {
+    display: grid;
+    gap: 20px;
+}
+
+.about-text p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--gray);
+}
+
+.about-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    padding: 40px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-normal);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px var(--glass-shadow);
+    border-color: var(--primary-gold);
+}
+
+.feature-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px var(--primary-gold));
+}
+
+.feature-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+/* ================================================
+   SERVICES SECTION
+   ================================================ */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    padding: 40px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-gold), var(--primary-gold-light));
+    transform: scaleX(0);
+    transition: transform var(--transition-normal);
+}
+
+.service-card:hover::before {
+    transform: scaleX(1);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px var(--glass-shadow);
+    border-color: var(--primary-gold);
+}
+
+.service-icon {
+    font-size: 56px;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 0 10px var(--primary-gold));
+}
+
+.service-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.service-link {
+    color: var(--primary-gold);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all var(--transition-normal);
+}
+
+.service-link:hover {
+    gap: 10px;
+}
+
+/* ================================================
+   EXPERTISE SECTION
+   ================================================ */
+
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.expertise-item {
+    padding: 40px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-normal);
+    position: relative;
+}
+
+.expertise-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px var(--glass-shadow);
+    border-color: var(--primary-gold);
+}
+
+.expertise-number {
+    font-size: 72px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.2;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.expertise-item h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.expertise-item p {
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+/* ================================================
+   TEAM SECTION
+   ================================================ */
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.team-card {
+    padding: 40px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px var(--glass-shadow);
+    border-color: var(--primary-gold);
+}
+
+.team-image {
+    margin-bottom: 25px;
+}
+
+.team-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    background: var(--glass-bg);
+    border: 3px solid var(--primary-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    transition: all var(--transition-normal);
+}
+
+.team-card:hover .team-avatar {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+}
+
+.team-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.team-role {
+    color: var(--primary-gold);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.team-bio {
+    color: var(--gray);
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* ================================================
+   CONTACT SECTION
+   ================================================ */
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.contact-info {
+    display: grid;
+    gap: 30px;
+}
+
+.contact-item {
+    display: flex;
+    gap: 20px;
+    padding: 25px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
+}
+
+.contact-item:hover {
+    transform: translateX(10px);
+    border-color: var(--primary-gold);
+}
+
+.contact-icon {
+    font-size: 32px;
+    filter: drop-shadow(0 0 10px var(--primary-gold));
+}
+
+.contact-item h4 {
+    color: var(--white);
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.contact-item p {
+    color: var(--gray);
+}
+
+.contact-form {
+    padding: 50px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    color: var(--white);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    color: var(--white);
+    font-size: 16px;
+    font-family: var(--font-primary);
+    transition: all var(--transition-normal);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-gold);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn-submit {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* ================================================
+   FOOTER
+   ================================================ */
+
+.footer {
+    background: var(--primary-navy);
+    padding: 80px 0 30px;
+    border-top: 1px solid var(--glass-border);
+}
+
+[data-theme="dark"] .footer {
+    background: #000000;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 50px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.footer-desc {
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    font-size: 20px;
+    text-decoration: none;
+    transition: all var(--transition-normal);
+}
+
+.social-links a:hover {
+    background: var(--primary-gold);
+    border-color: var(--primary-gold);
+    transform: translateY(-5px);
+}
+
+.footer-section h4 {
+    color: var(--white);
+    font-size: 18px;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.footer-links {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+}
+
+.footer-links a,
+.footer-contact li {
+    color: var(--gray);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+    font-size: 15px;
+}
+
+.footer-links a:hover {
+    color: var(--primary-gold);
+    padding-left: 10px;
+}
+
+.footer-contact {
+    list-style: none;
+    display: grid;
+    gap: 15px;
+}
+
+.footer-contact li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.footer-bottom {
+    padding-top: 30px;
+    border-top: 1px solid var(--glass-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--gray);
+    font-size: 14px;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-legal a {
+    color: var(--gray);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+}
+
+.footer-legal a:hover {
+    color: var(--primary-gold);
+}
+
+/* ================================================
+   ANIMATIONS
+   ================================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* ================================================
+   RESPONSIVE DESIGN
+   ================================================ */
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 30px;
+    }
+    
+    .hero-title {
+        font-size: 48px;
+    }
+    
+    .section-title {
+        font-size: 40px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--section-padding-mobile) 0;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: var(--primary-navy);
+        flex-direction: column;
+        padding: 40px;
+        gap: 30px;
+        transition: left var(--transition-normal);
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .hero-title {
+        font-size: 36px;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+    }
+    
+    .hero-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+    
+    .section-title {
+        font-size: 32px;
+    }
+    
+    .services-grid,
+    .expertise-grid,
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .lang-toggle,
+    .theme-toggle {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+    }
+    
+    .lang-toggle {
+        right: 20px;
+    }
+    
+    .theme-toggle {
+        left: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .hero-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-number {
+        font-size: 36px;
+    }
+    
+    .contact-form {
+        padding: 30px 20px;
+    }
+}
+
+/* ================================================
+   UTILITY CLASSES
+   ================================================ */
+
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: block !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-1 { margin-top: 10px; }
+.mt-2 { margin-top: 20px; }
+.mt-3 { margin-top: 30px; }
+.mb-1 { margin-bottom: 10px; }
+.mb-2 { margin-bottom: 20px; }
+.mb-3 { margin-bottom: 30px; }
+
+
+
+    </style> 
+    
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Language Toggle Button -->
+    <button class="lang-toggle" id="langToggle" aria-label="Toggle Language">
+        <span class="lang-text">ع</span>
+    </button>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+        <span class="theme-icon">🌙</span>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#home" class="logo">
+                    <span class="logo-icon">⚖️</span>
+                    <span class="logo-text" data-en="Elite Legal" data-ar="مكتب النخبة القانوني">Elite Legal</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                    <li><a href="#about" class="nav-link" data-en="About" data-ar="من نحن">About</a></li>
+                    <li><a href="#services" class="nav-link" data-en="Services" data-ar="خدماتنا">Services</a></li>
+                    <li><a href="#expertise" class="nav-link" data-en="Expertise" data-ar="خبراتنا">Expertise</a></li>
+                    <li><a href="#team" class="nav-link" data-en="Team" data-ar="فريقنا">Team</a></li>
+                    <li><a href="#contact" class="nav-link nav-cta" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge" data-en="Premier Legal Excellence" data-ar="التميز القانوني الرائد">Premier Legal Excellence</div>
+                <h1 class="hero-title" data-en="Defending Your Rights with Precision & Integrity" data-ar="ندافع عن حقوقك بدقة ونزاهة">
+                    Defending Your Rights with <span class="gradient-text">Precision & Integrity</span>
+                </h1>
+                <p class="hero-subtitle" data-en="Leading legal firm providing comprehensive solutions across corporate law, litigation, arbitration, and regulatory compliance with decades of proven excellence." data-ar="مكتب قانوني رائد يقدم حلولاً شاملة في القانون التجاري والتقاضي والتحكيم والامتثال التنظيمي مع عقود من التميز المثبت.">
+                    Leading legal firm providing comprehensive solutions across corporate law, litigation, arbitration, and regulatory compliance with decades of proven excellence.
+                </p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary" data-en="Schedule Consultation" data-ar="احجز استشارة">
+                        <span data-en="Schedule Consultation" data-ar="احجز استشارة">Schedule Consultation</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="#services" class="btn btn-secondary" data-en="Explore Services" data-ar="استكشف خدماتنا">
+                        <span data-en="Explore Services" data-ar="استكشف خدماتنا">Explore Services</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label" data-en="Years Experience" data-ar="سنة خبرة">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label" data-en="Cases Won" data-ar="قضية ناجحة">Cases Won</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label" data-en="Success Rate" data-ar="نسبة النجاح">Success Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label" data-en="Satisfied Clients" data-ar="عميل راضٍ">Satisfied Clients</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" data-en="Who We Are" data-ar="من نحن">Who We Are</span>
+                <h2 class="section-title" data-en="Excellence in Legal Practice" data-ar="التميز في الممارسة القانونية">Excellence in Legal Practice</h2>
+                <p class="section-subtitle" data-en="A legacy of trust, expertise, and unwavering commitment to justice" data-ar="إرث من الثقة والخبرة والالتزام الثابت بالعدالة">A legacy of trust, expertise, and unwavering commitment to justice</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p data-en="Our firm stands as a beacon of legal excellence, built on a foundation of integrity, expertise, and client-focused service. With over two decades of distinguished practice, we have earned our reputation as trusted advisors to individuals, corporations, and institutions across the region." data-ar="يقف مكتبنا كمنارة للتميز القانوني، مبني على أساس من النزاهة والخبرة والخدمة الموجهة نحو العميل. مع أكثر من عقدين من الممارسة المتميزة، اكتسبنا سمعتنا كمستشارين موثوقين للأفراد والشركات والمؤسسات في جميع أنحاء المنطقة.">
+                        Our firm stands as a beacon of legal excellence, built on a foundation of integrity, expertise, and client-focused service. With over two decades of distinguished practice, we have earned our reputation as trusted advisors to individuals, corporations, and institutions across the region.
+                    </p>
+                    <p data-en="We combine deep legal knowledge with innovative strategies, delivering results that exceed expectations. Our team of seasoned attorneys brings together diverse specializations, ensuring comprehensive solutions for even the most complex legal challenges." data-ar="نجمع بين المعرفة القانونية العميقة والاستراتيجيات المبتكرة، لتقديم نتائج تفوق التوقعات. يجمع فريقنا من المحامين المتمرسين بين التخصصات المتنوعة، مما يضمن حلولاً شاملة حتى للتحديات القانونية الأكثر تعقيداً.">
+                        We combine deep legal knowledge with innovative strategies, delivering results that exceed expectations. Our team of seasoned attorneys brings together diverse specializations, ensuring comprehensive solutions for even the most complex legal challenges.
+                    </p>
+                </div>
+                <div class="about-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3 data-en="Client-Centric Approach" data-ar="نهج يركز على العميل">Client-Centric Approach</h3>
+                        <p data-en="Your success is our priority. We tailor strategies to your specific needs and goals." data-ar="نجاحك هو أولويتنا. نصمم استراتيجيات مخصصة لاحتياجاتك وأهدافك المحددة.">Your success is our priority. We tailor strategies to your specific needs and goals.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3 data-en="Proven Excellence" data-ar="التميز المثبت">Proven Excellence</h3>
+                        <p data-en="Track record of successful outcomes across all practice areas and jurisdictions." data-ar="سجل حافل بالنتائج الناجحة في جميع مجالات الممارسة والولايات القضائية.">Track record of successful outcomes across all practice areas and jurisdictions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3 data-en="Global Expertise" data-ar="خبرة عالمية">Global Expertise</h3>
+                        <p data-en="International legal network ensuring comprehensive cross-border solutions." data-ar="شبكة قانونية دولية تضمن حلولاً شاملة عبر الحدود.">International legal network ensuring comprehensive cross-border solutions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3 data-en="Absolute Confidentiality" data-ar="سرية مطلقة">Absolute Confidentiality</h3>
+                        <p data-en="Your privacy and sensitive information protected with utmost discretion." data-ar="خصوصيتك ومعلوماتك الحساسة محمية بأقصى قدر من السرية.">Your privacy and sensitive information protected with utmost discretion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" data-en="Our Services" data-ar="خدماتنا">Our Services</span>
+                <h2 class="section-title" data-en="Comprehensive Legal Solutions" data-ar="حلول قانونية شاملة">Comprehensive Legal Solutions</h2>
+                <p class="section-subtitle" data-en="Expert guidance across all areas of law" data-ar="إرشاد خبير في جميع مجالات القانون">Expert guidance across all areas of law</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3 data-en="Corporate Law" data-ar="القانون التجاري">Corporate Law</h3>
+                    <p data-en="Complete corporate legal services including mergers, acquisitions, corporate governance, compliance, and commercial contracts. Strategic counsel for businesses of all sizes." data-ar="خدمات قانونية شاملة للشركات بما في ذلك الاندماجات والاستحواذات وحوكمة الشركات والامتثال والعقود التجارية. استشارات استراتيجية للشركات من جميع الأحجام.">Complete corporate legal services including mergers, acquisitions, corporate governance, compliance, and commercial contracts. Strategic counsel for businesses of all sizes.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚖️</div>
+                    <h3 data-en="Civil Litigation" data-ar="التقاضي المدني">Civil Litigation</h3>
+                    <p data-en="Aggressive representation in civil disputes, contract breaches, property disputes, and commercial litigation. We fight for your rights in every courtroom." data-ar="تمثيل قوي في النزاعات المدنية، خرق العقود، نزاعات الملكية، والتقاضي التجاري. نحن نقاتل من أجل حقوقك في كل قاعة محكمة.">Aggressive representation in civil disputes, contract breaches, property disputes, and commercial litigation. We fight for your rights in every courtroom.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <h3 data-en="International Arbitration" data-ar="التحكيم الدولي">International Arbitration</h3>
+                    <p data-en="Expert arbitration services for cross-border disputes. Experienced in ICC, LCIA, and DIFC arbitration procedures with proven success in complex international cases." data-ar="خدمات تحكيم خبيرة للنزاعات عبر الحدود. خبرة في إجراءات التحكيم ICC و LCIA و DIFC مع نجاح مثبت في القضايا الدولية المعقدة.">Expert arbitration services for cross-border disputes. Experienced in ICC, LCIA, and DIFC arbitration procedures with proven success in complex international cases.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3 data-en="Real Estate Law" data-ar="قانون العقارات">Real Estate Law</h3>
+                    <p data-en="Comprehensive real estate legal services covering acquisitions, sales, leasing, development, and property disputes. Protecting your real estate investments." data-ar="خدمات قانونية شاملة للعقارات تغطي الاستحواذات والمبيعات والتأجير والتطوير ونزاعات الملكية. حماية استثماراتك العقارية.">Comprehensive real estate legal services covering acquisitions, sales, leasing, development, and property disputes. Protecting your real estate investments.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👨‍👩‍👧‍👦</div>
+                    <h3 data-en="Family Law" data-ar="قانون الأسرة">Family Law</h3>
+                    <p data-en="Sensitive and effective handling of divorce, custody, inheritance, and family disputes. Compassionate counsel during challenging times with focus on favorable outcomes." data-ar="معالجة حساسة وفعالة للطلاق والحضانة والميراث ونزاعات الأسرة. استشارات رحيمة خلال الأوقات الصعبة مع التركيز على النتائج المواتية.">Sensitive and effective handling of divorce, custody, inheritance, and family disputes. Compassionate counsel during challenging times with focus on favorable outcomes.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3 data-en="Criminal Defense" data-ar="الدفاع الجنائي">Criminal Defense</h3>
+                    <p data-en="Vigorous defense in criminal matters with strategic approach to protect your rights and freedom. Experienced trial attorneys ready to fight for justice." data-ar="دفاع قوي في القضايا الجنائية مع نهج استراتيجي لحماية حقوقك وحريتك. محامو محاكمة ذوو خبرة مستعدون للقتال من أجل العدالة.">Vigorous defense in criminal matters with strategic approach to protect your rights and freedom. Experienced trial attorneys ready to fight for justice.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3 data-en="Labor & Employment" data-ar="العمل والتوظيف">Labor & Employment</h3>
+                    <p data-en="Expert counsel on employment contracts, workplace disputes, wrongful termination, discrimination claims, and labor law compliance for employers and employees." data-ar="استشارات خبيرة حول عقود التوظيف، نزاعات مكان العمل، الإنهاء غير المشروع، مطالبات التمييز، والامتثال لقانون العمل لأصحاب العمل والموظفين.">Expert counsel on employment contracts, workplace disputes, wrongful termination, discrimination claims, and labor law compliance for employers and employees.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3 data-en="Regulatory Compliance" data-ar="الامتثال التنظيمي">Regulatory Compliance</h3>
+                    <p data-en="Navigate complex regulatory landscapes with confidence. Compliance programs, regulatory audits, and counsel on evolving legal requirements across industries." data-ar="تنقل في المشاهد التنظيمية المعقدة بثقة. برامج الامتثال، التدقيقات التنظيمية، والمشورة بشأن المتطلبات القانونية المتطورة عبر الصناعات.">Navigate complex regulatory landscapes with confidence. Compliance programs, regulatory audits, and counsel on evolving legal requirements across industries.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3 data-en="Intellectual Property" data-ar="الملكية الفكرية">Intellectual Property</h3>
+                    <p data-en="Protect your innovations, brands, and creative works. Trademark registration, patent prosecution, copyright protection, and IP litigation services." data-ar="احمِ ابتكاراتك وعلاماتك التجارية وأعمالك الإبداعية. تسجيل العلامات التجارية، مقاضاة براءات الاختراع، حماية حقوق النشر، وخدمات التقاضي في مجال الملكية الفكرية.">Protect your innovations, brands, and creative works. Trademark registration, patent prosecution, copyright protection, and IP litigation services.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="section expertise-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" data-en="Our Expertise" data-ar="خبراتنا">Our Expertise</span>
+                <h2 class="section-title" data-en="Industry-Leading Specialists" data-ar="متخصصون رائدون في الصناعة">Industry-Leading Specialists</h2>
+                <p class="section-subtitle" data-en="Decades of experience delivering exceptional results" data-ar="عقود من الخبرة في تقديم نتائج استثنائية">Decades of experience delivering exceptional results</p>
+            </div>
+            <div class="expertise-grid">
+                <div class="expertise-item">
+                    <div class="expertise-number">01</div>
+                    <h3 data-en="Strategic Litigation" data-ar="التقاضي الاستراتيجي">Strategic Litigation</h3>
+                    <p data-en="Masterful courtroom advocacy with meticulous case preparation and aggressive representation yielding consistent victories in complex litigation." data-ar="دفاع ماهر في قاعة المحكمة مع إعداد دقيق للقضايا وتمثيل قوي يحقق انتصارات ثابتة في التقاضي المعقد.">Masterful courtroom advocacy with meticulous case preparation and aggressive representation yielding consistent victories in complex litigation.</p>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-number">02</div>
+                    <h3 data-en="M&A Transactions" data-ar="عمليات الاندماج والاستحواذ">M&A Transactions</h3>
+                    <p data-en="Seamless execution of mergers, acquisitions, and corporate restructuring with focus on maximizing value and minimizing risk for our clients." data-ar="تنفيذ سلس لعمليات الاندماج والاستحواذ وإعادة الهيكلة المؤسسية مع التركيز على تعظيم القيمة وتقليل المخاطر لعملائنا.">Seamless execution of mergers, acquisitions, and corporate restructuring with focus on maximizing value and minimizing risk for our clients.</p>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-number">03</div>
+                    <h3 data-en="Cross-Border Disputes" data-ar="النزاعات عبر الحدود">Cross-Border Disputes</h3>
+                    <p data-en="Expert navigation of international legal complexities with multilingual team and global network ensuring successful resolution of cross-border matters." data-ar="تنقل خبير في التعقيدات القانونية الدولية مع فريق متعدد اللغات وشبكة عالمية تضمن حل ناجح للمسائل عبر الحدود.">Expert navigation of international legal complexities with multilingual team and global network ensuring successful resolution of cross-border matters.</p>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-number">04</div>
+                    <h3 data-en="Risk Management" data-ar="إدارة المخاطر">Risk Management</h3>
+                    <p data-en="Proactive identification and mitigation of legal risks through comprehensive compliance programs and strategic advisory services." data-ar="تحديد استباقي وتخفيف للمخاطر القانونية من خلال برامج امتثال شاملة وخدمات استشارية استراتيجية.">Proactive identification and mitigation of legal risks through comprehensive compliance programs and strategic advisory services.</p>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-number">05</div>
+                    <h3 data-en="Alternative Dispute Resolution" data-ar="حل النزاعات البديل">Alternative Dispute Resolution</h3>
+                    <p data-en="Skilled mediation and arbitration services achieving cost-effective resolutions while maintaining confidentiality and business relationships." data-ar="خدمات وساطة وتحكيم ماهرة تحقق حلولاً فعالة من حيث التكلفة مع الحفاظ على السرية والعلاقات التجارية.">Skilled mediation and arbitration services achieving cost-effective resolutions while maintaining confidentiality and business relationships.</p>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-number">06</div>
+                    <h3 data-en="Regulatory Advisory" data-ar="الاستشارات التنظيمية">Regulatory Advisory</h3>
+                    <p data-en="Stay ahead of regulatory changes with our proactive compliance strategies and deep understanding of industry-specific requirements." data-ar="ابقَ في الصدارة من التغييرات التنظيمية مع استراتيجيات الامتثال الاستباقية لدينا والفهم العميق للمتطلبات الخاصة بالصناعة.">Stay ahead of regulatory changes with our proactive compliance strategies and deep understanding of industry-specific requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section team-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" data-en="Our Team" data-ar="فريقنا">Our Team</span>
+                <h2 class="section-title" data-en="Distinguished Legal Professionals" data-ar="محترفون قانونيون متميزون">Distinguished Legal Professionals</h2>
+                <p class="section-subtitle" data-en="Meet the experts dedicated to your success" data-ar="تعرف على الخبراء المكرسين لنجاحك">Meet the experts dedicated to your success</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <div class="team-avatar">👨‍⚖️</div>
+                    </div>
+                    <h3 data-en="Ahmed Al-Mansouri" data-ar="أحمد المنصوري">Ahmed Al-Mansouri</h3>
+                    <p class="team-role" data-en="Senior Partner | Corporate Law" data-ar="شريك أول | القانون التجاري">Senior Partner | Corporate Law</p>
+                    <p class="team-bio" data-en="25+ years expertise in M&A, corporate governance, and commercial transactions. LLM from Harvard Law School." data-ar="أكثر من 25 عامًا من الخبرة في الاندماج والاستحواذ وحوكمة الشركات والمعاملات التجارية. ماجستير في القانون من كلية الحقوق بجامعة هارفارد.">25+ years expertise in M&A, corporate governance, and commercial transactions. LLM from Harvard Law School.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <div class="team-avatar">👨‍⚖️</div>
+                    </div>
+                    <h3 data-en="Dr. Khalid Al-Rashid" data-ar="د. خالد الراشد">Dr. Khalid Al-Rashid</h3>
+                    <p class="team-role" data-en="Managing Partner | Litigation" data-ar="الشريك الإداري | التقاضي">Managing Partner | Litigation</p>
+                    <p class="team-bio" data-en="Renowned trial attorney with 95% success rate. PhD in International Law, specialized in complex commercial disputes." data-ar="محامٍ محاكمة مشهور بنسبة نجاح 95٪. دكتوراه في القانون الدولي، متخصص في النزاعات التجارية المعقدة.">Renowned trial attorney with 95% success rate. PhD in International Law, specialized in complex commercial disputes.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <div class="team-avatar">👩‍⚖️</div>
+                    </div>
+                    <h3 data-en="Fatima Al-Zahra" data-ar="فاطمة الزهراء">Fatima Al-Zahra</h3>
+                    <p class="team-role" data-en="Partner | International Arbitration" data-ar="شريك | التحكيم الدولي">Partner | International Arbitration</p>
+                    <p class="team-bio" data-en="International arbitration specialist with experience in ICC, LCIA proceedings. Recognized expert in cross-border disputes." data-ar="متخصصة في التحكيم الدولي مع خبرة في إجراءات ICC و LCIA. خبيرة معترف بها في النزاعات عبر الحدود.">International arbitration specialist with experience in ICC, LCIA proceedings. Recognized expert in cross-border disputes.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <div class="team-avatar">👨‍⚖️</div>
+                    </div>
+                    <h3 data-en="Omar Al-Hashimi" data-ar="عمر الهاشمي">Omar Al-Hashimi</h3>
+                    <p class="team-role" data-en="Partner | Real Estate Law" data-ar="شريك | قانون العقارات">Partner | Real Estate Law</p>
+                    <p class="team-bio" data-en="Real estate law expert handling billion-dollar transactions. Extensive experience in property development and investment." data-ar="خبير قانون العقارات في التعامل مع معاملات بمليارات الدولارات. خبرة واسعة في تطوير العقارات والاستثمار.">Real estate law expert handling billion-dollar transactions. Extensive experience in property development and investment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" data-en="Get In Touch" data-ar="تواصل معنا">Get In Touch</span>
+                <h2 class="section-title" data-en="Schedule Your Consultation" data-ar="احجز استشارتك">Schedule Your Consultation</h2>
+                <p class="section-subtitle" data-en="Let's discuss how we can help you achieve your legal objectives" data-ar="دعنا نناقش كيف يمكننا مساعدتك في تحقيق أهدافك القانونية">Let's discuss how we can help you achieve your legal objectives</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4 data-en="Office Location" data-ar="موقع المكتب">Office Location</h4>
+                            <p data-en="Central Business District, Tower 5, Floor 25" data-ar="منطقة الأعمال المركزية، البرج 5، الطابق 25">Central Business District, Tower 5, Floor 25</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4 data-en="Phone" data-ar="الهاتف">Phone</h4>
+                            <p>+20 111 390 3070</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h4 data-en="Email" data-ar="البريد الإلكتروني">Email</h4>
+                            <p>contact@elitelegal.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <h4 data-en="Business Hours" data-ar="ساعات العمل">Business Hours</h4>
+                            <p data-en="Sunday - Thursday: 9:00 AM - 6:00 PM" data-ar="الأحد - الخميس: 9:00 صباحاً - 6:00 مساءً">Sunday - Thursday: 9:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label data-en="Full Name *" data-ar="الاسم الكامل *">Full Name *</label>
+                            <input type="text" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label data-en="Email Address *" data-ar="البريد الإلكتروني *">Email Address *</label>
+                            <input type="email" name="email" required placeholder="john@example.com">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label data-en="Phone Number *" data-ar="رقم الهاتف *">Phone Number *</label>
+                            <input type="tel" name="phone" required placeholder="+20 111 222 3333">
+                        </div>
+                        <div class="form-group">
+                            <label data-en="Legal Service *" data-ar="الخدمة القانونية *">Legal Service *</label>
+                            <select name="service" required>
+                                <option value="">Select a service</option>
+                                <option value="corporate">Corporate Law</option>
+                                <option value="litigation">Civil Litigation</option>
+                                <option value="arbitration">International Arbitration</option>
+                                <option value="realestate">Real Estate Law</option>
+                                <option value="family">Family Law</option>
+                                <option value="criminal">Criminal Defense</option>
+                                <option value="labor">Labor & Employment</option>
+                                <option value="compliance">Regulatory Compliance</option>
+                                <option value="ip">Intellectual Property</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label data-en="Message *" data-ar="الرسالة *">Message *</label>
+                        <textarea name="message" required rows="5" placeholder="Please describe your legal matter..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span data-en="Send Consultation Request" data-ar="أرسل طلب الاستشارة">Send Consultation Request</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-icon">⚖️</span>
+                        <span class="logo-text" data-en="Elite Legal" data-ar="مكتب النخبة القانوني">Elite Legal</span>
+                    </div>
+                    <p class="footer-desc" data-en="Premier legal services delivering excellence, integrity, and results since 2000." data-ar="خدمات قانونية رائدة تقدم التميز والنزاهة والنتائج منذ عام 2000.">Premier legal services delivering excellence, integrity, and results since 2000.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                        <li><a href="#about" data-en="About Us" data-ar="من نحن">About Us</a></li>
+                        <li><a href="#services" data-en="Services" data-ar="خدماتنا">Services</a></li>
+                        <li><a href="#team" data-en="Our Team" data-ar="فريقنا">Our Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Legal Services" data-ar="الخدمات القانونية">Legal Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services" data-en="Corporate Law" data-ar="القانون التجاري">Corporate Law</a></li>
+                        <li><a href="#services" data-en="Litigation" data-ar="التقاضي">Litigation</a></li>
+                        <li><a href="#services" data-en="Arbitration" data-ar="التحكيم">Arbitration</a></li>
+                        <li><a href="#services" data-en="Real Estate" data-ar="العقارات">Real Estate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Contact Info" data-ar="معلومات الاتصال">Contact Info</h4>
+                    <ul class="footer-contact">
+                        <li>📍 <span data-en="Central Business District" data-ar="منطقة الأعمال المركزية">Central Business District</span></li>
+                        <li>📞 +20 111 390 3070</li>
+                        <li>📧 contact@elitelegal.com</li>
+                        <li>🕒 <span data-en="Sun-Thu: 9AM-6PM" data-ar="الأحد-الخميس: 9ص-6م">Sun-Thu: 9AM-6PM</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Elite Legal Office. <span data-en="All rights reserved." data-ar="جميع الحقوق محفوظة.">All rights reserved.</span></p>
+                <div class="footer-legal">
+                    <a href="#" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="#" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a>
+                    <span>|</span>
+                    <a href="#" data-en="Legal Disclaimer" data-ar="إخلاء المسؤولية القانونية">Legal Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+// ================================================
+// ELITE LEGAL OFFICE - JAVASCRIPT
+// ================================================
+
+// ================================================
+// CONFIGURATION
+// ================================================
+
+const CONFIG = {
+    whatsappNumber: '201113903070',
+    defaultLanguage: 'en',
+    defaultTheme: 'light'
+};
+
+// ================================================
+// TRANSLATIONS
+// ================================================
+
+const translations = {
+    en: {
+        successMessage: '✓ Your consultation request has been sent successfully! We will contact you soon via WhatsApp.',
+        errorMessage: '✗ Please fill in all required fields.',
+        selectService: 'Select a service'
+    },
+    ar: {
+        successMessage: '✓ تم إرسال طلب الاستشارة بنجاح! سنتواصل معك قريباً عبر واتساب.',
+        errorMessage: '✗ يرجى ملء جميع الحقول المطلوبة.',
+        selectService: 'اختر خدمة'
+    }
+};
+
+// ================================================
+// DOM ELEMENTS
+// ================================================
+
+const elements = {
+    html: document.documentElement,
+    body: document.body,
+    navbar: document.getElementById('navbar'),
+    menuToggle: document.getElementById('menuToggle'),
+    navMenu: document.getElementById('navMenu'),
+    langToggle: document.getElementById('langToggle'),
+    themeToggle: document.getElementById('themeToggle'),
+    contactForm: document.getElementById('contactForm'),
+    particlesContainer: document.getElementById('particles')
+};
+
+// ================================================
+// STATE MANAGEMENT
+// ================================================
+
+let state = {
+    currentLanguage: localStorage.getItem('language') || CONFIG.defaultLanguage,
+    currentTheme: localStorage.getItem('theme') || CONFIG.defaultTheme,
+    isMenuOpen: false
+};
+
+// ================================================
+// INITIALIZATION
+// ================================================
+
+function init() {
+    initializeTheme();
+    initializeLanguage();
+    initializeNavigation();
+    initializeAnimations();
+    initializeParticles();
+    initializeFormHandler();
+    initializeSmoothScroll();
+}
+
+// ================================================
+// THEME MANAGEMENT
+// ================================================
+
+function initializeTheme() {
+    applyTheme(state.currentTheme);
+    
+    elements.themeToggle.addEventListener('click', toggleTheme);
+}
+
+function toggleTheme() {
+    state.currentTheme = state.currentTheme === 'light' ? 'dark' : 'light';
+    applyTheme(state.currentTheme);
+    localStorage.setItem('theme', state.currentTheme);
+    
+    // Add animation
+    elements.themeToggle.style.transform = 'rotate(360deg)';
+    setTimeout(() => {
+        elements.themeToggle.style.transform = 'rotate(0deg)';
+    }, 300);
+}
+
+function applyTheme(theme) {
+    elements.html.setAttribute('data-theme', theme);
+    const icon = theme === 'light' ? '🌙' : '🌞';
+    elements.themeToggle.querySelector('.theme-icon').textContent = icon;
+}
+
+// ================================================
+// LANGUAGE MANAGEMENT
+// ================================================
+
+function initializeLanguage() {
+    applyLanguage(state.currentLanguage);
+    
+    elements.langToggle.addEventListener('click', toggleLanguage);
+}
+
+function toggleLanguage() {
+    state.currentLanguage = state.currentLanguage === 'en' ? 'ar' : 'en';
+    applyLanguage(state.currentLanguage);
+    localStorage.setItem('language', state.currentLanguage);
+    
+    // Add animation
+    elements.langToggle.style.transform = 'scale(0.8)';
+    setTimeout(() => {
+        elements.langToggle.style.transform = 'scale(1)';
+    }, 200);
+}
+
+function applyLanguage(lang) {
+    // Update HTML attributes
+    elements.html.setAttribute('lang', lang);
+    elements.html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    
+    // Update toggle button
+    elements.langToggle.querySelector('.lang-text').textContent = lang === 'en' ? 'ع' : 'EN';
+    
+    // Update all translatable elements
+    const translatableElements = document.querySelectorAll('[data-en]');
+    translatableElements.forEach(element => {
+        const key = `data-${lang}`;
+        if (element.hasAttribute(key)) {
+            // Handle different element types
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = element.getAttribute(key);
+            } else if (element.tagName === 'SELECT') {
+                // Skip select elements, they're handled separately
+            } else {
+                element.textContent = element.getAttribute(key);
+            }
+        }
+    });
+    
+    // Update select placeholder
+    const serviceSelect = document.querySelector('select[name="service"]');
+    if (serviceSelect) {
+        const placeholderOption = serviceSelect.querySelector('option[value=""]');
+        if (placeholderOption) {
+            placeholderOption.textContent = translations[lang].selectService;
+        }
+    }
+}
+
+// ================================================
+// NAVIGATION
+// ================================================
+
+function initializeNavigation() {
+    // Scroll effect
+    window.addEventListener('scroll', handleScroll);
+    
+    // Mobile menu toggle
+    elements.menuToggle.addEventListener('click', toggleMobileMenu);
+    
+    // Close menu on link click
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (state.isMenuOpen) {
+                toggleMobileMenu();
+            }
+        });
+    });
+    
+    // Close menu on outside click
+    document.addEventListener('click', (e) => {
+        if (state.isMenuOpen && 
+            !elements.navMenu.contains(e.target) && 
+            !elements.menuToggle.contains(e.target)) {
+            toggleMobileMenu();
+        }
+    });
+}
+
+function handleScroll() {
+    const scrollPosition = window.scrollY;
+    
+    if (scrollPosition > 50) {
+        elements.navbar.classList.add('scrolled');
+    } else {
+        elements.navbar.classList.remove('scrolled');
+    }
+}
+
+function toggleMobileMenu() {
+    state.isMenuOpen = !state.isMenuOpen;
+    elements.navMenu.classList.toggle('active');
+    
+    // Animate hamburger
+    const spans = elements.menuToggle.querySelectorAll('span');
+    if (state.isMenuOpen) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+    } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+    }
+}
+
+// ================================================
+// SMOOTH SCROLL
+// ================================================
+
+function initializeSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const offsetTop = target.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// ================================================
+// ANIMATIONS
+// ================================================
+
+function initializeAnimations() {
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all sections and cards
+    const animatedElements = document.querySelectorAll(`
+        .section-header,
+        .about-text,
+        .about-features,
+        .service-card,
+        .expertise-item,
+        .team-card,
+        .contact-info,
+        .contact-form
+    `);
+    
+    animatedElements.forEach(el => observer.observe(el));
+}
+
+// ================================================
+// PARTICLES BACKGROUND
+// ================================================
+
+function initializeParticles() {
+    const particleCount = 50;
+    const container = elements.particlesContainer;
+    
+    for (let i = 0; i < particleCount; i++) {
+        createParticle(container);
+    }
+}
+
+function createParticle(container) {
+    const particle = document.createElement('div');
+    particle.style.cssText = `
+        position: absolute;
+        width: ${Math.random() * 4 + 1}px;
+        height: ${Math.random() * 4 + 1}px;
+        background: rgba(212, 175, 55, ${Math.random() * 0.5 + 0.2});
+        border-radius: 50%;
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        animation: particleFloat ${Math.random() * 20 + 10}s infinite ease-in-out;
+        animation-delay: ${Math.random() * 5}s;
+    `;
+    
+    container.appendChild(particle);
+}
+
+// Add particle animation keyframes
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes particleFloat {
+        0%, 100% {
+            transform: translate(0, 0);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        50% {
+            transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px);
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// ================================================
+// FORM HANDLING & WHATSAPP INTEGRATION
+// ================================================
+
+function initializeFormHandler() {
+    elements.contactForm.addEventListener('submit', handleFormSubmit);
+}
+
+function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    // Get form data
+    const formData = new FormData(elements.contactForm);
+    const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        service: formData.get('service'),
+        message: formData.get('message')
+    };
+    
+    // Validate
+    if (!validateForm(data)) {
+        showNotification(translations[state.currentLanguage].errorMessage, 'error');
+        return;
+    }
+    
+    // Send to WhatsApp
+    sendToWhatsApp(data);
+}
+
+function validateForm(data) {
+    return Object.values(data).every(value => value && value.trim() !== '');
+}
+
+function sendToWhatsApp(data) {
+    // Format service name
+    const serviceNames = {
+        corporate: state.currentLanguage === 'en' ? 'Corporate Law' : 'القانون التجاري',
+        litigation: state.currentLanguage === 'en' ? 'Civil Litigation' : 'التقاضي المدني',
+        arbitration: state.currentLanguage === 'en' ? 'International Arbitration' : 'التحكيم الدولي',
+        realestate: state.currentLanguage === 'en' ? 'Real Estate Law' : 'قانون العقارات',
+        family: state.currentLanguage === 'en' ? 'Family Law' : 'قانون الأسرة',
+        criminal: state.currentLanguage === 'en' ? 'Criminal Defense' : 'الدفاع الجنائي',
+        labor: state.currentLanguage === 'en' ? 'Labor & Employment' : 'العمل والتوظيف',
+        compliance: state.currentLanguage === 'en' ? 'Regulatory Compliance' : 'الامتثال التنظيمي',
+        ip: state.currentLanguage === 'en' ? 'Intellectual Property' : 'الملكية الفكرية'
+    };
+    
+    // Create WhatsApp message
+    const message = state.currentLanguage === 'en' 
+        ? `*New Consultation Request - Elite Legal Office*
+
+📋 *Client Information:*
+━━━━━━━━━━━━━━━━━━━━━
+👤 Name: ${data.name}
+📧 Email: ${data.email}
+📱 Phone: ${data.phone}
+
+⚖️ *Legal Service Required:*
+${serviceNames[data.service]}
+
+💬 *Message:*
+${data.message}
+
+━━━━━━━━━━━━━━━━━━━━━
+🕐 Received: ${new Date().toLocaleString('en-US')}
+`
+        : `*طلب استشارة جديد - مكتب النخبة القانوني*
+
+📋 *معلومات العميل:*
+━━━━━━━━━━━━━━━━━━━━━
+👤 الاسم: ${data.name}
+📧 البريد الإلكتروني: ${data.email}
+📱 الهاتف: ${data.phone}
+
+⚖️ *الخدمة القانونية المطلوبة:*
+${serviceNames[data.service]}
+
+💬 *الرسالة:*
+${data.message}
+
+━━━━━━━━━━━━━━━━━━━━━
+🕐 تاريخ الاستلام: ${new Date().toLocaleString('ar-EG')}
+`;
+    
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Create WhatsApp URL
+    const whatsappURL = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp
+    window.open(whatsappURL, '_blank');
+    
+    // Show success message
+    showNotification(translations[state.currentLanguage].successMessage, 'success');
+    
+    // Reset form
+    elements.contactForm.reset();
+}
+
+// ================================================
+// NOTIFICATIONS
+// ================================================
+
+function showNotification(message, type = 'info') {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 30px;
+        max-width: 400px;
+        padding: 20px 30px;
+        background: ${type === 'success' ? 'rgba(46, 125, 50, 0.95)' : 'rgba(211, 47, 47, 0.95)'};
+        color: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        font-size: 16px;
+        font-weight: 500;
+        z-index: 10000;
+        animation: slideInRight 0.5s ease;
+        backdrop-filter: blur(10px);
+        border: 1px solid ${type === 'success' ? 'rgba(76, 175, 80, 0.5)' : 'rgba(244, 67, 54, 0.5)'};
+    `;
+    
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    // Add slide animation
+    const slideStyle = document.createElement('style');
+    slideStyle.textContent = `
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(slideStyle);
+    
+    // RTL support
+    if (state.currentLanguage === 'ar') {
+        notification.style.right = 'auto';
+        notification.style.left = '30px';
+    }
+    
+    // Remove after 5 seconds
+    setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.5s ease';
+        setTimeout(() => {
+            notification.remove();
+        }, 500);
+    }, 5000);
+}
+
+// ================================================
+// UTILITY FUNCTIONS
+// ================================================
+
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// ================================================
+// PERFORMANCE OPTIMIZATION
+// ================================================
+
+// Debounce scroll handler
+const debouncedScroll = debounce(handleScroll, 10);
+window.removeEventListener('scroll', handleScroll);
+window.addEventListener('scroll', debouncedScroll);
+
+// Lazy load images (if any are added later)
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    observer.unobserve(img);
+                }
+            }
+        });
+    });
+    
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+}
+
+// ================================================
+// ERROR HANDLING
+// ================================================
+
+window.addEventListener('error', (e) => {
+    console.error('Global error:', e.error);
+});
+
+window.addEventListener('unhandledrejection', (e) => {
+    console.error('Unhandled promise rejection:', e.reason);
+});
+
+// ================================================
+// START APPLICATION
+// ================================================
+
+// Wait for DOM to be fully loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
+
+// ================================================
+// CONSOLE MESSAGE
+// ================================================
+
+console.log('%c Elite Legal Office ', 'background: linear-gradient(135deg, #D4AF37, #E6C964); color: #0A1929; font-size: 24px; font-weight: bold; padding: 10px 20px; border-radius: 8px;');
+console.log('%c Premium Legal Services | Developed with Excellence ', 'background: #0A1929; color: #D4AF37; font-size: 14px; padding: 5px 10px;');
+
+
+        
+    </script>
+</body>
+</html>
