@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Legal Office | Premier Legal Services</title>
+    <meta name="description" content="Premium legal services with expertise in corporate law, civil litigation, international arbitration, and more.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Language Toggle Button -->
+    <button class="lang-toggle" id="langToggle" aria-label="Toggle Language">
+        <span class="lang-text">ع</span>
+    </button>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+        <span class="theme-icon">🌙</span>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#home" class="logo">
+                    <span class="logo-icon">⚖️</span>
+                    <span class="logo-text" data-en="Elite Legal" data-ar="مكتب النخبة القانوني">Elite Legal</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                    <li><a href="#about" class="nav-link" data-en="About" data-ar="من نحن">About</a></li>
+                    <li><a href="#services" class="nav-link" data-en="Services" data-ar="خدماتنا">Services</a></li>
+                    <li><a href="#expertise" class="nav-link" data-en="Expertise" data-ar="خبراتنا">Expertise</a></li>
+                    <li><a href="#team" class="nav-link" data-en="Team" data-ar="فريقنا">Team</a></li>
+                    <li><a href="#contact" class="nav-link nav-cta" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge" data-en="Premier Legal Excellence" data-ar="التميز القانوني الرائد">Premier Legal Excellence</div>
+                <h1 class="hero-title" data-en="Defending Your Rights with Precision & Integrity" data-ar="ندافع عن حقوقك بدقة ونزاهة">
+                    Defending Your Rights with <span class="gradient-text">Precision & Integrity</span>
+                </h1>
+                <p class="hero-subtitle" data-en="Leading legal firm providing comprehensive solutions across corporate law, litigation, arbitration, and regulatory compliance with decades of proven excellence." data-ar="مكتب قانوني رائد يقدم حلولاً شاملة في القانون التجاري والتقاضي والتحكيم والامتثال التنظيمي مع عقود من التميز المثبت.">
+                    Leading legal firm providing comprehensive solutions across corporate law, litigation, arbitration, and regulatory compliance with decades of proven excellence.
+                </p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary" data-en="Schedule Consultation" data-ar="احجز استشارة">
+                        <span data-en="Schedule Consultation" data-ar="احجز استشارة">Schedule Consultation</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="#services" class="btn btn-secondary" data-en="Explore Services" data-ar="استكشف خدماتنا">
+                        <span data-en="Explore Services" data-ar="استكشف خدماتنا">Explore Services</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label" data-en="Years Experience" data-ar="سنة خبرة">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label" data-en="Cases Won" data-ar="قضية ناجحة">Cases Won</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label" data-en="Success Rate" data-ar="نسبة النجاح">Success Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label" data-en="Satisfied Clients" data-ar="عميل راضٍ">Satisfied Clients</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" data-en="Who We Are" data-ar="من نحن">Who We Are</span>
+                <h2 class="section-title" data-en="Excellence in Legal Practice" data-ar="التميز في الممارسة القانونية">Excellence in Legal Practice</h2>
+                <p class="section-subtitle" data-en="A legacy of trust, expertise, and unwavering commitment to justice" data-ar="إرث من الثقة والخبرة والالتزام الثابت بالعدالة">A legacy of trust, expertise, and unwavering commitment to justice</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p data-en="Our firm stands as a beacon of legal excellence, built on a foundation of integrity, expertise, and client-focused service. With over two decades of distinguished practice, we have earned our reputation as trusted advisors to individuals, corporations, and institutions across the region." data-ar="يقف مكتبنا كمنارة للتميز القانوني، مبني على أساس من النزاهة والخبرة والخدمة الموجهة نحو العميل. مع أكثر من عقدين من الممارسة المتميزة، اكتسبنا سمعتنا كمستشارين موثوقين للأفراد والشركات والمؤسسات في جميع أنحاء المنطقة.">
+                        Our firm stands as a beacon of legal excellence, built on a foundation of integrity, expertise, and client-focused service. With over two decades of distinguished practice, we have earned our reputation as trusted advisors to individuals, corporations, and institutions across the region.
+                    </p>
+                    <p data-en="We combine deep legal knowledge with innovative strategies, delivering results that exceed expectations. Our team of seasoned attorneys brings together diverse specializations, ensuring comprehensive solutions for even the most complex legal challenges." data-ar="نجمع بين المعرفة القانونية العميقة والاستراتيجيات المبتكرة، لتقديم نتائج تفوق التوقعات. يجمع فريقنا من المحامين المتمرسين بين التخصصات المتنوعة، مما يضمن حلولاً شاملة حتى للتحديات القانونية الأكثر تعقيداً.">
+                        We combine deep legal knowledge with innovative strategies, delivering results that exceed expectations. Our team of seasoned attorneys brings together diverse specializations, ensuring comprehensive solutions for even the most complex legal challenges.
+                    </p>
+                </div>
+                <div class="about-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3 data-en="Client-Centric Approach" data-ar="نهج يركز على العميل">Client-Centric Approach</h3>
+                        <p data-en="Your success is our priority. We tailor strategies to your specific needs and goals." data-ar="نجاحك هو أولويتنا. نصمم استراتيجيات مخصصة لاحتياجاتك وأهدافك المحددة.">Your success is our priority. We tailor strategies to your specific needs and goals.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3 data-en="Proven Excellence" data-ar="التميز المثبت">Proven Excellence</h3>
+                        <p data-en="Track record of successful outcomes across all practice areas and jurisdictions." data-ar="سجل حافل بالنتائج الناجحة في جميع مجالات الممارسة والولايات القضائية.">Track record of successful outcomes across all practice areas and jurisdictions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3 data-en="Global Expertise" data-ar="خبرة عالمية">Global Expertise</h3>
+                        <p data-en="International legal network ensuring comprehensive cross-border solutions." data-ar="شبكة قانونية دولية تضمن حلولاً شاملة عبر الحدود.">International legal network ensuring comprehensive cross-border solutions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3 data-en="Absolute Confidentiality" data-ar="سرية مطلقة">Absolute Confidentiality</h3>
+                        <p data-en="Your privacy and sensitive information protected with utmost discretion." data-ar="خصوصيتك ومعلوماتك الحساسة محمية بأقصى قدر من السرية.">Your privacy and sensitive information protected with utmost discretion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" data-en="Our Services" data-ar="خدماتنا">Our Services</span>
+                <h2 class="section-title" data-en="Comprehensive Legal Solutions" data-ar="حلول قانونية شاملة">Comprehensive Legal Solutions</h2>
+                <p class="section-subtitle" data-en="Expert guidance across all areas of law" data-ar="إرشاد خبير في جميع مجالات القانون">Expert guidance across all areas of law</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3 data-en="Corporate Law" data-ar="القانون التجاري">Corporate Law</h3>
+                    <p data-en="Complete corporate legal services including mergers, acquisitions, corporate governance, compliance, and commercial contracts. Strategic counsel for businesses of all sizes." data-ar="خدمات قانونية شاملة للشركات بما في ذلك الاندماجات والاستحواذات وحوكمة الشركات والامتثال والعقود التجارية. استشارات استراتيجية للشركات من جميع الأحجام.">Complete corporate legal services including mergers, acquisitions, corporate governance, compliance, and commercial contracts. Strategic counsel for businesses of all sizes.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚖️</div>
+                    <h3 data-en="Civil Litigation" data-ar="التقاضي المدني">Civil Litigation</h3>
+                    <p data-en="Aggressive representation in civil disputes, contract breaches, property disputes, and commercial litigation. We fight for your rights in every courtroom." data-ar="تمثيل قوي في النزاعات المدنية، خرق العقود، نزاعات الملكية، والتقاضي التجاري. نحن نقاتل من أجل حقوقك في كل قاعة محكمة.">Aggressive representation in civil disputes, contract breaches, property disputes, and commercial litigation. We fight for your rights in every courtroom.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <h3 data-en="International Arbitration" data-ar="التحكيم الدولي">International Arbitration</h3>
+                    <p data-en="Expert arbitration services for cross-border disputes. Experienced in ICC, LCIA, and DIFC arbitration procedures with proven success in complex international cases." data-ar="خدمات تحكيم خبيرة للنزاعات عبر الحدود. خبرة في إجراءات التحكيم ICC و LCIA و DIFC مع نجاح مثبت في القضايا الدولية المعقدة.">Expert arbitration services for cross-border disputes. Experienced in ICC, LCIA, and DIFC arbitration procedures with proven success in complex international cases.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3 data-en="Real Estate Law" data-ar="قانون العقارات">Real Estate Law</h3>
+                    <p data-en="Comprehensive real estate legal services covering acquisitions, sales, leasing, development, and property disputes. Protecting your real estate investments." data-ar="خدمات قانونية شاملة للعقارات تغطي الاستحواذات والمبيعات والتأجير والتطوير ونزاعات الملكية. حماية استثماراتك العقارية.">Comprehensive real estate legal services covering acquisitions, sales, leasing, development, and property disputes. Protecting your real estate investments.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👨‍👩‍👧‍👦</div>
+                    <h3 data-en="Family Law" data-ar="قانون الأسرة">Family Law</h3>
+                    <p data-en="Sensitive and effective handling of divorce, custody, inheritance, and family disputes. Compassionate counsel during challenging times with focus on favorable outcomes." data-ar="معالجة حساسة وفعالة للطلاق والحضانة والميراث ونزاعات الأسرة. استشارات رحيمة خلال الأوقات الصعبة مع التركيز على النتائج المواتية.">Sensitive and effective handling of divorce, custody, inheritance, and family disputes. Compassionate counsel during challenging times with focus on favorable outcomes.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3 data-en="Criminal Defense" data-ar="الدفاع الجنائي">Criminal Defense</h3>
+                    <p data-en="Vigorous defense in criminal matters with strategic approach to protect your rights and freedom. Experienced trial attorneys ready to fight for justice." data-ar="دفاع قوي في القضايا الجنائية مع نهج استراتيجي لحماية حقوقك وحريتك. محامو محاكمة ذوو خبرة مستعدون للقتال من أجل العدالة.">Vigorous defense in criminal matters with strategic approach to protect your rights and freedom. Experienced trial attorneys ready to fight for justice.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3 data-en="Labor & Employment" data-ar="العمل والتوظيف">Labor & Employment</h3>
+                    <p data-en="Expert counsel on employment contracts, workplace disputes, wrongful termination, discrimination claims, and labor law compliance for employers and employees." data-ar="استشارات خبيرة حول عقود التوظيف، نزاعات مكان العمل، الإنهاء غير المشروع، مطالبات التمييز، والامتثال لقانون العمل لأصحاب العمل والموظفين.">Expert counsel on employment contracts, workplace disputes, wrongful termination, discrimination claims, and labor law compliance for employers and employees.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3 data-en="Regulatory Compliance" data-ar="الامتثال التنظيمي">Regulatory Compliance</h3>
+                    <p data-en="Navigate complex regulatory landscapes with confidence. Compliance programs, regulatory audits, and counsel on evolving legal requirements across industries." data-ar="تنقل في المشاهد التنظيمية المعقدة بثقة. برامج الامتثال، التدقيقات التنظيمية، والمشورة بشأن المتطلبات القانونية المتطورة عبر الصناعات.">Navigate complex regulatory landscapes with confidence. Compliance programs, regulatory audits, and counsel on evolving legal requirements across industries.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3 data-en="Intellectual Property" data-ar="الملكية الفكرية">Intellectual Property</h3>
+                    <p data-en="Protect your innovations, brands, and creative works. Trademark registration, patent prosecution, copyright protection, and IP litigation services." data-ar="احمِ ابتكاراتك وعلاماتك التجارية وأعمالك الإبداعية. تسجيل العلامات التجارية، مقاضاة براءات الاختراع، حماية حقوق النشر، وخدمات التقاضي في مجال الملكية الفكرية.">Protect your innovations, brands, and creative works. Trademark registration, patent prosecution, copyright protection, and IP litigation services.</p>
+                    <a href="#contact" class="service-link" data-en="Learn More" data-ar="اعرف المزيد">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="section expertise-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" data-en="Our Expertise" data-ar="خبراتنا">Our Expertise</span>
+                <h2 class="section-title" data-en="Industry-Leading Specialists" data-ar="متخصصون رائدون في الصناعة">Industry-Leading Specialists</h2>
+                <p class="section-subtitle" data-en="Decades of experience delivering exceptional results" data-ar="عقود من الخبرة في تقديم نتائج استثنائية">Decades of experience delivering exceptional results</p>
+            </div>
+            <div class="expertise-grid">
+                <div class="expertise-item">
+                    <div class="expertise-number">01</div>
+                    <h3 data-en="Strategic Litigation" data-ar="التقاضي الاستراتيجي">Strategic Litigation</h3>
+                    <p data-en="Masterful courtroom advocacy with meticulous case preparation and aggressive representation yielding consistent victories in complex litigation." data-ar="دفاع ماهر في قاعة المحكمة مع إعداد دقيق للقضايا وتمثيل قوي يحقق انتصارات ثابتة في التقاضي المعقد.">Masterful courtroom advocacy with meticulous case preparation and aggressive representation yielding consistent victories in complex litigation.</p>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-number">02</div>
+                    <h3 data-en="M&A Transactions" data-ar="عمليات الاندماج والاستحواذ">M&A Transactions</h3>
+                    <p data-en="Seamless execution of mergers, acquisitions, and corporate restructuring with focus on maximizing value and minimizing risk for our clients." data-ar="تنفيذ سلس لعمليات الاندماج والاستحواذ وإعادة الهيكلة المؤسسية مع التركيز على تعظيم القيمة وتقليل المخاطر لعملائنا.">Seamless execution of mergers, acquisitions, and corporate restructuring with focus on maximizing value and minimizing risk for our clients.</p>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-number">03</div>
+                    <h3 data-en="Cross-Border Disputes" data-ar="النزاعات عبر الحدود">Cross-Border Disputes</h3>
+                    <p data-en="Expert navigation of international legal complexities with multilingual team and global network ensuring successful resolution of cross-border matters." data-ar="تنقل خبير في التعقيدات القانونية الدولية مع فريق متعدد اللغات وشبكة عالمية تضمن حل ناجح للمسائل عبر الحدود.">Expert navigation of international legal complexities with multilingual team and global network ensuring successful resolution of cross-border matters.</p>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-number">04</div>
+                    <h3 data-en="Risk Management" data-ar="إدارة المخاطر">Risk Management</h3>
+                    <p data-en="Proactive identification and mitigation of legal risks through comprehensive compliance programs and strategic advisory services." data-ar="تحديد استباقي وتخفيف للمخاطر القانونية من خلال برامج امتثال شاملة وخدمات استشارية استراتيجية.">Proactive identification and mitigation of legal risks through comprehensive compliance programs and strategic advisory services.</p>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-number">05</div>
+                    <h3 data-en="Alternative Dispute Resolution" data-ar="حل النزاعات البديل">Alternative Dispute Resolution</h3>
+                    <p data-en="Skilled mediation and arbitration services achieving cost-effective resolutions while maintaining confidentiality and business relationships." data-ar="خدمات وساطة وتحكيم ماهرة تحقق حلولاً فعالة من حيث التكلفة مع الحفاظ على السرية والعلاقات التجارية.">Skilled mediation and arbitration services achieving cost-effective resolutions while maintaining confidentiality and business relationships.</p>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-number">06</div>
+                    <h3 data-en="Regulatory Advisory" data-ar="الاستشارات التنظيمية">Regulatory Advisory</h3>
+                    <p data-en="Stay ahead of regulatory changes with our proactive compliance strategies and deep understanding of industry-specific requirements." data-ar="ابقَ في الصدارة من التغييرات التنظيمية مع استراتيجيات الامتثال الاستباقية لدينا والفهم العميق للمتطلبات الخاصة بالصناعة.">Stay ahead of regulatory changes with our proactive compliance strategies and deep understanding of industry-specific requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section team-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" data-en="Our Team" data-ar="فريقنا">Our Team</span>
+                <h2 class="section-title" data-en="Distinguished Legal Professionals" data-ar="محترفون قانونيون متميزون">Distinguished Legal Professionals</h2>
+                <p class="section-subtitle" data-en="Meet the experts dedicated to your success" data-ar="تعرف على الخبراء المكرسين لنجاحك">Meet the experts dedicated to your success</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <div class="team-avatar">👨‍⚖️</div>
+                    </div>
+                    <h3 data-en="Ahmed Al-Mansouri" data-ar="أحمد المنصوري">Ahmed Al-Mansouri</h3>
+                    <p class="team-role" data-en="Senior Partner | Corporate Law" data-ar="شريك أول | القانون التجاري">Senior Partner | Corporate Law</p>
+                    <p class="team-bio" data-en="25+ years expertise in M&A, corporate governance, and commercial transactions. LLM from Harvard Law School." data-ar="أكثر من 25 عامًا من الخبرة في الاندماج والاستحواذ وحوكمة الشركات والمعاملات التجارية. ماجستير في القانون من كلية الحقوق بجامعة هارفارد.">25+ years expertise in M&A, corporate governance, and commercial transactions. LLM from Harvard Law School.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <div class="team-avatar">👨‍⚖️</div>
+                    </div>
+                    <h3 data-en="Dr. Khalid Al-Rashid" data-ar="د. خالد الراشد">Dr. Khalid Al-Rashid</h3>
+                    <p class="team-role" data-en="Managing Partner | Litigation" data-ar="الشريك الإداري | التقاضي">Managing Partner | Litigation</p>
+                    <p class="team-bio" data-en="Renowned trial attorney with 95% success rate. PhD in International Law, specialized in complex commercial disputes." data-ar="محامٍ محاكمة مشهور بنسبة نجاح 95٪. دكتوراه في القانون الدولي، متخصص في النزاعات التجارية المعقدة.">Renowned trial attorney with 95% success rate. PhD in International Law, specialized in complex commercial disputes.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <div class="team-avatar">👩‍⚖️</div>
+                    </div>
+                    <h3 data-en="Fatima Al-Zahra" data-ar="فاطمة الزهراء">Fatima Al-Zahra</h3>
+                    <p class="team-role" data-en="Partner | International Arbitration" data-ar="شريك | التحكيم الدولي">Partner | International Arbitration</p>
+                    <p class="team-bio" data-en="International arbitration specialist with experience in ICC, LCIA proceedings. Recognized expert in cross-border disputes." data-ar="متخصصة في التحكيم الدولي مع خبرة في إجراءات ICC و LCIA. خبيرة معترف بها في النزاعات عبر الحدود.">International arbitration specialist with experience in ICC, LCIA proceedings. Recognized expert in cross-border disputes.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <div class="team-avatar">👨‍⚖️</div>
+                    </div>
+                    <h3 data-en="Omar Al-Hashimi" data-ar="عمر الهاشمي">Omar Al-Hashimi</h3>
+                    <p class="team-role" data-en="Partner | Real Estate Law" data-ar="شريك | قانون العقارات">Partner | Real Estate Law</p>
+                    <p class="team-bio" data-en="Real estate law expert handling billion-dollar transactions. Extensive experience in property development and investment." data-ar="خبير قانون العقارات في التعامل مع معاملات بمليارات الدولارات. خبرة واسعة في تطوير العقارات والاستثمار.">Real estate law expert handling billion-dollar transactions. Extensive experience in property development and investment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" data-en="Get In Touch" data-ar="تواصل معنا">Get In Touch</span>
+                <h2 class="section-title" data-en="Schedule Your Consultation" data-ar="احجز استشارتك">Schedule Your Consultation</h2>
+                <p class="section-subtitle" data-en="Let's discuss how we can help you achieve your legal objectives" data-ar="دعنا نناقش كيف يمكننا مساعدتك في تحقيق أهدافك القانونية">Let's discuss how we can help you achieve your legal objectives</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4 data-en="Office Location" data-ar="موقع المكتب">Office Location</h4>
+                            <p data-en="Central Business District, Tower 5, Floor 25" data-ar="منطقة الأعمال المركزية، البرج 5، الطابق 25">Central Business District, Tower 5, Floor 25</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4 data-en="Phone" data-ar="الهاتف">Phone</h4>
+                            <p>+20 111 390 3070</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h4 data-en="Email" data-ar="البريد الإلكتروني">Email</h4>
+                            <p>contact@elitelegal.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <h4 data-en="Business Hours" data-ar="ساعات العمل">Business Hours</h4>
+                            <p data-en="Sunday - Thursday: 9:00 AM - 6:00 PM" data-ar="الأحد - الخميس: 9:00 صباحاً - 6:00 مساءً">Sunday - Thursday: 9:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label data-en="Full Name *" data-ar="الاسم الكامل *">Full Name *</label>
+                            <input type="text" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label data-en="Email Address *" data-ar="البريد الإلكتروني *">Email Address *</label>
+                            <input type="email" name="email" required placeholder="john@example.com">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label data-en="Phone Number *" data-ar="رقم الهاتف *">Phone Number *</label>
+                            <input type="tel" name="phone" required placeholder="+20 111 222 3333">
+                        </div>
+                        <div class="form-group">
+                            <label data-en="Legal Service *" data-ar="الخدمة القانونية *">Legal Service *</label>
+                            <select name="service" required>
+                                <option value="">Select a service</option>
+                                <option value="corporate">Corporate Law</option>
+                                <option value="litigation">Civil Litigation</option>
+                                <option value="arbitration">International Arbitration</option>
+                                <option value="realestate">Real Estate Law</option>
+                                <option value="family">Family Law</option>
+                                <option value="criminal">Criminal Defense</option>
+                                <option value="labor">Labor & Employment</option>
+                                <option value="compliance">Regulatory Compliance</option>
+                                <option value="ip">Intellectual Property</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label data-en="Message *" data-ar="الرسالة *">Message *</label>
+                        <textarea name="message" required rows="5" placeholder="Please describe your legal matter..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span data-en="Send Consultation Request" data-ar="أرسل طلب الاستشارة">Send Consultation Request</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-icon">⚖️</span>
+                        <span class="logo-text" data-en="Elite Legal" data-ar="مكتب النخبة القانوني">Elite Legal</span>
+                    </div>
+                    <p class="footer-desc" data-en="Premier legal services delivering excellence, integrity, and results since 2000." data-ar="خدمات قانونية رائدة تقدم التميز والنزاهة والنتائج منذ عام 2000.">Premier legal services delivering excellence, integrity, and results since 2000.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                        <li><a href="#about" data-en="About Us" data-ar="من نحن">About Us</a></li>
+                        <li><a href="#services" data-en="Services" data-ar="خدماتنا">Services</a></li>
+                        <li><a href="#team" data-en="Our Team" data-ar="فريقنا">Our Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Legal Services" data-ar="الخدمات القانونية">Legal Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services" data-en="Corporate Law" data-ar="القانون التجاري">Corporate Law</a></li>
+                        <li><a href="#services" data-en="Litigation" data-ar="التقاضي">Litigation</a></li>
+                        <li><a href="#services" data-en="Arbitration" data-ar="التحكيم">Arbitration</a></li>
+                        <li><a href="#services" data-en="Real Estate" data-ar="العقارات">Real Estate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Contact Info" data-ar="معلومات الاتصال">Contact Info</h4>
+                    <ul class="footer-contact">
+                        <li>📍 <span data-en="Central Business District" data-ar="منطقة الأعمال المركزية">Central Business District</span></li>
+                        <li>📞 +20 111 390 3070</li>
+                        <li>📧 contact@elitelegal.com</li>
+                        <li>🕒 <span data-en="Sun-Thu: 9AM-6PM" data-ar="الأحد-الخميس: 9ص-6م">Sun-Thu: 9AM-6PM</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Elite Legal Office. <span data-en="All rights reserved." data-ar="جميع الحقوق محفوظة.">All rights reserved.</span></p>
+                <div class="footer-legal">
+                    <a href="#" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="#" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a>
+                    <span>|</span>
+                    <a href="#" data-en="Legal Disclaimer" data-ar="إخلاء المسؤولية القانونية">Legal Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
