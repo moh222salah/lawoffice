@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Legal Office Consulting Group — Comprehensive legal services across commercial, corporate, civil, criminal, and international law.">
+<meta property="og:title" content="Legal Office Consulting Group">
+<meta property="og:type" content="website">
+<title>Legal Office</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=Amiri:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CSS CUSTOM PROPERTIES — DARK THEME (DEFAULT)
+============================================================ */
+:root {
+    --gold: #C9A84C;
+    --gold-light: #dcc078;
+    --gold-dim: rgba(201,168,76,0.15);
+    --gold-glow: rgba(201,168,76,0.25);
+    --bg-primary: #0a0c0f;
+    --bg-secondary: #0f1117;
+    --bg-card: #131620;
+    --bg-card-hover: #1a1f2e;
+    --bg-glass: rgba(19,22,32,0.55);
+    --bg-glass-strong: rgba(19,22,32,0.75);
+    --text-primary: #e8e4dc;
+    --text-secondary: #8a8a92;
+    --text-muted: #5a5a62;
+    --border: rgba(201,168,76,0.12);
+    --border-subtle: rgba(255,255,255,0.06);
+    --border-glass: rgba(255,255,255,0.08);
+    --shadow-card: 0 4px 24px rgba(0,0,0,0.3);
+    --shadow-card-hover: 0 8px 40px rgba(0,0,0,0.4), 0 0 1px rgba(201,168,76,0.2);
+    --shadow-glass: 0 8px 32px rgba(0,0,0,0.25);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-arabic: 'Amiri', serif;
+    --error-color: #e04848;
+}
+
+/* LIGHT THEME */
+[data-theme="light"] {
+    --bg-primary: #f4f2ed;
+    --bg-secondary: #eae7e0;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f9f7f2;
+    --bg-glass: rgba(255,255,255,0.55);
+    --bg-glass-strong: rgba(255,255,255,0.82);
+    --text-primary: #1a1a1e;
+    --text-secondary: #4a4a52;
+    --text-muted: #7a7a82;
+    --border: rgba(201,168,76,0.18);
+    --border-subtle: rgba(0,0,0,0.07);
+    --border-glass: rgba(0,0,0,0.08);
+    --shadow-card: 0 4px 24px rgba(0,0,0,0.08);
+    --shadow-card-hover: 0 8px 40px rgba(0,0,0,0.12), 0 0 1px rgba(201,168,76,0.3);
+    --shadow-glass: 0 8px 32px rgba(0,0,0,0.08);
+}
+
+/* ============================================================
+   RESET & BASE
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Arabic direction override */
+[dir="rtl"] { direction: rtl; text-align: right; }
+[dir="rtl"] body { font-family: var(--font-arabic), var(--font-body); }
+[dir="rtl"] .header__logo-text, [dir="rtl"] .footer__brand-logo { flex-direction: row-reverse; }
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, select, textarea { font-family: inherit; }
+
+/* ============================================================
+   PARTICLES BACKGROUND
+============================================================ */
+#particles-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.45;
+}
+
+/* ============================================================
+   PRELOADER
+============================================================ */
+.preloader {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--bg-primary);
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+.preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+.preloader__inner { position: relative; display: flex; align-items: center; justify-content: center; }
+.preloader__ring {
+    width: 56px; height: 56px; border: 2px solid var(--border-subtle);
+    border-top-color: var(--gold); border-radius: 50%;
+    animation: preloaderSpin 0.8s linear infinite;
+}
+@keyframes preloaderSpin { to { transform: rotate(360deg); } }
+.preloader__text {
+    position: absolute; font-family: var(--font-display); font-size: 0.75rem;
+    color: var(--gold); letter-spacing: 0.3em; text-transform: uppercase;
+    opacity: 0; animation: fadeIn 0.5s 0.4s ease forwards;
+}
+@keyframes fadeIn { to { opacity: 1; } }
+
+/* ============================================================
+   HEADER — Glassmorphism
+============================================================ */
+.header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    padding: 1.25rem 0;
+}
+.header.scrolled {
+    background: var(--bg-glass-strong);
+    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    box-shadow: 0 1px 0 var(--border-glass), var(--shadow-glass);
+    padding: 0.7rem 0;
+}
+.header__container {
+    max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+}
+.header__logo { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+.header__logo-text { display: flex; flex-direction: column; }
+.header__logo-name { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; letter-spacing: 0.18em; color: var(--text-primary); line-height: 1.1; }
+.header__logo-sub { font-size: 0.48rem; letter-spacing: 0.22em; color: var(--text-muted); text-transform: uppercase; line-height: 1.4; }
+.header__nav { flex: 1; display: flex; justify-content: center; }
+.header__nav-list { display: flex; gap: 2rem; list-style: none; }
+.header__nav-link {
+    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-secondary); transition: color var(--transition);
+    position: relative; padding: 0.3rem 0;
+}
+.header__nav-link::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1.5px;
+    background: var(--gold); border-radius: 1px; transition: width var(--transition);
+}
+.header__nav-link:hover, .header__nav-link.active { color: var(--gold); }
+.header__nav-link:hover::after, .header__nav-link.active::after { width: 100%; }
+.header__actions { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
+.header__cta {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid var(--border);
+    padding: 0.55rem 1rem; border-radius: var(--radius-sm);
+    transition: all var(--transition); background: var(--bg-glass);
+    backdrop-filter: blur(8px);
+}
+.header__cta:hover { background: var(--gold-dim); border-color: var(--gold); box-shadow: 0 0 20px var(--gold-dim); }
+.header__hamburger { display: none; flex-direction: column; gap: 5px; width: 24px; padding: 4px 0; }
+.header__hamburger span { display: block; height: 1.5px; background: var(--text-primary); transition: transform 0.3s ease, opacity 0.3s ease; border-radius: 1px; }
+
+/* Mobile Menu */
+.mobile-menu { position: fixed; inset: 0; z-index: 200; pointer-events: none; }
+.mobile-menu.open { pointer-events: auto; }
+.mobile-menu__overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.55); opacity: 0; transition: opacity 0.35s ease; backdrop-filter: blur(4px); }
+.mobile-menu.open .mobile-menu__overlay { opacity: 1; }
+.mobile-menu__panel {
+    position: absolute; top: 0; right: -100%; width: min(320px, 85vw); height: 100%;
+    background: var(--bg-glass-strong); backdrop-filter: blur(24px) saturate(1.5);
+    -webkit-backdrop-filter: blur(24px) saturate(1.5);
+    padding: 2rem 1.5rem; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; flex-direction: column;
+    box-shadow: -8px 0 40px rgba(0,0,0,0.3); border-left: 1px solid var(--border-glass);
+}
+[dir="rtl"] .mobile-menu__panel { right: auto; left: -100%; transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1); border-left: none; border-right: 1px solid var(--border-glass); box-shadow: 8px 0 40px rgba(0,0,0,0.3); }
+.mobile-menu.open .mobile-menu__panel { right: 0; }
+[dir="rtl"] .mobile-menu.open .mobile-menu__panel { left: 0; }
+.mobile-menu__close { align-self: flex-end; color: var(--text-secondary); transition: color var(--transition); }
+[dir="rtl"] .mobile-menu__close { align-self: flex-start; }
+.mobile-menu__close:hover { color: var(--gold); }
+.mobile-menu__logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; letter-spacing: 0.15em; color: var(--gold); margin: 1.5rem 0; }
+.mobile-menu__list { list-style: none; flex: 1; }
+.mobile-menu__list li { border-bottom: 1px solid var(--border-subtle); }
+.mobile-menu__link { display: block; padding: 0.9rem 0; font-size: 0.95rem; color: var(--text-secondary); transition: color var(--transition), padding-left var(--transition); }
+.mobile-menu__link:hover { color: var(--gold); padding-left: 0.5rem; }
+[dir="rtl"] .mobile-menu__link:hover { padding-left: 0; padding-right: 0.5rem; }
+.mobile-menu__cta {
+    display: block; text-align: center; margin-top: 2rem;
+    padding: 0.8rem; border: 1px solid var(--gold);
+    color: var(--gold); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+    border-radius: var(--radius-sm); transition: background var(--transition);
+}
+.mobile-menu__cta:hover { background: var(--gold-dim); }
+
+/* ============================================================
+   HERO — Glassmorphism
+============================================================ */
+.hero {
+    position: relative; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 7rem 1.5rem 4rem; overflow: hidden;
+    background: linear-gradient(170deg, var(--bg-secondary) 0%, var(--bg-primary) 60%);
+}
+.hero__bg-lines { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.hero__bg-line { position: absolute; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.06; }
+.hero__bg-line--1 { top: 25%; left: -10%; width: 120%; transform: rotate(-2deg); }
+.hero__bg-line--2 { top: 50%; left: -5%; width: 110%; transform: rotate(1deg); opacity: 0.04; }
+.hero__bg-line--3 { top: 75%; left: -15%; width: 130%; transform: rotate(-0.5deg); opacity: 0.03; }
+
+/* Hero Glassmorphism Card */
+.hero__glass-card {
+    position: absolute; border-radius: 24px;
+    background: var(--bg-glass); border: 1px solid var(--border-glass);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    pointer-events: none;
+}
+.hero__glass-card--1 { top: 12%; right: 8%; width: 260px; height: 180px; transform: rotate(3deg); opacity: 0.5; }
+.hero__glass-card--2 { bottom: 18%; left: 5%; width: 200px; height: 140px; transform: rotate(-2deg); opacity: 0.35; }
+.hero__glass-card--3 { top: 55%; right: 15%; width: 140px; height: 140px; transform: rotate(8deg); opacity: 0.25; border-radius: 50%; }
+
+.hero__glyph {
+    position: absolute; right: -5%; top: 50%; transform: translateY(-50%);
+    width: 520px; height: 520px; opacity: 0.7; pointer-events: none;
+    animation: glyphDrift 18s ease-in-out infinite alternate;
+}
+@keyframes glyphDrift { 0% { transform: translateY(-50%) rotate(0deg) scale(1); } 100% { transform: translateY(-50%) rotate(4deg) scale(1.04); } }
+
+.hero__container { position: relative; z-index: 1; max-width: 900px; width: 100%; text-align: center; }
+.hero__badge {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.8rem;
+    background: var(--bg-glass); border: 1px solid var(--border-glass);
+    padding: 0.5rem 1rem; border-radius: 30px;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.hero__badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 8px var(--gold-dim); animation: badgePulse 2s ease infinite; }
+@keyframes badgePulse { 0%,100% { opacity: 1; box-shadow: 0 0 8px var(--gold-dim); } 50% { opacity: 0.6; box-shadow: 0 0 16px var(--gold-glow); } }
+
+.hero__title { font-family: var(--font-display); font-weight: 300; line-height: 1.1; margin-bottom: 1.8rem; display: flex; flex-direction: column; align-items: center; gap: 0.05em; }
+.hero__title-line { display: block; font-size: clamp(2.8rem, 7vw, 5rem); color: var(--text-primary); }
+.hero__title-line--gold { color: var(--gold); font-weight: 600; }
+.hero__title-line--thin { font-size: clamp(2rem, 4.5vw, 3.4rem); color: var(--text-secondary); font-style: italic; }
+
+/* Gold Shimmer */
+@keyframes goldShimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+.hero__title-line--gold, .about__title-gold, .services__title-gold, .why-us__title-gold, .team__title-gold, .contact__title-gold {
+    background: linear-gradient(90deg, #C9A84C 0%, #e8d48b 40%, #C9A84C 60%, #e8d48b 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; animation: goldShimmer 4s linear infinite;
+}
+
+.hero__description { font-size: clamp(0.92rem, 1.5vw, 1.05rem); color: var(--text-secondary); max-width: 680px; margin: 0 auto 2.5rem; line-height: 1.8; }
+.hero__actions { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+.hero__btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.85rem 1.8rem; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    border-radius: var(--radius-sm); transition: all var(--transition);
+}
+.hero__btn--primary { background: var(--gold); color: #0a0c0f; font-weight: 600; }
+.hero__btn--primary:hover { background: var(--gold-light); box-shadow: 0 4px 28px var(--gold-glow); transform: translateY(-2px); }
+.hero__btn--secondary { border: 1px solid var(--border); color: var(--text-secondary); background: var(--bg-glass); backdrop-filter: blur(8px); }
+.hero__btn--secondary:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+
+.hero__stats { display: flex; align-items: center; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+.hero__stat { text-align: center; }
+.hero__stat-number { display: block; font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; color: var(--gold); line-height: 1; }
+.hero__stat-label { display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.4rem; }
+.hero__stat-divider { width: 1px; height: 32px; background: var(--border); }
+
+.hero__scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.hero__scroll-line { width: 1px; height: 32px; background: linear-gradient(180deg, var(--gold), transparent); animation: scrollPulse 2.2s ease-in-out infinite; }
+@keyframes scrollPulse { 0%,100% { opacity: 1; transform: scaleY(1); } 50% { opacity: 0.3; transform: scaleY(0.6); } }
+.hero__scroll-text { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+
+/* ============================================================
+   SHARED SECTION STYLES
+============================================================ */
+.about, .services, .why-us, .team, .contact { padding: 7rem 1.5rem; position: relative; }
+.about, .why-us { background: var(--bg-secondary); }
+.services, .team { background: var(--bg-primary); }
+.contact { background: var(--bg-secondary); }
+
+.section-label {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1rem;
+}
+.section-label-line { width: 28px; height: 1.5px; background: var(--gold); border-radius: 1px; }
+[dir="rtl"] .section-label { flex-direction: row-reverse; }
+
+/* ============================================================
+   ABOUT — Glassmorphism
+============================================================ */
+.about__container { max-width: 1200px; margin: 0 auto; }
+.about__grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: center; }
+.about__visual { position: relative; }
+.about__visual-frame {
+    background: var(--bg-glass); border: 1px solid var(--border-glass);
+    border-radius: var(--radius); overflow: hidden; padding: 2rem;
+    aspect-ratio: 4/5; display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-glass);
+    animation: visualFloat 6s ease-in-out infinite;
+}
+@keyframes visualFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.about__visual-accent {
+    position: absolute; bottom: -12px; right: -12px;
+    width: 80px; height: 80px; border: 1px solid var(--gold);
+    border-radius: var(--radius); opacity: 0.25; z-index: -1;
+}
+.about__visual-tag {
+    position: absolute; top: -16px; right: -8px;
+    background: var(--bg-glass-strong); border: 1px solid var(--border-glass);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    padding: 0.55rem 0.9rem; border-radius: 20px;
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.7rem; color: var(--text-secondary);
+    box-shadow: var(--shadow-glass);
+}
+.about__visual-tag-icon { color: var(--gold); font-size: 0.85rem; }
+.about__title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; color: var(--text-primary); }
+.about__text { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; }
+.about__mission {
+    display: flex; gap: 1rem; padding: 1.5rem; margin-bottom: 2rem;
+    background: var(--bg-glass); border: 1px solid var(--border-glass); border-radius: var(--radius);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.about__mission-bar { width: 3px; flex-shrink: 0; background: var(--gold); border-radius: 2px; }
+.about__mission-title { font-family: var(--font-display); font-size: 1.15rem; color: var(--gold); margin-bottom: 0.4rem; font-weight: 600; }
+.about__mission-text { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; }
+.about__pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.about__pillar {
+    display: flex; align-items: center; gap: 0.7rem;
+    padding: 0.75rem; border-radius: var(--radius-sm);
+    background: var(--bg-glass); border: 1px solid transparent;
+    transition: all var(--transition);
+}
+.about__pillar:hover { background: var(--gold-dim); border-color: var(--border); }
+.about__pillar span { font-size: 0.78rem; color: var(--text-secondary); }
+
+/* ============================================================
+   SERVICES — Glass Cards
+============================================================ */
+.services__container { max-width: 1200px; margin: 0 auto; }
+.services__header { text-align: center; max-width: 600px; margin: 0 auto 3.5rem; }
+.services__title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 300; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.2; }
+.services__subtitle { font-size: 0.9rem; color: var(--text-secondary); }
+.services__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-bottom: 3rem; }
+.services__card {
+    background: var(--bg-glass); border: 1px solid var(--border-glass);
+    border-radius: var(--radius); padding: 2rem 1.6rem;
+    position: relative; overflow: hidden;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-glass);
+    transition: all var(--transition);
+}
+.services__card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0); transform-origin: left; transition: transform var(--transition);
+}
+.services__card:hover { border-color: var(--border); box-shadow: var(--shadow-card-hover); transform: translateY(-4px); }
+.services__card:hover::before { transform: scaleX(1); }
+.services__card-number { font-family: var(--font-display); font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.05em; margin-bottom: 1rem; }
+.services__card-icon { margin-bottom: 1rem; }
+.services__card-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.6rem; }
+.services__card-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.7; }
+
+.services__cta-bar {
+    background: var(--bg-glass-strong); border: 1px solid var(--border-glass);
+    border-radius: var(--radius); padding: 2.5rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-glass);
+}
+.services__cta-content h3 { font-family: var(--font-display); font-size: 1.5rem; color: var(--text-primary); margin-bottom: 0.4rem; font-weight: 500; }
+.services__cta-content p { font-size: 0.85rem; color: var(--text-secondary); }
+.services__cta-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem; flex-shrink: 0;
+    padding: 0.75rem 1.6rem; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    border: 1px solid var(--gold); color: var(--gold); border-radius: var(--radius-sm);
+    transition: all var(--transition);
+}
+.services__cta-btn:hover { background: var(--gold); color: #0a0c0f; box-shadow: 0 4px 20px var(--gold-glow); }
+
+/* ============================================================
+   WHY US — Glass Credentials
+============================================================ */
+.why-us__container { max-width: 1200px; margin: 0 auto; }
+.why-us__grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: start; }
+.why-us__title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 300; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.2; }
+.why-us__intro { font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.8; }
+.why-us__features { display: flex; flex-direction: column; gap: 0; }
+.why-us__feature { display: flex; gap: 1.2rem; padding: 1.5rem 0; border-bottom: 1px solid var(--border-subtle); }
+.why-us__feature:first-child { padding-top: 0; }
+.why-us__feature-num { font-family: var(--font-display); font-size: 1.2rem; color: var(--gold); font-weight: 600; flex-shrink: 0; line-height: 1.4; }
+.why-us__feature-title { font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.35rem; font-weight: 600; }
+.why-us__feature-text { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7; }
+
+.why-us__credentials { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.why-us__cred-card {
+    background: var(--bg-glass); border: 1px solid var(--border-glass);
+    border-radius: var(--radius); padding: 1.5rem;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-glass);
+    transition: all var(--transition);
+    opacity: 0; transform: translateY(20px) scale(0.96);
+}
+.why-us__visual.revealed .why-us__cred-card { opacity: 1; transform: translateY(0) scale(1); transition: opacity 0.55s cubic-bezier(0.4,0,0.2,1), transform 0.55s cubic-bezier(0.4,0,0.2,1), border-color 0.35s ease, box-shadow 0.35s ease; }
+.why-us__visual.revealed .why-us__cred-card:nth-child(1) { transition-delay: 0.05s; }
+.why-us__visual.revealed .why-us__cred-card:nth-child(2) { transition-delay: 0.15s; }
+.why-us__visual.revealed .why-us__cred-card:nth-child(3) { transition-delay: 0.25s; }
+.why-us__visual.revealed .why-us__cred-card:nth-child(4) { transition-delay: 0.35s; }
+.why-us__cred-card:hover { border-color: var(--border); box-shadow: var(--shadow-card-hover); transform: translateY(-2px); }
+.why-us__cred-icon { margin-bottom: 0.8rem; }
+.why-us__cred-card h4 { font-family: var(--font-display); font-size: 1rem; color: var(--gold); margin-bottom: 0.35rem; font-weight: 600; }
+.why-us__cred-card p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.6; }
+
+/* ============================================================
+   TEAM — Glass Cards
+============================================================ */
+.team__container { max-width: 1200px; margin: 0 auto; }
+.team__header { text-align: center; margin-bottom: 3.5rem; }
+.team__title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 300; color: var(--text-primary); line-height: 1.2; }
+.team__grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 1.2rem; align-items: start; }
+.team__card {
+    background: var(--bg-glass); border: 1px solid var(--border-glass);
+    border-radius: var(--radius); overflow: hidden;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-glass);
+    transition: all var(--transition);
+}
+.team__card:hover { border-color: var(--border); box-shadow: var(--shadow-card-hover); transform: translateY(-4px); }
+.team__card--featured { border-color: var(--border); background: var(--bg-glass-strong); }
+.team__card-visual { position: relative; background: var(--bg-primary); padding: 1.5rem; display: flex; flex-direction: column; align-items: center; }
+.team__card-ribbon {
+    position: absolute; top: 1rem; right: -2rem;
+    background: var(--gold); color: #0a0c0f;
+    font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.3rem 2.5rem; transform: rotate(35deg); font-weight: 600;
+}
+[dir="rtl"] .team__card-ribbon { right: auto; left: -2rem; transform: rotate(-35deg); }
+.team__card-info { padding: 1.2rem; }
+.team__card--featured .team__card-info { padding: 1.5rem; }
+.team__card-name { font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.2rem; font-weight: 600; }
+.team__card--featured .team__card-name { font-size: 1.35rem; }
+.team__card-role { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.04em; margin-bottom: 0.5rem; }
+.team__card-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.75rem; }
+.team__card-tags span { font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--border); padding: 0.2rem 0.5rem; border-radius: 10px; }
+.team__card-bio { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.7; }
+
+/* ============================================================
+   CONTACT — Glass Form
+============================================================ */
+.contact__container { max-width: 1200px; margin: 0 auto; }
+.contact__grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 5rem; }
+.contact__title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 300; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.2; }
+.contact__intro { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8; }
+.contact__details { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem; }
+.contact__detail { display: flex; gap: 0.9rem; align-items: flex-start; }
+.contact__detail-icon {
+    width: 38px; height: 38px; flex-shrink: 0;
+    background: var(--bg-glass); border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(8px);
+}
+.contact__detail-label { display: block; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.15rem; }
+.contact__detail-value { display: block; font-size: 0.85rem; color: var(--text-secondary); }
+.contact__fee-note {
+    display: flex; gap: 0.8rem; align-items: flex-start;
+    background: var(--bg-glass); border: 1px solid var(--border-glass); border-radius: var(--radius-sm);
+    padding: 1rem; margin-bottom: 1.5rem;
+    font-size: 0.78rem; color: var(--text-secondary); line-height: 1.6;
+    backdrop-filter: blur(8px);
+}
+.contact__fee-icon { flex-shrink: 0; font-size: 1rem; }
+.contact__social { display: flex; gap: 0.6rem; }
+.contact__social-link {
+    width: 38px; height: 38px; border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center;
+    background: var(--bg-glass); backdrop-filter: blur(8px);
+    transition: all var(--transition);
+}
+.contact__social-link:hover { border-color: var(--gold); background: var(--gold-dim); }
+
+/* Contact Form Glass */
+.contact__form-wrap {
+    background: var(--bg-glass); border: 1px solid var(--border-glass);
+    border-radius: var(--radius); padding: 2.5rem;
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-glass);
+}
+.contact__form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.contact__form-group { margin-bottom: 1.2rem; }
+.contact__form-label { display: block; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.45rem; }
+.contact__form-input {
+    width: 100%; padding: 0.7rem 0.9rem;
+    background: var(--bg-primary); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm); color: var(--text-primary); font-size: 0.85rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none; -webkit-appearance: none; appearance: none;
+}
+.contact__form-input::placeholder { color: var(--text-muted); }
+.contact__form-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-dim); animation: inputFocusPulse 0.4s ease; }
+@keyframes inputFocusPulse { 0% { box-shadow: 0 0 0 0 rgba(201,168,76,0.25); } 100% { box-shadow: 0 0 0 3px rgba(201,168,76,0.08); } }
+.contact__form-input.error { border-color: var(--error-color); box-shadow: 0 0 0 3px rgba(224,72,72,0.12); }
+.contact__form-select { background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8a92' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.8rem center; padding-right: 2.2rem; cursor: pointer; }
+[dir="rtl"] .contact__form-select { background-position: left 0.8rem center; padding-right: 0.9rem; padding-left: 2.2rem; }
+.contact__form-select option { background: var(--bg-secondary); color: var(--text-primary); }
+.contact__form-textarea { resize: vertical; min-height: 100px; }
+.contact__form-btn {
+    width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.85rem; background: var(--gold); color: #0a0c0f;
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600;
+    border-radius: var(--radius-sm); transition: all var(--transition);
+}
+.contact__form-btn:hover { background: var(--gold-light); box-shadow: 0 4px 24px var(--gold-glow); transform: translateY(-1px); }
+.contact__form-note { font-size: 0.7rem; color: var(--text-muted); text-align: center; margin-top: 1rem; }
+
+/* Success Message */
+.contact__form-success { display: none; flex-direction: column; align-items: center; text-align: center; gap: 0.8rem; padding: 2rem 0; }
+.contact__form-success.show { display: flex; animation: successEntrance 0.5s ease; }
+@keyframes successEntrance { 0% { opacity: 0; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1); } }
+.contact__form-success h4 { font-family: var(--font-display); font-size: 1.3rem; color: var(--gold); }
+.contact__form-success p { font-size: 0.82rem; color: var(--text-secondary); }
+
+/* ============================================================
+   FOOTER
+============================================================ */
+.footer { background: var(--bg-primary); padding: 4rem 1.5rem 2rem; border-top: 1px solid var(--border-subtle); }
+.footer__container { max-width: 1200px; margin: 0 auto; }
+.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border-subtle); }
+.footer__brand-logo { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+.footer__brand-logo span { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; letter-spacing: 0.15em; color: var(--gold); }
+.footer__brand-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
+.footer__col-title { font-family: var(--font-display); font-size: 0.95rem; color: var(--text-primary); margin-bottom: 1rem; font-weight: 600; letter-spacing: 0.02em; }
+.footer__col-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer__col-list a { font-size: 0.8rem; color: var(--text-muted); transition: color var(--transition); }
+.footer__col-list a:hover { color: var(--gold); }
+.footer__col-list li:not(:has(a)) { font-size: 0.8rem; color: var(--text-muted); }
+.footer__bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 1.8rem; flex-wrap: wrap; gap: 1rem; }
+.footer__bottom p { font-size: 0.72rem; color: var(--text-muted); }
+.footer__bottom-links { display: flex; gap: 1.5rem; }
+.footer__bottom-links a { font-size: 0.72rem; color: var(--text-muted); transition: color var(--transition); }
+.footer__bottom-links a:hover { color: var(--gold); }
+
+/* ============================================================
+   FLOATING BUTTONS — Theme & Language
+============================================================ */
+.floating-btn {
+    position: fixed; z-index: 50;
+    width: 48px; height: 48px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-glass-strong); border: 1px solid var(--border-glass);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-glass);
+    transition: all var(--transition); cursor: pointer;
+    color: var(--text-secondary);
+}
+.floating-btn:hover { border-color: var(--gold); color: var(--gold); box-shadow: 0 0 20px var(--gold-dim), var(--shadow-glass); transform: scale(1.08); }
+.floating-btn__theme { bottom: 2rem; left: 2rem; }
+.floating-btn__lang { bottom: 2rem; right: 2rem; }
+.floating-btn__icon { font-size: 1.2rem; transition: transform 0.3s ease; }
+.floating-btn:hover .floating-btn__icon { transform: rotate(15deg); }
+.floating-btn__label { position: absolute; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease; }
+.floating-btn__theme .floating-btn__label { bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px); }
+.floating-btn__lang .floating-btn__label { bottom: calc(100% + 8px); right: 50%; transform: translateX(50%) translateY(4px); }
+.floating-btn:hover .floating-btn__label { opacity: 1; transform: translateX(-50%) translateY(0); }
+.floating-btn__lang:hover .floating-btn__label { transform: translateX(50%) translateY(0); }
+
+/* ============================================================
+   BACK TO TOP
+============================================================ */
+.back-to-top {
+    position: fixed; bottom: 5.5rem; right: 2rem; z-index: 50;
+    width: 44px; height: 44px;
+    background: var(--bg-glass); border: 1px solid var(--border-glass);
+    border-radius: 50%; backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-secondary); opacity: 0; transform: translateY(16px);
+    transition: all var(--transition); pointer-events: none;
+}
+.back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.back-to-top:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+
+/* ============================================================
+   REVEAL ANIMATIONS
+============================================================ */
+[data-reveal] { opacity: 0; transform: translateY(30px); transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+[data-reveal].revealed { opacity: 1; transform: translateY(0); }
+[data-reveal-delay="80"] { transition-delay: 0.08s; }
+[data-reveal-delay="100"] { transition-delay: 0.1s; }
+[data-reveal-delay="120"] { transition-delay: 0.12s; }
+[data-reveal-delay="160"] { transition-delay: 0.16s; }
+[data-reveal-delay="200"] { transition-delay: 0.2s; }
+[data-reveal-delay="240"] { transition-delay: 0.24s; }
+[data-reveal-delay="250"] { transition-delay: 0.25s; }
+[data-reveal-delay="320"] { transition-delay: 0.32s; }
+[data-reveal-delay="340"] { transition-delay: 0.34s; }
+[data-reveal-delay="360"] { transition-delay: 0.36s; }
+[data-reveal-delay="380"] { transition-delay: 0.38s; }
+[data-reveal-delay="400"] { transition-delay: 0.4s; }
+[data-reveal-delay="420"] { transition-delay: 0.42s; }
+[data-reveal-delay="480"] { transition-delay: 0.48s; }
+[data-reveal-delay="500"] { transition-delay: 0.5s; }
+[data-reveal-delay="560"] { transition-delay: 0.56s; }
+[data-reveal-delay="640"] { transition-delay: 0.64s; }
+
+/* Hero title stagger */
+.hero__title .hero__title-line { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1); }
+.hero__title.revealed .hero__title-line:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
+.hero__title.revealed .hero__title-line:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+.hero__title.revealed .hero__title-line:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.45s; }
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* ============================================================
+   RESPONSIVE — TABLET ≤ 1024px
+============================================================ */
+@media (max-width: 1024px) {
+    .about__grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about__visual { max-width: 400px; margin: 0 auto; }
+    .why-us__grid { grid-template-columns: 1fr; gap: 3rem; }
+    .why-us__credentials { max-width: 500px; }
+    .team__grid { grid-template-columns: 1fr 1fr; }
+    .contact__grid { grid-template-columns: 1fr; gap: 3rem; }
+    .footer__grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+@media (max-width: 768px) {
+    .header__nav { display: none; }
+    .header__cta { display: none; }
+    .header__hamburger { display: flex; }
+    .hero { padding: 6rem 1.25rem 3.5rem; min-height: auto; padding-top: 100px; padding-bottom: 80px; }
+    .hero__glyph { width: 300px; height: 300px; right: -15%; top: 15%; transform: none; opacity: 0.4; }
+    .hero__glass-card { display: none; }
+    .hero__stats { gap: 1.5rem; }
+    .hero__stat-divider { display: none; }
+    .about, .services, .why-us, .team, .contact { padding: 5rem 1.25rem; }
+    .about__visual-frame { aspect-ratio: auto; padding: 1.5rem; }
+    .services__grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .services__cta-bar { flex-direction: column; text-align: center; padding: 2rem; }
+    .team__grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    .contact__form-wrap { padding: 1.8rem 1.25rem; }
+    .contact__form-row { grid-template-columns: 1fr; }
+    .footer__grid { grid-template-columns: 1fr 1fr; }
+    .footer__bottom { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 480px) {
+    .hero { padding-top: 90px; padding-bottom: 60px; }
+    .hero__title-line { font-size: clamp(2.2rem, 11vw, 2.8rem) !important; }
+    .hero__title-line--thin { font-size: clamp(1.6rem, 7vw, 2rem) !important; }
+    .hero__actions { flex-direction: column; width: 100%; }
+    .hero__btn { width: 100%; justify-content: center; }
+    .hero__stats { flex-direction: column; gap: 1rem; align-items: center; }
+    .hero__stat-divider { display: block; width: 40px; height: 1px; background: var(--border); }
+    .hero__scroll { display: none; }
+    .hero__glyph { display: none; }
+    .hero__bg-lines { display: none; }
+    .about, .services, .why-us, .team, .contact { padding: 4rem 1rem; }
+    .services__grid { grid-template-columns: 1fr; }
+    .about__pillars { grid-template-columns: 1fr; gap: 0.5rem; }
+    .why-us__credentials { grid-template-columns: 1fr; }
+    .footer { padding: 3rem 1rem 1.5rem; }
+    .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
+    .contact__form-wrap { padding: 1.5rem 1rem; }
+    .back-to-top { bottom: 1.2rem; right: 1.2rem; width: 40px; height: 40px; }
+    .floating-btn { width: 44px; height: 44px; }
+    .floating-btn__theme { bottom: 1.2rem; left: 1.2rem; }
+    .floating-btn__lang { bottom: 1.2rem; right: 1.2rem; }
+}
+@media (max-width: 360px) {
+    .header__logo-sub { display: none; }
+    .header__logo-name { font-size: 1.05rem; }
+}
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero { min-height: auto; padding-top: 80px; padding-bottom: 40px; }
+    .hero__scroll { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Particles Canvas -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- Preloader -->
+<div id="preloader" class="preloader">
+    <div class="preloader__inner">
+        <div class="preloader__ring"></div>
+        <span class="preloader__text">Legal</span>
+    </div>
+</div>
+
+<!-- ============================================================ HEADER ============================================================ -->
+<header class="header" id="header">
+    <div class="header__container">
+        <a href="#" class="header__logo" aria-label="Home">
+            <svg viewBox="0 0 48 48" fill="none" width="40" height="40">
+                <path d="M24 4 L44 40 L4 40 Z" stroke="#C9A84C" stroke-width="1.2" fill="none"/>
+                <path d="M24 14 L36 36 L12 36 Z" stroke="#C9A84C" stroke-width="0.5" fill="none" opacity="0.4"/>
+                <circle cx="24" cy="28" r="2.5" fill="#C9A84C"/>
+            </svg>
+            <div class="header__logo-text">
+                <span class="header__logo-name" data-en="Legal" data-ar="قانوني">Legal</span>
+                <span class="header__logo-sub" data-en="OFFICE CONSULTING" data-ar="مكتب الاستشارات">OFFICE CONSULTING</span>
+            </div>
+        </a>
+        <nav class="header__nav" aria-label="Primary">
+            <ul class="header__nav-list">
+                <li><a href="#about" class="header__nav-link" data-en="About" data-ar="عن المكتب">About</a></li>
+                <li><a href="#services" class="header__nav-link" data-en="Services" data-ar="الخدمات">Services</a></li>
+                <li><a href="#why-us" class="header__nav-link" data-en="Why Us" data-ar="لماذا نحن">Why Us</a></li>
+                <li><a href="#team" class="header__nav-link" data-en="Team" data-ar="الفريق">Team</a></li>
+                <li><a href="#contact" class="header__nav-link" data-en="Contact" data-ar="الاتصال">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header__actions">
+            <a href="#contact" class="header__cta">
+                <span data-en="Consult Now" data-ar="استشارة الآن">Consult Now</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <button class="header__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu__overlay" id="menuOverlay"></div>
+    <nav class="mobile-menu__panel">
+        <button class="mobile-menu__close" id="menuClose" aria-label="Close">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mobile-menu__logo" data-en="Legal Office" data-ar="مكتب قانوني">Legal Office</div>
+        <ul class="mobile-menu__list">
+            <li><a href="#about" class="mobile-menu__link" data-en="About" data-ar="عن المكتب">About</a></li>
+            <li><a href="#services" class="mobile-menu__link" data-en="Services" data-ar="الخدمات">Services</a></li>
+            <li><a href="#why-us" class="mobile-menu__link" data-en="Why Us" data-ar="لماذا نحن">Why Us</a></li>
+            <li><a href="#team" class="mobile-menu__link" data-en="Team" data-ar="الفريق">Team</a></li>
+            <li><a href="#contact" class="mobile-menu__link" data-en="Contact" data-ar="الاتصال">Contact</a></li>
+        </ul>
+        <a href="#contact" class="mobile-menu__cta" data-en="Free Consultation" data-ar="استشارة مجانية">Free Consultation</a>
+    </nav>
+</div>
+
+<!-- ============================================================ HERO ============================================================ -->
+<section class="hero" id="hero">
+    <div class="hero__bg-lines" aria-hidden="true">
+        <div class="hero__bg-line hero__bg-line--1"></div>
+        <div class="hero__bg-line hero__bg-line--2"></div>
+        <div class="hero__bg-line hero__bg-line--3"></div>
+    </div>
+    <div class="hero__glass-card hero__glass-card--1" aria-hidden="true"></div>
+    <div class="hero__glass-card hero__glass-card--2" aria-hidden="true"></div>
+    <div class="hero__glass-card hero__glass-card--3" aria-hidden="true"></div>
+    <div class="hero__glyph" aria-hidden="true">
+        <svg viewBox="0 0 200 200" fill="none">
+            <circle cx="100" cy="100" r="90" stroke="#C9A84C" stroke-width="0.3" opacity="0.15"/>
+            <circle cx="100" cy="100" r="70" stroke="#C9A84C" stroke-width="0.3" opacity="0.1"/>
+            <circle cx="100" cy="100" r="50" stroke="#C9A84C" stroke-width="0.3" opacity="0.07"/>
+            <path d="M100 10 L190 155 L10 155 Z" stroke="#C9A84C" stroke-width="0.5" fill="none" opacity="0.12"/>
+        </svg>
+    </div>
+    <div class="hero__container">
+        <div class="hero__badge" data-reveal>
+            <span class="hero__badge-dot"></span>
+            <span data-en="Kuwait's Premier Legal Consulting Group" data-ar="مجموعة الاستشارات القانونية الأولى في الكويت">Kuwait's Premier Legal Consulting Group</span>
+        </div>
+        <h1 class="hero__title" data-reveal data-reveal-delay="100">
+            <span class="hero__title-line" data-en="Excellence in" data-ar="التميز في">Excellence in</span>
+            <span class="hero__title-line hero__title-line--gold" data-en="Legal Protection" data-ar="الحماية القانونية">Legal Protection</span>
+            <span class="hero__title-line hero__title-line--thin" data-en="&amp; Strategic Counsel" data-ar="والنصيحة الاستراتيجية">&amp; Strategic Counsel</span>
+        </h1>
+        <p class="hero__description" data-reveal data-reveal-delay="250" data-en="Led by an INTERPOL-certified expert lawyer, our firm delivers comprehensive legal solutions across all branches of law — from corporate governance and international arbitration to criminal defense and intellectual property protection." data-ar="بقيادة محامٍ خبير معتمد من الإنتربول، يقدم مكتبنا حلولًا قانونية شاملة في جميع فروع القانون — من حوكمة الشركات والتحكيم الدولي إلى الدفاع الجنائي وحماية الملكية الفكرية.">Led by an INTERPOL-certified expert lawyer, our firm delivers comprehensive legal solutions across all branches of law — from corporate governance and international arbitration to criminal defense and intellectual property protection.</p>
+        <div class="hero__actions" data-reveal data-reveal-delay="380">
+            <a href="#contact" class="hero__btn hero__btn--primary">
+                <span data-en="Schedule Consultation" data-ar="جدولة استشارة">Schedule Consultation</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#services" class="hero__btn hero__btn--secondary"><span data-en="Our Services" data-ar="خدماتنا">Our Services</span></a>
+        </div>
+        <div class="hero__stats" data-reveal data-reveal-delay="500">
+            <div class="hero__stat">
+                <span class="hero__stat-number" data-count="14">14</span>
+                <span class="hero__stat-label" data-en="Years Experience" data-ar="سنوات خبرة">Years Experience</span>
+            </div>
+            <div class="hero__stat-divider"></div>
+            <div class="hero__stat">
+                <span class="hero__stat-number">12+</span>
+                <span class="hero__stat-label" data-en="Areas of Law" data-ar="مجالات قانونية">Areas of Law</span>
+            </div>
+            <div class="hero__stat-divider"></div>
+            <div class="hero__stat">
+                <span class="hero__stat-number">24/7</span>
+                <span class="hero__stat-label" data-en="Legal Call Center" data-ar="مركز اتصال قانوني">Legal Call Center</span>
+            </div>
+            <div class="hero__stat-divider"></div>
+            <div class="hero__stat">
+                <span class="hero__stat-number">100%</span>
+                <span class="hero__stat-label" data-en="Client Dedication" data-ar="تخصيص العملاء">Client Dedication</span>
+            </div>
+        </div>
+    </div>
+    <div class="hero__scroll" aria-label="Scroll down">
+        <div class="hero__scroll-line"></div>
+        <span class="hero__scroll-text" data-en="Scroll" data-ar="تمرير">Scroll</span>
+    </div>
+</section>
+
+<!-- ============================================================ ABOUT ============================================================ -->
+<section class="about" id="about">
+    <div class="about__container">
+        <div class="about__grid">
+            <div class="about__visual" data-reveal>
+                <div class="about__visual-frame">
+                    <svg viewBox="0 0 320 400" fill="none" style="width:100%;height:auto;max-width:260px;">
+                        <rect x="40" y="60" width="240" height="280" rx="4" fill="var(--bg-primary)" stroke="#C9A84C" stroke-width="0.5" opacity="0.3"/>
+                        <rect x="70" y="90" width="12" height="220" fill="#C9A84C" opacity="0.12"/>
+                        <rect x="154" y="90" width="12" height="220" fill="#C9A84C" opacity="0.08"/>
+                        <rect x="238" y="90" width="12" height="220" fill="#C9A84C" opacity="0.12"/>
+                        <path d="M40 90 L160 40 L280 90" stroke="#C9A84C" stroke-width="0.8" fill="none" opacity="0.5"/>
+                        <circle cx="160" cy="200" r="3" fill="#C9A84C" opacity="0.6"/>
+                        <line x1="160" y1="200" x2="160" y2="280" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+                        <line x1="160" y1="200" x2="110" y2="230" stroke="#C9A84C" stroke-width="0.8" opacity="0.4"/>
+                        <line x1="160" y1="200" x2="210" y2="230" stroke="#C9A84C" stroke-width="0.8" opacity="0.4"/>
+                        <circle cx="110" cy="232" r="8" stroke="#C9A84C" stroke-width="0.6" fill="none" opacity="0.35"/>
+                        <circle cx="210" cy="232" r="8" stroke="#C9A84C" stroke-width="0.6" fill="none" opacity="0.35"/>
+                        <rect x="140" y="278" width="40" height="6" fill="#C9A84C" opacity="0.3"/>
+                    </svg>
+                </div>
+                <div class="about__visual-accent"></div>
+                <div class="about__visual-tag">
+                    <span class="about__visual-tag-icon">⚖</span>
+                    <span data-en="Est. in Kuwait City" data-ar="مؤسس في مدينة الكويت">Est. in Kuwait City</span>
+                </div>
+            </div>
+            <div class="about__content">
+                <div class="section-label" data-reveal><span class="section-label-line"></span><span data-en="About Us" data-ar="عن المكتب">About Us</span></div>
+                <h2 class="about__title" data-reveal data-reveal-delay="80">
+                    <span data-en="Trusted Legal Excellence" data-ar="التفوق القانوني الموثوق">Trusted Legal Excellence</span><br>
+                    <span class="about__title-gold" data-en="Since Day One" data-ar="منذ البداية">Since Day One</span>
+                </h2>
+                <p class="about__text" data-reveal data-reveal-delay="160" data-en="Legal Office Consulting Group is characterized by an advanced work system built on field and administrative experience across all branches of law — commercial, corporate, civil, criminal, administrative, personal status, inheritance, insurance, labor, tax, arbitration, and more." data-ar="تتسم مجموعة مكتب قانوني بنظام عمل متطور مبني على الخبرة الميدانية والإدارية في جميع فروع القانون — التجاري، والشركات، والمدني، والجنائي، والإداري، والأحوال الشخصية، والميراث، والتأمين، والعمالة، والضريبي، والتحكيم، وغيرها.">Legal Office Consulting Group is characterized by an advanced work system built on field and administrative experience across all branches of law — commercial, corporate, civil, criminal, administrative, personal status, inheritance, insurance, labor, tax, arbitration, and more.</p>
+                <div class="about__mission" data-reveal data-reveal-delay="240">
+                    <div class="about__mission-bar"></div>
+                    <div>
+                        <h3 class="about__mission-title" data-en="Our Mission" data-ar="مهمتنا">Our Mission</h3>
+                        <p class="about__mission-text" data-en="To serve as the comprehensive legal department for all our clients — providing protection and integrated solutions through the latest information technology, an electronic coordination system, and dedicated follow-up on every legal matter." data-ar="أن نكون القسم القانوني الشامل لجميع عملائنا — من خلال تقديم الحماية والحلول المتكاملة باستخدام أحدث تقنيات المعلومات والنظام الإلكتروني للتنسيق والمتابعة المخصصة لكل مسألة قانونية.">To serve as the comprehensive legal department for all our clients — providing protection and integrated solutions through the latest information technology, an electronic coordination system, and dedicated follow-up on every legal matter.</p>
+                    </div>
+                </div>
+                <div class="about__pillars" data-reveal data-reveal-delay="320">
+                    <div class="about__pillar">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span data-en="Strategic Depth" data-ar="عمق استراتيجي">Strategic Depth</span>
+                    </div>
+                    <div class="about__pillar">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#C9A84C" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span data-en="24/7 Availability" data-ar="متاح 24/7">24/7 Availability</span>
+                    </div>
+                    <div class="about__pillar">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#C9A84C" stroke-width="1.5"/></svg>
+                        <span data-en="Expert Team" data-ar="فريق متخصص">Expert Team</span>
+                    </div>
+                    <div class="about__pillar">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span data-en="Client Protection" data-ar="حماية العملاء">Client Protection</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ SERVICES ============================================================ -->
+<section class="services" id="services">
+    <div class="services__container">
+        <div class="services__header">
+            <div class="section-label" data-reveal style="justify-content:center;"><span class="section-label-line"></span><span data-en="Practice Areas" data-ar="مجالات الممارسة">Practice Areas</span></div>
+            <h2 class="services__title" data-reveal data-reveal-delay="80"><span data-en="Comprehensive Legal" data-ar="خدمات قانونية">Comprehensive Legal</span> <span class="services__title-gold" data-en="Services" data-ar="شاملة">Services</span></h2>
+            <p class="services__subtitle" data-reveal data-reveal-delay="160" data-en="Full-spectrum legal coverage across all branches of law" data-ar="تغطية قانونية شاملة في جميع فروع القانون">Full-spectrum legal coverage across all branches of law</p>
+        </div>
+        <div class="services__grid">
+            <article class="services__card" data-reveal data-reveal-delay="0">
+                <div class="services__card-number">01</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="4" y="6" width="24" height="20" rx="2" stroke="#C9A84C" stroke-width="1.5"/><path d="M4 12h24M10 18h6M10 22h10" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+                <h3 class="services__card-title" data-en="Commercial Law" data-ar="القانون التجاري">Commercial Law</h3>
+                <p class="services__card-desc" data-en="Contract drafting, business disputes, commercial transactions, and corporate governance across all sectors." data-ar="صياغة العقود، والنزاعات التجارية، والمعاملات التجارية، وحوكمة الشركات في جميع القطاعات.">Contract drafting, business disputes, commercial transactions, and corporate governance across all sectors.</p>
+            </article>
+            <article class="services__card" data-reveal data-reveal-delay="80">
+                <div class="services__card-number">02</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M16 4L6 9v10l10 5 10-5V9L16 4z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 4v22M6 9l10 5 10-5" stroke="#C9A84C" stroke-width="1.2"/></svg></div>
+                <h3 class="services__card-title" data-en="Corporate Law" data-ar="قانون الشركات">Corporate Law</h3>
+                <p class="services__card-desc" data-en="Company establishment, mergers &amp; acquisitions, corporate structuring, and shareholder dispute resolution." data-ar="تأسيس الشركات، والاندماجات والاستحواذات، وهيكلة الشركات، وحل نزاعات المساهمين.">Company establishment, mergers &amp; acquisitions, corporate structuring, and shareholder dispute resolution.</p>
+            </article>
+            <article class="services__card" data-reveal data-reveal-delay="160">
+                <div class="services__card-number">03</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="10" stroke="#C9A84C" stroke-width="1.5"/><path d="M16 10v6l4 3" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <h3 class="services__card-title" data-en="Civil Law" data-ar="القانون المدني">Civil Law</h3>
+                <p class="services__card-desc" data-en="Property disputes, rental cases, compensation claims, and civil litigation at all court levels." data-ar="نزاعات الملكية، وقضايا الإيجار، والدعاوى التعويضية، والدعاوى المدنية في جميع المحاكم.">Property disputes, rental cases, compensation claims, and civil litigation at all court levels.</p>
+            </article>
+            <article class="services__card" data-reveal data-reveal-delay="240">
+                <div class="services__card-number">04</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M16 6L8 10v8l8 4 8-4v-8l-8-4z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 16l2 2 5-5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <h3 class="services__card-title" data-en="Criminal Defense" data-ar="الدفاع الجنائي">Criminal Defense</h3>
+                <p class="services__card-desc" data-en="Full criminal case representation from investigation through prosecution to court proceedings and appeals." data-ar="تمثيل كامل في القضايا الجنائية من التحقيق إلى الادعاء والإجراءات القضائية والطعون.">Full criminal case representation from investigation through prosecution to court proceedings and appeals.</p>
+            </article>
+            <article class="services__card" data-reveal data-reveal-delay="320">
+                <div class="services__card-number">05</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M8 28V8l8-4 8 4v20" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 4v24" stroke="#C9A84C" stroke-width="0.8"/><rect x="9" y="12" width="4" height="4" stroke="#C9A84C" stroke-width="1"/><rect x="19" y="12" width="4" height="4" stroke="#C9A84C" stroke-width="1"/><rect x="9" y="20" width="4" height="4" stroke="#C9A84C" stroke-width="1"/><rect x="19" y="20" width="4" height="4" stroke="#C9A84C" stroke-width="1"/></svg></div>
+                <h3 class="services__card-title" data-en="Administrative Law" data-ar="القانون الإداري">Administrative Law</h3>
+                <p class="services__card-desc" data-en="Challenging administrative decisions, grievance procedures across all government ministries and authorities." data-ar="الطعن في القرارات الإدارية، وإجراءات التظلم في جميع الوزارات والهيئات الحكومية.">Challenging administrative decisions, grievance procedures across all government ministries and authorities.</p>
+            </article>
+            <article class="services__card" data-reveal data-reveal-delay="400">
+                <div class="services__card-number">06</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M16 6c-4 0-8 2-8 6 0 2.5 2 4.5 4 5.5V24h8v-6.5c2-1 4-3 4-5.5 0-4-4-6-8-6z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 24h8M13 28h6" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+                <h3 class="services__card-title" data-en="Labor &amp; Employment" data-ar="العمالة والتوظيف">Labor &amp; Employment</h3>
+                <p class="services__card-desc" data-en="Labor dispute resolution, employment rights enforcement for both private and governmental sectors." data-ar="حل نزاعات العمالة، وإنفاذ حقوق العمل في القطاعين الخاص والحكومي.">Labor dispute resolution, employment rights enforcement for both private and governmental sectors.</p>
+            </article>
+            <article class="services__card" data-reveal data-reveal-delay="480">
+                <div class="services__card-number">07</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="6" y="8" width="20" height="16" rx="2" stroke="#C9A84C" stroke-width="1.5"/><path d="M6 13h20M10 19h5" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+                <h3 class="services__card-title" data-en="Insurance Law" data-ar="قانون التأمين">Insurance Law</h3>
+                <p class="services__card-desc" data-en="Insurance policy analysis, compensation claim processing, and disputes with insurance companies." data-ar="تحليل وثائق التأمين، ومعالجة طلبات التعويض، والنزاعات مع شركات التأمين.">Insurance policy analysis, compensation claim processing, and disputes with insurance companies.</p>
+            </article>
+            <article class="services__card" data-reveal data-reveal-delay="560">
+                <div class="services__card-number">08</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="8" stroke="#C9A84C" stroke-width="1.5"/><path d="M16 10v8M12 12l4-2 4 2" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <h3 class="services__card-title" data-en="Arbitration" data-ar="التحكيم">Arbitration</h3>
+                <p class="services__card-desc" data-en="International and local commercial arbitration at Kuwait Commercial Arbitration Center and GCC chambers." data-ar="التحكيم التجاري الدولي والمحلي في مركز التحكيم التجاري الكويتي وغرف مجلس التعاون الخليجي.">International and local commercial arbitration at Kuwait Commercial Arbitration Center and GCC chambers.</p>
+            </article>
+            <article class="services__card" data-reveal data-reveal-delay="640">
+                <div class="services__card-number">09</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M10 6h12v20l-6-4-6 4V6z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 12h4M14 16h4" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+                <h3 class="services__card-title" data-en="Intellectual Property" data-ar="الملكية الفكرية">Intellectual Property</h3>
+                <p class="services__card-desc" data-en="Patent registration, trademark protection, copyright enforcement, and IP dispute resolution." data-ar="تسجيل البراءات، وحماية العلامات التجارية، وإنفاذ حقوق المؤلف، وحل نزاعات الملكية الفكرية.">Patent registration, trademark protection, copyright enforcement, and IP dispute resolution.</p>
+            </article>
+        </div>
+        <div class="services__cta-bar" data-reveal>
+            <div class="services__cta-content">
+                <h3 data-en="Need legal guidance for your case?" data-ar="هل تحتاج إلى إرشاد قانوني لقضيتك؟">Need legal guidance for your case?</h3>
+                <p data-en="Our team is available 24/7. First consultation is complimentary." data-ar="فريقنا متاح 24/7. الاستشارة الأولى مجانية.">Our team is available 24/7. First consultation is complimentary.</p>
+            </div>
+            <a href="#contact" class="services__cta-btn">
+                <span data-en="Contact Us" data-ar="اتصل بنا">Contact Us</span>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ WHY US ============================================================ -->
+<section class="why-us" id="why-us">
+    <div class="why-us__container">
+        <div class="why-us__grid">
+            <div class="why-us__content">
+                <div class="section-label" data-reveal><span class="section-label-line"></span><span data-en="Why Choose Us" data-ar="لماذا تختارنا">Why Choose Us</span></div>
+                <h2 class="why-us__title" data-reveal data-reveal-delay="80"><span data-en="Why Legal Office" data-ar="لماذا مكتب قانوني">Why Legal Office</span><br><span class="why-us__title-gold" data-en="Group?" data-ar="المجموعة؟">Group?</span></h2>
+                <p class="why-us__intro" data-reveal data-reveal-delay="160" data-en="Our firm combines decades of legal expertise with cutting-edge technology to deliver results that protect and advance your interests." data-ar="يجمع مكتبنا عقودًا من الخبرة القانونية مع أحدث التكنولوجيا لتحقيق نتائج تحمي وتعزز مصالحك.">Our firm combines decades of legal expertise with cutting-edge technology to deliver results that protect and advance your interests.</p>
+                <div class="why-us__features">
+                    <div class="why-us__feature" data-reveal data-reveal-delay="240">
+                        <div class="why-us__feature-num">01</div>
+                        <div><h4 class="why-us__feature-title" data-en="Expert Legal Team" data-ar="فريق قانوني متخصص">Expert Legal Team</h4><p class="why-us__feature-text" data-en="Led by Legal Office, we offer unparalleled legal expertise across various fields with an international network of affiliated offices." data-ar="بقيادة مكتب قانوني، نقدم خبرة قانونية لا مثيل لها في مجالات متعددة مع شبكة دولية من المكاتب المنتسبة.">Led by Legal Office, we offer unparalleled legal expertise across various fields with an international network of affiliated offices.</p></div>
+                    </div>
+                    <div class="why-us__feature" data-reveal data-reveal-delay="320">
+                        <div class="why-us__feature-num">02</div>
+                        <div><h4 class="why-us__feature-title" data-en="Strategic Solutions" data-ar="حلول استراتيجية">Strategic Solutions</h4><p class="why-us__feature-text" data-en="We deliver results-driven strategies to achieve your legal goals efficiently, combining field experience with scientific rigor." data-ar="نقدم استراتيجيات نتائج-موجهة لتحقيق أهدافك القانونية بكفاءة، نجمع فيها الخبرة الميدانية مع الصرامة العلمية.">We deliver results-driven strategies to achieve your legal goals efficiently, combining field experience with scientific rigor.</p></div>
+                    </div>
+                    <div class="why-us__feature" data-reveal data-reveal-delay="400">
+                        <div class="why-us__feature-num">03</div>
+                        <div><h4 class="why-us__feature-title" data-en="Dedicated Support" data-ar="دعم مخصص">Dedicated Support</h4><p class="why-us__feature-text" data-en="Personalized guidance throughout your legal journey with our integrated electronic system for case tracking and follow-up." data-ar="إرشاد شخصي على مدار رحلتك القانونية مع نظامنا الإلكتروني المتكامل لتتبع القضايا والمتابعة.">Personalized guidance throughout your legal journey with our integrated electronic system for case tracking and follow-up.</p></div>
+                    </div>
+                    <div class="why-us__feature" data-reveal data-reveal-delay="480">
+                        <div class="why-us__feature-num">04</div>
+                        <div><h4 class="why-us__feature-title" data-en="International Reach" data-ar="نطاق دولي">International Reach</h4><p class="why-us__feature-text" data-en="Strong bilateral agreements with accredited offices across MENA and beyond, serving as a bridge between Kuwait and the global legal arena." data-ar="اتفاقيات ثنائية قوية مع مكاتب معتمدة في منطقة الشرق الأوسط وشمال أفريقيا وما بعدها، تعمل كجسر بين الكويت والساحة القانونية العالمية.">Strong bilateral agreements with accredited offices across MENA and beyond, serving as a bridge between Kuwait and the global legal arena.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="why-us__visual" data-reveal data-reveal-delay="200">
+                <div class="why-us__credentials">
+                    <div class="why-us__cred-card">
+                        <div class="why-us__cred-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#C9A84C" stroke-width="0.8"/><path d="M16 6 L26 24 L6 24 Z" stroke="#C9A84C" stroke-width="0.6" fill="none" opacity="0.5"/><circle cx="16" cy="18" r="2" fill="#C9A84C" opacity="0.6"/></svg></div>
+                        <h4 data-en="INTERPOL Certified" data-ar="معتمد من الإنتربول">INTERPOL Certified</h4>
+                        <p data-en="Certified Expert in International Law Enforcement Cooperation" data-ar="خبير معتمد في التعاون الدولي لإنفاذ القانون">Certified Expert in International Law Enforcement Cooperation</p>
+                    </div>
+                    <div class="why-us__cred-card">
+                        <div class="why-us__cred-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#C9A84C" stroke-width="0.8"/><path d="M16 8 L20 18 L12 18 Z" stroke="#C9A84C" stroke-width="0.6" fill="none" opacity="0.5"/><line x1="16" y1="18" x2="16" y2="24" stroke="#C9A84C" stroke-width="0.6" opacity="0.5"/><line x1="10" y1="20" x2="22" y2="20" stroke="#C9A84C" stroke-width="0.5" opacity="0.35"/></svg></div>
+                        <h4 data-en="Arbitrator" data-ar="محكّم">Arbitrator</h4>
+                        <p data-en="Kuwait Commercial Arbitration Center — GCC Chamber" data-ar="مركز التحكيم التجاري الكويتي — غرفة مجلس التعاون الخليجي">Kuwait Commercial Arbitration Center — GCC Chamber</p>
+                    </div>
+                    <div class="why-us__cred-card">
+                        <div class="why-us__cred-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#C9A84C" stroke-width="0.8"/><rect x="8" y="10" width="16" height="10" rx="1" stroke="#C9A84C" stroke-width="0.6" fill="none" opacity="0.5"/><path d="M16 4v6" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/></svg></div>
+                        <h4 data-en="UN Lecturer" data-ar="محاضر أممي">UN Lecturer</h4>
+                        <p data-en="Training law enforcement agencies of UN member states" data-ar="تدريب وكالات إنفاذ القانون في الدول الأعضاء بالأمم المتحدة">Training law enforcement agencies of UN member states</p>
+                    </div>
+                    <div class="why-us__cred-card">
+                        <div class="why-us__cred-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#C9A84C" stroke-width="0.8"/><path d="M16 6l-8 5 8 5 8-5-8-5z" stroke="#C9A84C" stroke-width="0.6" fill="none" opacity="0.5"/><path d="M10 19v4l6 2 6-2v-4" stroke="#C9A84C" stroke-width="0.5" fill="none" opacity="0.4"/></svg></div>
+                        <h4 data-en="Master's Degree" data-ar="درجة الماجستير">Master's Degree</h4>
+                        <p data-en="Criminal Law · Law &amp; Police Sciences · IT Diploma" data-ar="القانون الجنائي · القانون والعلوم الشرطية · دبلوم تقنية المعلومات">Criminal Law · Law &amp; Police Sciences · IT Diploma</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ TEAM ============================================================ -->
+<section class="team" id="team">
+    <div class="team__container">
+        <div class="team__header">
+            <div class="section-label" data-reveal style="justify-content:center;"><span class="section-label-line"></span><span data-en="Our Team" data-ar="فريقنا">Our Team</span></div>
+            <h2 class="team__title" data-reveal data-reveal-delay="80"><span data-en="The Minds Behind" data-ar="العقول وراء">The Minds Behind</span> <span class="team__title-gold" data-en="Your Protection" data-ar="حمايتك">Your Protection</span></h2>
+        </div>
+        <div class="team__grid">
+            <div class="team__card team__card--featured" data-reveal>
+                <div class="team__card-visual">
+                    <div class="team__card-avatar">
+                        <svg viewBox="0 0 120 140" fill="none" width="100" height="116">
+                            <circle cx="60" cy="40" r="26" fill="#C9A84C" opacity="0.13" stroke="#C9A84C" stroke-width="0.4"/>
+                            <path d="M18 140 C18 92 38 72 60 72 C82 72 102 92 102 140" fill="#C9A84C" opacity="0.09"/>
+                            <path d="M55 70 L60 86 L65 70" fill="#C9A84C" opacity="0.18"/>
+                        </svg>
+                    </div>
+                    <div class="team__card-ribbon" data-en="Founder &amp; CEO" data-ar="المؤسس والرئيس">Founder &amp; CEO</div>
+                </div>
+                <div class="team__card-info">
+                    <h3 class="team__card-name">Mohammad ALJASEM</h3>
+                    <p class="team__card-role" data-en="Managing Partner — Criminal Law Specialist" data-ar="الشريك الإدারير — متخصص القانون الجنائي">Managing Partner — Criminal Law Specialist</p>
+                    <div class="team__card-tags">
+                        <span data-en="INTERPOL Expert" data-ar="خبير الإنتربول">INTERPOL Expert</span>
+                        <span data-en="UN Lecturer" data-ar="محاضر أممي">UN Lecturer</span>
+                        <span data-en="Arbitrator" data-ar="محكّم">Arbitrator</span>
+                    </div>
+                    <p class="team__card-bio" data-en="14+ years in investigation and case management. Former Regional Specialized Officer at INTERPOL HQ, Lyon, France. Master's in Criminal Law." data-ar="أكثر من 14 عامًا في التحقيق وإدارة القضايا. ضابط إقليمي متخصص سابق في مقر الإنتربول في ليون، فرنسا. ماجستير في القانون الجنائي.">14+ years in investigation and case management. Former Regional Specialized Officer at INTERPOL HQ, Lyon, France. Master's in Criminal Law.</p>
+                </div>
+            </div>
+            <div class="team__card" data-reveal data-reveal-delay="120">
+                <div class="team__card-visual">
+                    <div class="team__card-avatar">
+                        <svg viewBox="0 0 80 94" fill="none" width="70" height="82"><circle cx="40" cy="28" r="18" fill="#C9A84C" opacity="0.1" stroke="#C9A84C" stroke-width="0.3"/><path d="M12 94 C12 66 26 50 40 50 C54 50 68 66 68 94" fill="#C9A84C" opacity="0.07"/></svg>
+                    </div>
+                </div>
+                <div class="team__card-info">
+                    <h3 class="team__card-name" data-en="Senior Legal Counsel" data-ar="المستشار القانوني الأول">Senior Legal Counsel</h3>
+                    <p class="team__card-role" data-en="Corporate &amp; Commercial Law" data-ar="قانون الشركات والتجاري">Corporate &amp; Commercial Law</p>
+                    <p class="team__card-bio" data-en="Specializing in corporate structuring, M&amp;A transactions, and commercial dispute resolution across Kuwait and the GCC." data-ar="متخصص في هيكلة الشركات والاندماجات والاستحواذات وحل النزاعات التجارية في الكويت ومجلس التعاون الخليجي.">Specializing in corporate structuring, M&amp;A transactions, and commercial dispute resolution across Kuwait and the GCC.</p>
+                </div>
+            </div>
+            <div class="team__card" data-reveal data-reveal-delay="240">
+                <div class="team__card-visual">
+                    <div class="team__card-avatar">
+                        <svg viewBox="0 0 80 94" fill="none" width="70" height="82"><circle cx="40" cy="28" r="18" fill="#C9A84C" opacity="0.1" stroke="#C9A84C" stroke-width="0.3"/><path d="M12 94 C12 66 26 50 40 50 C54 50 68 66 68 94" fill="#C9A84C" opacity="0.07"/></svg>
+                    </div>
+                </div>
+                <div class="team__card-info">
+                    <h3 class="team__card-name" data-en="Legal Researcher" data-ar="الباحث القانوني">Legal Researcher</h3>
+                    <p class="team__card-role" data-en="Administrative &amp; Labor Law" data-ar="القانون الإداري والعمالي">Administrative &amp; Labor Law</p>
+                    <p class="team__card-bio" data-en="Expert in administrative case analysis, labor rights enforcement, and grievance procedures across government sectors." data-ar="خبير في تحليل القضايا الإدارية وإنفاذ حقوق العمل وإجراءات التظلم في القطاعات الحكومية.">Expert in administrative case analysis, labor rights enforcement, and grievance procedures across government sectors.</p>
+                </div>
+            </div>
+            <div class="team__card" data-reveal data-reveal-delay="360">
+                <div class="team__card-visual">
+                    <div class="team__card-avatar">
+                        <svg viewBox="0 0 80 94" fill="none" width="70" height="82"><circle cx="40" cy="28" r="18" fill="#C9A84C" opacity="0.1" stroke="#C9A84C" stroke-width="0.3"/><path d="M12 94 C12 66 26 50 40 50 C54 50 68 66 68 94" fill="#C9A84C" opacity="0.07"/></svg>
+                    </div>
+                </div>
+                <div class="team__card-info">
+                    <h3 class="team__card-name" data-en="Sports Legal Advisor" data-ar="مستشار قانوني رياضي">Sports Legal Advisor</h3>
+                    <p class="team__card-role" data-en="Sports &amp; General Authority Law" data-ar="قانون الرياضة والهيئة العامة">Sports &amp; General Authority Law</p>
+                    <p class="team__card-bio" data-en="Legal advisor at the General Authority for Sports, providing legal opinion on procedural and administrative matters." data-ar="مستشار قانوني في الهيئة العامة للرياضة، يقدم الرأي القانوني في المسائل الإجرائية والإدارية.">Legal advisor at the General Authority for Sports, providing legal opinion on procedural and administrative matters.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ CONTACT ============================================================ -->
+<section class="contact" id="contact">
+    <div class="contact__container">
+        <div class="contact__grid">
+            <div class="contact__info">
+                <div class="section-label" data-reveal><span class="section-label-line"></span><span data-en="Contact" data-ar="الاتصال">Contact</span></div>
+                <h2 class="contact__title" data-reveal data-reveal-delay="80"><span data-en="Let's Discuss" data-ar="دعنا نناقش">Let's Discuss</span><br><span class="contact__title-gold" data-en="Your Case" data-ar="قضيتك">Your Case</span></h2>
+                <p class="contact__intro" data-reveal data-reveal-delay="160" data-en="Our legal team is available around the clock to address your concerns." data-ar="فريقنا القانوني متاح على مدار الساعة للرد على استفساراتكم.">Our legal team is available around the clock to address your concerns.</p>
+                <div class="contact__details" data-reveal data-reveal-delay="240">
+                    <div class="contact__detail">
+                        <div class="contact__detail-icon"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 2C6.13 2 3 5.13 3 9c0 5.25 7 11 7 11s7-5.75 7-11c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" stroke="#C9A84C" stroke-width="1.2" fill="none"/></svg></div>
+                        <div><span class="contact__detail-label" data-en="Office Location" data-ar="موقع المكتب">Office Location</span><span class="contact__detail-value" data-en="Kuwait City, Al Asimah, Kuwait" data-ar="مدينة الكويت، العاصمة، الكويت">Kuwait City, Al Asimah, Kuwait</span></div>
+                    </div>
+                    <div class="contact__detail">
+                        <div class="contact__detail-icon"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M3 5h14v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" stroke="#C9A84C" stroke-width="1.2" fill="none"/><path d="M3 5l7 5 7-5" stroke="#C9A84C" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></div>
+                        <div><span class="contact__detail-label" data-en="Email" data-ar="البريد الإلكتروني">Email</span><span class="contact__detail-value">info@legaloffice.com</span></div>
+                    </div>
+                    <div class="contact__detail">
+                        <div class="contact__detail-icon"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M2 4a2 2 0 012-2h12a2 2 0 012 2v9a2 2 0 01-2 2H6l-4 3V4z" stroke="#C9A84C" stroke-width="1.2" fill="none"/></svg></div>
+                        <div><span class="contact__detail-label" data-en="24/7 Legal Call Center" data-ar="مركز الاتصال القانوني 24/7">24/7 Legal Call Center</span><span class="contact__detail-value" data-en="Available Round the Clock" data-ar="متاح على مدار الساعة">Available Round the Clock</span></div>
+                    </div>
+                </div>
+                <div class="contact__fee-note" data-reveal data-reveal-delay="340">
+                    <span class="contact__fee-icon">💡</span>
+                    <div><strong data-en="Consultation Fee:" data-ar="رسوم الاستشارة:">Consultation Fee:</strong> <span data-en="45 KD per 30 min · Document review: 10 KD/page · Power of attorney: 50 KD" data-ar="45 دينار كويتي لكل 30 دقيقة · مراجعة الوثائق: 10 دنانير/صفحة · وكالة قانونية: 50 دينار كويتي">45 KD per 30 min · Document review: 10 KD/page · Power of attorney: 50 KD</span></div>
+                </div>
+                <div class="contact__social" data-reveal data-reveal-delay="420">
+                    <a href="#" aria-label="LinkedIn" class="contact__social-link"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M2 7h3v9H2V7zm1.5-5A1.5 1.5 0 105 3.5 1.5 1.5 0 003.5 2zM8 7h2.5v1.2C11 7.5 12.5 7 14 7c3 0 4 1.5 4 4v5h-3v-4.5c0-1-.5-2-1.5-2S12 11 12 12v4.5H8V7z" stroke="#C9A84C" stroke-width="1" fill="none"/></svg></a>
+                    <a href="#" aria-label="Twitter" class="contact__social-link"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M2 3l6.5 8.5L2 18h1.5L9 12.5 13.5 18H17l-7-9L17 3h-1.5L8.5 7.5 4.5 3H2z" stroke="#C9A84C" stroke-width="1" fill="none"/></svg></a>
+                    <a href="#" aria-label="Facebook" class="contact__social-link"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M15 2h-3a5 5 0 00-5 5v3H5v4h2v7h4v-7h2l1-4h-3V7a1 1 0 011-1h2V2z" stroke="#C9A84C" stroke-width="1" fill="none"/></svg></a>
+                </div>
+            </div>
+            <!-- Contact Form -->
+            <div class="contact__form-wrap" data-reveal data-reveal-delay="200">
+                <form class="contact__form" id="contactForm" novalidate>
+                    <div class="contact__form-row">
+                        <div class="contact__form-group">
+                            <label for="firstName" class="contact__form-label" data-en="First Name" data-ar="الاسم الأول">First Name</label>
+                            <input type="text" id="firstName" name="firstName" class="contact__form-input" placeholder="John" required>
+                        </div>
+                        <div class="contact__form-group">
+                            <label for="lastName" class="contact__form-label" data-en="Last Name" data-ar="اسم العائلة">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" class="contact__form-input" placeholder="Doe" required>
+                        </div>
+                    </div>
+                    <div class="contact__form-group">
+                        <label for="email" class="contact__form-label" data-en="Email Address" data-ar="عنوان البريد الإلكتروني">Email Address</label>
+                        <input type="email" id="email" name="email" class="contact__form-input" placeholder="you@example.com" required>
+                    </div>
+                    <div class="contact__form-group">
+                        <label for="phone" class="contact__form-label" data-en="Phone Number" data-ar="رقم الهاتف">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="contact__form-input" placeholder="+965 XXXX XXXX">
+                    </div>
+                    <div class="contact__form-group">
+                        <label for="legalArea" class="contact__form-label" data-en="Area of Law" data-ar="مجال القانون">Area of Law</label>
+                        <select id="legalArea" name="legalArea" class="contact__form-input contact__form-select">
+                            <option value="" disabled selected data-en="Select area of law" data-ar="اختر مجال القانون">Select area of law</option>
+                            <option value="commercial" data-en="Commercial Law" data-ar="القانون التجاري">Commercial Law</option>
+                            <option value="corporate" data-en="Corporate Law" data-ar="قانون الشركات">Corporate Law</option>
+                            <option value="civil" data-en="Civil Law" data-ar="القانون المدني">Civil Law</option>
+                            <option value="criminal" data-en="Criminal Defense" data-ar="الدفاع الجنائي">Criminal Defense</option>
+                            <option value="administrative" data-en="Administrative Law" data-ar="القانون الإداري">Administrative Law</option>
+                            <option value="labor" data-en="Labor &amp; Employment" data-ar="العمالة والتوظيف">Labor &amp; Employment</option>
+                            <option value="insurance" data-en="Insurance Law" data-ar="قانون التأمين">Insurance Law</option>
+                            <option value="arbitration" data-en="Arbitration" data-ar="التحكيم">Arbitration</option>
+                            <option value="ip" data-en="Intellectual Property" data-ar="الملكية الفكرية">Intellectual Property</option>
+                            <option value="tax" data-en="Tax Law" data-ar="قانون الضرائب">Tax Law</option>
+                            <option value="personal-status" data-en="Personal Status &amp; Inheritance" data-ar="الأحوال الشخصية والميراث">Personal Status &amp; Inheritance</option>
+                            <option value="other" data-en="Other" data-ar="أخرى">Other</option>
+                        </select>
+                    </div>
+                    <div class="contact__form-group">
+                        <label for="message" class="contact__form-label" data-en="Case Details" data-ar="تفاصيل القضية">Case Details</label>
+                        <textarea id="message" name="message" class="contact__form-input contact__form-textarea" placeholder="Briefly describe your legal matter..." rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="contact__form-btn">
+                        <span data-en="Send via WhatsApp" data-ar="إرسال عبر واتساب">Send via WhatsApp</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20.01 15.38c-1.23-1.07-2.83-1.66-4.63-1.66c-.73 0-1.45.11-2.13.33c-.07-1.37-.67-2.69-1.75-3.81c-1.02-1.02-2.3-1.59-3.69-1.6c-.04 0-.07 0-.11 0c-.3 0-.58.02-.85.06C6.41 8.27 6 8 5.5 8H4C2.9 8 2 8.9 2 10v8c0 1.1.9 2 2 2h1.5c.28 0 .53-.12.71-.3c.1.01.21.03.29.03h11.5c1.1 0 2-.9 2-2v-.5c0-.28-.12-.53-.3-.71zM5.5 17H4v-6h1.5c.28 0 .5.22.5.5v5c0 .28-.22.5-.5.5zm14.5-3c0 .55-.45 1-1 1H8V11c0-.55.45-1 1-1h10c.55 0 1 .45 1 1v3z" fill="#C9A84C"/></svg>
+                    </button>
+                    <p class="contact__form-note" data-en="Your message will open WhatsApp with pre-filled details." data-ar="سيفتح رسالتك WhatsApp مع التفاصيل المملوأة مسبقًا.">Your message will open WhatsApp with pre-filled details.</p>
+                    <div class="contact__form-success" id="formSuccess" role="alert">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#C9A84C" stroke-width="1.5"/><path d="M14 24l6 6 14-14" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <h4 data-en="Opening WhatsApp..." data-ar="فتح واتساب...">Opening WhatsApp...</h4>
+                        <p data-en="Your message has been prepared. If WhatsApp didn't open, please contact us directly." data-ar="تم إعداد رسالتك. إذا لم يفتح واتساب، تواصل معنا مباشرة.">Your message has been prepared. If WhatsApp didn't open, please contact us directly.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ FOOTER ============================================================ -->
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__brand">
+                <div class="footer__brand-logo">
+                    <svg viewBox="0 0 48 48" fill="none" width="34" height="34"><path d="M24 4 L44 40 L4 40 Z" stroke="#C9A84C" stroke-width="1" fill="none"/><path d="M24 14 L36 36 L12 36 Z" stroke="#C9A84C" stroke-width="0.5" fill="none" opacity="0.3"/><circle cx="24" cy="28" r="2" fill="#C9A84C"/></svg>
+                    <span data-en="Legal Office" data-ar="مكتب قانوني">Legal Office</span>
+                </div>
+                <p class="footer__brand-desc" data-en="Kuwait's trusted legal partner. Delivering comprehensive legal protection through expertise, technology, and unwavering dedication." data-ar="شريككم القانوني الموثوق في الكويت. تقديم حماية قانونية شاملة من خلال الخبرة والتكنولوجيا والالتزام الراسخ.">Kuwait's trusted legal partner. Delivering comprehensive legal protection through expertise, technology, and unwavering dedication.</p>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__col-title" data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h4>
+                <ul class="footer__col-list">
+                    <li><a href="#about" data-en="About Us" data-ar="عن المكتب">About Us</a></li>
+                    <li><a href="#services" data-en="Our Services" data-ar="خدماتنا">Our Services</a></li>
+                    <li><a href="#why-us" data-en="Why Choose Us" data-ar="لماذا تختارنا">Why Choose Us</a></li>
+                    <li><a href="#team" data-en="Our Team" data-ar="فريقنا">Our Team</a></li>
+                    <li><a href="#contact" data-en="Contact" data-ar="الاتصال">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__col-title" data-en="Practice Areas" data-ar="مجالات الممارسة">Practice Areas</h4>
+                <ul class="footer__col-list">
+                    <li><a href="#services" data-en="Commercial Law" data-ar="القانون التجاري">Commercial Law</a></li>
+                    <li><a href="#services" data-en="Corporate Law" data-ar="قانون الشركات">Corporate Law</a></li>
+                    <li><a href="#services" data-en="Criminal Defense" data-ar="الدفاع الجنائي">Criminal Defense</a></li>
+                    <li><a href="#services" data-en="Administrative Law" data-ar="القانون الإداري">Administrative Law</a></li>
+                    <li><a href="#services" data-en="Labor &amp; Employment" data-ar="العمالة والتوظيف">Labor &amp; Employment</a></li>
+                    <li><a href="#services" data-en="Intellectual Property" data-ar="الملكية الفكرية">Intellectual Property</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__col-title" data-en="Get In Touch" data-ar="تواصل معنا">Get In Touch</h4>
+                <ul class="footer__col-list">
+                    <li><span data-en="Kuwait City, Al Asimah, Kuwait" data-ar="مدينة الكويت، العاصمة، الكويت">Kuwait City, Al Asimah, Kuwait</span></li>
+                    <li><span>info@legaloffice.com</span></li>
+                    <li><span data-en="24/7 Legal Call Center" data-ar="مركز الاتصال القانوني 24/7">24/7 Legal Call Center</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; <span id="footerYear">2025</span> <span data-en="Legal Office Consulting Group. All rights reserved." data-ar="مجموعة مكتب قانوني للاستشارات. جميع الحقوق محفوظة.">Legal Office Consulting Group. All rights reserved.</span></p>
+            <div class="footer__bottom-links">
+                <a href="#" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>
+                <a href="#" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a>
+                <a href="#" data-en="Disclaimer" data-ar="إخلاء المسؤولية">Disclaimer</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 15V5M5 10l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<!-- Floating Buttons -->
+<button class="floating-btn floating-btn__theme" id="themeToggle" aria-label="Toggle theme">
+    <span class="floating-btn__icon" id="themeIcon">🌙</span>
+    <span class="floating-btn__label" id="themeLabel">Light Mode</span>
+</button>
+<button class="floating-btn floating-btn__lang" id="langToggle" aria-label="Toggle language">
+    <span class="floating-btn__icon" id="langIcon">ع</span>
+    <span class="floating-btn__label" id="langLabel">العربية</span>
+</button>
+
+<!-- ============================================================ SCRIPTS ============================================================ -->
+<script>
+(function() {
+    'use strict';
+
+    // ============================================================
+    // PARTICLES SYSTEM
+    // ============================================================
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animFrame;
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    class Particle {
+        constructor() { this.reset(); }
+        reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 1.5 + 0.3;
+            this.speedX = (Math.random() - 0.5) * 0.4;
+            this.speedY = (Math.random() - 0.5) * 0.4;
+            this.opacity = Math.random() * 0.4 + 0.1;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(201,168,76,${this.opacity})`;
+            ctx.fill();
+        }
+    }
+
+    function initParticles() {
+        particles = [];
+        const count = Math.floor((canvas.width * canvas.height) / 18000);
+        for (let i = 0; i < count; i++) particles.push(new Particle());
+    }
+    initParticles();
+    window.addEventListener('resize', initParticles);
+
+    function drawConnections() {
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 140) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(201,168,76,${0.06 * (1 - dist / 140)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        drawConnections();
+        animFrame = requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // ============================================================
+    // PRELOADER
+    // ============================================================
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            document.getElementById('preloader').classList.add('done');
+        }, 800);
+    });
+
+    // ============================================================
+    // HEADER SCROLL
+    // ============================================================
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', function() {
+        header.classList.toggle('scrolled', window.pageYOffset > 60);
+    }, { passive: true });
+
+    // ============================================================
+    // MOBILE MENU
+    // ============================================================
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuClose = document.getElementById('menuClose');
+
+    function openMenu() { mobileMenu.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow = 'hidden'; }
+    function closeMenu() { mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow = ''; }
+
+    hamburger.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+    document.querySelectorAll('.mobile-menu__link, .mobile-menu__cta').forEach(function(l) { l.addEventListener('click', closeMenu); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu(); });
+
+    // ============================================================
+    // SMOOTH SCROLL
+    // ============================================================
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            const target = document.querySelector(link.getAttribute('href'));
+            if (!target) return;
+            e.preventDefault();
+            const top = target.getBoundingClientRect().top + window.pageYOffset - header.offsetHeight - 16;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+        });
+    });
+
+    // ============================================================
+    // INTERSECTION OBSERVER — Reveal
+    // ============================================================
+    const revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) entry.target.classList.add('revealed');
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('[data-reveal]').forEach(function(el) { revealObserver.observe(el); });
+
+    // ============================================================
+    // COUNTER ANIMATION
+    // ============================================================
+    function animateCounter(el) {
+        const target = parseInt(el.getAttribute('data-count'), 10);
+        if (isNaN(target)) return;
+        const duration = 1400, start = performance.now();
+        function update(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(eased * target);
+            if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+    }
+
+    const counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.querySelectorAll('[data-count]').forEach(animateCounter);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    const heroStats = document.querySelector('.hero__stats');
+    if (heroStats) counterObserver.observe(heroStats);
+
+    // ============================================================
+    // BACK TO TOP
+    // ============================================================
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() { backToTop.classList.toggle('visible', window.pageYOffset > 600); }, { passive: true });
+    backToTop.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    // ============================================================
+    // ACTIVE NAV LINK
+    // ============================================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.header__nav-link');
+    window.addEventListener('scroll', function() {
+        let current = '';
+        sections.forEach(function(section) {
+            if (window.pageYOffset >= section.offsetTop - header.offsetHeight - 80) current = section.getAttribute('id');
+        });
+        navLinks.forEach(function(link) {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+        });
+    }, { passive: true });
+
+    // ============================================================
+    // FOOTER YEAR
+    // ============================================================
+    document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+    // ============================================================
+    // THEME TOGGLE (Dark / Light) — localStorage
+    // ============================================================
+    const themeIcon = document.getElementById('themeIcon');
+    const themeLabel = document.getElementById('themeLabel');
+    const root = document.getElementById('root');
+    let currentTheme = localStorage.getItem('legalOffice_theme') || 'dark';
+
+    function applyTheme(theme) {
+        currentTheme = theme;
+        if (theme === 'light') {
+            root.setAttribute('data-theme', 'light');
+            themeIcon.textContent = '🌙';
+            themeLabel.textContent = currentLang === 'en' ? 'Dark Mode' : 'وضع داكن';
+        } else {
+            root.removeAttribute('data-theme');
+            themeIcon.textContent = '🌞';
+            themeLabel.textContent = currentLang === 'en' ? 'Light Mode' : 'وضع فاتح';
+        }
+        localStorage.setItem('legalOffice_theme', theme);
+    }
+    applyTheme(currentTheme);
+
+    document.getElementById('themeToggle').addEventListener('click', function() {
+        applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    // ============================================================
+    // LANGUAGE TOGGLE (EN / AR) — localStorage + RTL
+    // ============================================================
+    let currentLang = localStorage.getItem('legalOffice_lang') || 'en';
+    const langIcon = document.getElementById('langIcon');
+    const langLabel = document.getElementById('langLabel');
+
+    function applyLanguage(lang) {
+        currentLang = lang;
+        root.setAttribute('lang', lang);
+        root.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        langIcon.textContent = lang === 'en' ? 'ع' : 'EN';
+        langLabel.textContent = lang === 'en' ? 'العربية' : 'English';
+        // Update theme label too
+        if (currentTheme === 'light') {
+            themeLabel.textContent = lang === 'en' ? 'Dark Mode' : 'وضع داكن';
+        } else {
+            themeLabel.textContent = lang === 'en' ? 'Light Mode' : 'وضع فاتح';
+        }
+        // Translate all elements with data-en / data-ar
+        document.querySelectorAll('[data-en]').forEach(function(el) {
+            const val = el.getAttribute('data-' + lang);
+            if (val !== null) {
+                // For inputs/textareas, update placeholder
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = val;
+                } else if (el.tagName === 'OPTION') {
+                    el.textContent = val;
+                } else {
+                    el.textContent = val;
+                }
+            }
+        });
+        // Update placeholders explicitly
+        const placeholders = {
+            firstName: { en: 'John', ar: 'محمد' },
+            lastName: { en: 'Doe', ar: 'العلي' },
+            email: { en: 'you@example.com', ar: 'you@example.com' },
+            phone: { en: '+965 XXXX XXXX', ar: '+965 XXXX XXXX' },
+            message: { en: 'Briefly describe your legal matter...', ar: 'صف باختصار مسألتك القانونية...' }
+        };
+        Object.keys(placeholders).forEach(function(id) {
+            const el = document.getElementById(id);
+            if (el) el.placeholder = placeholders[id][lang];
+        });
+        localStorage.setItem('legalOffice_lang', lang);
+    }
+    applyLanguage(currentLang);
+
+    document.getElementById('langToggle').addEventListener('click', function() {
+        applyLanguage(currentLang === 'en' ? 'ar' : 'en');
+    });
+
+    // ============================================================
+    // CONTACT FORM — WhatsApp Integration
+    // ============================================================
+    const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+    const WHATSAPP_NUMBER = '201113903070';
+
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Validation
+        let isValid = true;
+        contactForm.querySelectorAll('[required]').forEach(function(input) {
+            input.classList.remove('error');
+            if (!input.value.trim()) { input.classList.add('error'); isValid = false; }
+        });
+        const emailInput = document.getElementById('email');
+        if (emailInput.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+            emailInput.classList.add('error'); isValid = false;
+        }
+        if (!isValid) return;
+
+        // Gather data
+        const firstName = document.getElementById('firstName').value.trim();
+        const lastName = document.getElementById('lastName').value.trim();
+        const email = emailInput.value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const legalArea = document.getElementById('legalArea').value;
+        const message = document.getElementById('message').value.trim();
+
+        // Map area values to labels
+        const areaLabels = {
+            commercial: { en: 'Commercial Law', ar: 'القانون التجاري' },
+            corporate: { en: 'Corporate Law', ar: 'قانون الشركات' },
+            civil: { en: 'Civil Law', ar: 'القانون المدني' },
+            criminal: { en: 'Criminal Defense', ar: 'الدفاع الجنائي' },
+            administrative: { en: 'Administrative Law', ar: 'القانون الإداري' },
+            labor: { en: 'Labor & Employment', ar: 'العمالة والتوظيف' },
+            insurance: { en: 'Insurance Law', ar: 'قانون التأمين' },
+            arbitration: { en: 'Arbitration', ar: 'التحكيم' },
+            ip: { en: 'Intellectual Property', ar: 'الملكية الفكرية' },
+            tax: { en: 'Tax Law', ar: 'قانون الضرائب' },
+            'personal-status': { en: 'Personal Status & Inheritance', ar: 'الأحوال الشخصية والميراث' },
+            other: { en: 'Other', ar: 'أخرى' }
+        };
+
+        const areaLabel = legalArea && areaLabels[legalArea] ? areaLabels[legalArea][currentLang] : (currentLang === 'en' ? 'Not specified' : 'غير محدد');
+
+        // Build WhatsApp message
+        let wpMsg;
+        if (currentLang === 'en') {
+            wpMsg = '🏛️ *Legal Office — New Consultation Request*\n\n';
+            wpMsg += '👤 *Name:* ' + firstName + ' ' + lastName + '\n';
+            wpMsg += '📧 *Email:* ' + email + '\n';
+            if (phone) wpMsg += '📞 *Phone:* ' + phone + '\n';
+            wpMsg += '⚖️ *Area of Law:* ' + areaLabel + '\n\n';
+            wpMsg += '📝 *Case Details:*\n' + message + '\n\n';
+            wpMsg += '— Sent via Legal Office Website';
+        } else {
+            wpMsg = '🏛️ *مكتب قانوني — طلب استشارة جديدة*\n\n';
+            wpMsg += '👤 *الاسم:* ' + firstName + ' ' + lastName + '\n';
+            wpMsg += '📧 *البريد الإلكتروني:* ' + email + '\n';
+            if (phone) wpMsg += '📞 *الهاتف:* ' + phone + '\n';
+            wpMsg += '⚖️ *مجال القانون:* ' + areaLabel + '\n\n';
+            wpMsg += '📝 *تفاصيل القضية:*\n' + message + '\n\n';
+            wpMsg += '— أرسل عبر موقع مكتب قانوني';
+        }
+
+        // Disable button
+        const btn = contactForm.querySelector('.contact__form-btn');
+        btn.style.opacity = '0.6';
+        btn.style.pointerEvents = 'none';
+
+        setTimeout(function() {
+            // Hide form, show success
+            contactForm.querySelectorAll('.contact__form-group, .contact__form-row, .contact__form-btn, .contact__form-note').forEach(function(el) { el.style.display = 'none'; });
+            formSuccess.classList.add('show');
+
+            // Open WhatsApp
+            const encoded = encodeURIComponent(wpMsg);
+            window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encoded, '_blank');
+
+            // Reset after 5s
+            setTimeout(function() {
+                contactForm.reset();
+                contactForm.querySelectorAll('.contact__form-group, .contact__form-row, .contact__form-btn, .contact__form-note').forEach(function(el) { el.style.display = ''; });
+                formSuccess.classList.remove('show');
+                btn.style.opacity = '';
+                btn.style.pointerEvents = '';
+            }, 5000);
+        }, 900);
+    });
+
+    // Remove error on input
+    contactForm.querySelectorAll('.contact__form-input').forEach(function(input) {
+        input.addEventListener('input', function() { this.classList.remove('error'); });
+    });
+
+})();
+</script>
+</body>
+</html>
