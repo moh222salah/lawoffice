@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mohammad ALJASEM Law Firm & Legal Consulting Group — Kuwait's trusted legal partner. Comprehensive legal services across commercial, corporate, civil, criminal, and international law.">
+    <meta property="og:title" content="Mohammad ALJASEM Law Firm & Legal Consulting Group">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://maljasem.com/">
+    <meta name="twitter:card" content="summary_large_image">
+    <title> Legal Office </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+<style> 
+
+/* ============================================================
+   RESET & ROOT
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --gold: #C9A84C;
+    --gold-light: #dcc078;
+    --gold-dim: rgba(201,168,76,0.15);
+    --bg-primary: #0a0c0f;
+    --bg-secondary: #0f1117;
+    --bg-card: #131620;
+    --bg-card-hover: #1a1f2e;
+    --text-primary: #e8e4dc;
+    --text-secondary: #8a8a92;
+    --text-muted: #5a5a62;
+    --border: rgba(201,168,76,0.12);
+    --border-subtle: rgba(255,255,255,0.05);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --shadow-card: 0 4px 24px rgba(0,0,0,0.3);
+    --shadow-card-hover: 0 8px 40px rgba(0,0,0,0.4), 0 0 1px rgba(201,168,76,0.2);
+    --radius: 8px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, select, textarea { font-family: inherit; }
+
+/* ============================================================
+   PRELOADER
+============================================================ */
+.preloader {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--bg-primary);
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+.preloader__inner { position: relative; display: flex; align-items: center; justify-content: center; }
+.preloader__triangle { stroke-dasharray: 150; stroke-dashoffset: 150; animation: drawTriangle 1s ease forwards; }
+@keyframes drawTriangle { to { stroke-dashoffset: 0; } }
+.preloader__text {
+    position: absolute; font-family: var(--font-display); font-size: 1.4rem;
+    color: var(--gold); font-weight: 300; opacity: 0;
+    animation: fadeText 0.4s 0.6s ease forwards;
+}
+@keyframes fadeText { to { opacity: 1; } }
+
+/* ============================================================
+   HEADER
+============================================================ */
+.header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    padding: 1.25rem 0;
+}
+.header.scrolled {
+    background: rgba(10,12,15,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--border);
+    padding: 0.75rem 0;
+}
+.header__container {
+    max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+}
+.header__logo { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+.header__logo-text { display: flex; flex-direction: column; }
+.header__logo-name { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; letter-spacing: 0.18em; color: var(--text-primary); line-height: 1.1; }
+.header__logo-sub { font-size: 0.48rem; letter-spacing: 0.22em; color: var(--text-muted); text-transform: uppercase; line-height: 1.4; }
+.header__nav { flex: 1; display: flex; justify-content: center; }
+.header__nav-list { display: flex; gap: 2rem; list-style: none; }
+.header__nav-link {
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-secondary); transition: color var(--transition);
+    position: relative; padding: 0.25rem 0;
+}
+.header__nav-link::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px;
+    background: var(--gold); transition: width var(--transition);
+}
+.header__nav-link:hover { color: var(--gold); }
+.header__nav-link:hover::after { width: 100%; }
+.header__actions { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
+.header__lang-btn {
+    font-size: 0.72rem; letter-spacing: 0.08em; color: var(--text-muted);
+    transition: color var(--transition); display: flex; align-items: center; gap: 0.25rem;
+}
+.header__lang-btn:hover { color: var(--gold); }
+.header__lang-divider { color: var(--text-muted); opacity: 0.4; }
+.header__cta {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid var(--border);
+    padding: 0.55rem 1rem; border-radius: 2px;
+    transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+.header__cta:hover { background: var(--gold-dim); border-color: var(--gold); box-shadow: 0 0 16px var(--gold-dim); }
+.header__hamburger { display: none; flex-direction: column; gap: 5px; width: 24px; padding: 4px 0; }
+.header__hamburger span {
+    display: block; height: 1.5px; background: var(--text-primary);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Mobile Menu */
+.mobile-menu { position: fixed; inset: 0; z-index: 200; pointer-events: none; }
+.mobile-menu.open { pointer-events: auto; }
+.mobile-menu__overlay {
+    position: absolute; inset: 0; background: rgba(0,0,0,0.6);
+    opacity: 0; transition: opacity 0.35s ease;
+}
+.mobile-menu.open .mobile-menu__overlay { opacity: 1; }
+.mobile-menu__panel {
+    position: absolute; top: 0; right: -100%; width: min(320px, 85vw); height: 100%;
+    background: var(--bg-secondary); padding: 2rem 1.5rem;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; flex-direction: column;
+    box-shadow: -8px 0 40px rgba(0,0,0,0.4);
+}
+.mobile-menu.open .mobile-menu__panel { right: 0; }
+.mobile-menu__close { align-self: flex-end; color: var(--text-secondary); transition: color var(--transition); }
+.mobile-menu__close:hover { color: var(--gold); }
+.mobile-menu__logo {
+    font-family: var(--font-display); font-size: 1.6rem; font-weight: 600;
+    letter-spacing: 0.15em; color: var(--gold); margin: 1.5rem 0;
+}
+.mobile-menu__list { list-style: none; flex: 1; }
+.mobile-menu__list li { border-bottom: 1px solid var(--border-subtle); }
+.mobile-menu__link {
+    display: block; padding: 1rem 0; font-size: 0.95rem;
+    color: var(--text-secondary); transition: color var(--transition), padding-left var(--transition);
+}
+.mobile-menu__link:hover { color: var(--gold); padding-left: 0.5rem; }
+.mobile-menu__cta {
+    display: block; text-align: center; margin-top: 2rem;
+    padding: 0.8rem; border: 1px solid var(--gold);
+    color: var(--gold); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    border-radius: 2px; transition: background var(--transition);
+}
+.mobile-menu__cta:hover { background: var(--gold-dim); }
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero {
+    position: relative; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 7rem 1.5rem 4rem; overflow: hidden;
+    background: linear-gradient(170deg, #0f1117 0%, #0a0c0f 60%, #080a0d 100%);
+}
+.hero__bg-lines { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.hero__bg-line {
+    position: absolute; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.06;
+}
+.hero__bg-line--1 { top: 25%; left: -10%; width: 120%; transform: rotate(-2deg); }
+.hero__bg-line--2 { top: 50%; left: -5%; width: 110%; transform: rotate(1deg); opacity: 0.04; }
+.hero__bg-line--3 { top: 75%; left: -15%; width: 130%; transform: rotate(-0.5deg); opacity: 0.03; }
+.hero__glyph {
+    position: absolute; right: -5%; top: 50%; transform: translateY(-50%);
+    width: 520px; height: 520px; opacity: 0.7; pointer-events: none;
+}
+.hero__container { position: relative; z-index: 1; max-width: 900px; width: 100%; text-align: center; }
+.hero__badge {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.8rem;
+}
+.hero__badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 8px var(--gold-dim); }
+.hero__title {
+    font-family: var(--font-display); font-weight: 300; line-height: 1.1;
+    margin-bottom: 1.8rem; display: flex; flex-direction: column; align-items: center; gap: 0.05em;
+}
+.hero__title-line { display: block; font-size: clamp(2.8rem, 7vw, 5rem); color: var(--text-primary); }
+.hero__title-line--gold { color: var(--gold); font-weight: 600; }
+.hero__title-line--thin { font-size: clamp(2rem, 4.5vw, 3.4rem); color: var(--text-secondary); font-style: italic; }
+.hero__description {
+    font-size: clamp(0.92rem, 1.5vw, 1.05rem); color: var(--text-secondary);
+    max-width: 680px; margin: 0 auto 2.5rem; line-height: 1.8;
+}
+.hero__actions { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+.hero__btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.85rem 1.8rem; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    border-radius: 2px; transition: all var(--transition);
+}
+.hero__btn--primary { background: var(--gold); color: #0a0c0f; font-weight: 600; }
+.hero__btn--primary:hover { background: var(--gold-light); box-shadow: 0 4px 24px rgba(201,168,76,0.3); transform: translateY(-1px); }
+.hero__btn--secondary { border: 1px solid var(--border); color: var(--text-secondary); }
+.hero__btn--secondary:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+.hero__stats { display: flex; align-items: center; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+.hero__stat { text-align: center; }
+.hero__stat-number { display: block; font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; color: var(--gold); line-height: 1; }
+.hero__stat-label { display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.4rem; }
+.hero__stat-divider { width: 1px; height: 32px; background: var(--border); }
+.hero__scroll {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+}
+.hero__scroll-line { width: 1px; height: 32px; background: linear-gradient(180deg, var(--gold), transparent); animation: scrollPulse 2s ease infinite; }
+@keyframes scrollPulse { 0%,100% { opacity: 1; transform: scaleY(1); } 50% { opacity: 0.3; transform: scaleY(0.6); } }
+.hero__scroll-text { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+
+/* ============================================================
+   SHARED SECTION STYLES
+============================================================ */
+.about, .services, .why-us, .team, .contact {
+    padding: 7rem 1.5rem; position: relative;
+}
+.about, .why-us { background: var(--bg-secondary); }
+.services, .team { background: var(--bg-primary); }
+.contact { background: var(--bg-secondary); }
+
+/* Section labels */
+.about__label, .services__label, .why-us__label, .team__label, .contact__label {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1rem;
+}
+.about__label-line, .services__label-line, .why-us__label-line, .team__label-line, .contact__label-line {
+    width: 28px; height: 1px; background: var(--gold);
+}
+
+/* ============================================================
+   ABOUT
+============================================================ */
+.about__container { max-width: 1200px; margin: 0 auto; }
+.about__grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: center; }
+.about__visual { position: relative; }
+.about__visual-frame {
+    background: var(--bg-primary); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden; padding: 2rem;
+    aspect-ratio: 4/5; display: flex; align-items: center; justify-content: center;
+}
+.about__visual-svg { width: 100%; height: auto; max-width: 260px; }
+.about__visual-accent {
+    position: absolute; bottom: -12px; right: -12px;
+    width: 80px; height: 80px; border: 1px solid var(--gold);
+    border-radius: var(--radius); opacity: 0.25; z-index: -1;
+}
+.about__visual-tag {
+    position: absolute; top: -16px; right: -8px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    padding: 0.55rem 0.9rem; border-radius: 20px;
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.7rem; color: var(--text-secondary);
+    box-shadow: var(--shadow-card);
+}
+.about__visual-tag-icon { color: var(--gold); font-size: 0.85rem; }
+.about__title {
+    font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; color: var(--text-primary);
+}
+.about__title-gold { color: var(--gold); font-weight: 600; }
+.about__text { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; }
+.about__mission {
+    display: flex; gap: 1rem; padding: 1.5rem; margin-bottom: 2rem;
+    background: var(--bg-primary); border-radius: var(--radius);
+    border: 1px solid var(--border-subtle);
+}
+.about__mission-bar { width: 3px; flex-shrink: 0; background: var(--gold); border-radius: 2px; }
+.about__mission-title { font-family: var(--font-display); font-size: 1.15rem; color: var(--gold); margin-bottom: 0.4rem; font-weight: 600; }
+.about__mission-text { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; }
+.about__pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.about__pillar {
+    display: flex; align-items: center; gap: 0.7rem;
+    padding: 0.75rem; border-radius: 6px;
+    transition: background var(--transition);
+}
+.about__pillar:hover { background: var(--gold-dim); }
+.about__pillar span { font-size: 0.78rem; color: var(--text-secondary); }
+
+/* ============================================================
+   SERVICES
+============================================================ */
+.services__container { max-width: 1200px; margin: 0 auto; }
+.services__header { text-align: center; max-width: 600px; margin: 0 auto 3.5rem; }
+.services__title {
+    font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 300; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.2;
+}
+.services__title-gold { color: var(--gold); font-weight: 600; }
+.services__subtitle { font-size: 0.9rem; color: var(--text-secondary); }
+.services__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-bottom: 3rem; }
+.services__card {
+    background: var(--bg-card); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius); padding: 2rem 1.6rem;
+    position: relative; overflow: hidden;
+    transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+.services__card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left;
+    transition: transform var(--transition);
+}
+.services__card:hover { border-color: var(--border); box-shadow: var(--shadow-card-hover); transform: translateY(-3px); }
+.services__card:hover::before { transform: scaleX(1); }
+.services__card-number { font-family: var(--font-display); font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.05em; margin-bottom: 1rem; }
+.services__card-icon { margin-bottom: 1rem; }
+.services__card-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.6rem; }
+.services__card-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.7; }
+
+/* Services CTA Bar */
+.services__cta-bar {
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2.5rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+}
+.services__cta-content h3 { font-family: var(--font-display); font-size: 1.5rem; color: var(--text-primary); margin-bottom: 0.4rem; font-weight: 500; }
+.services__cta-content p { font-size: 0.85rem; color: var(--text-secondary); }
+.services__cta-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem; flex-shrink: 0;
+    padding: 0.75rem 1.6rem; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    border: 1px solid var(--gold); color: var(--gold); border-radius: 2px;
+    transition: all var(--transition);
+}
+.services__cta-btn:hover { background: var(--gold); color: #0a0c0f; box-shadow: 0 4px 20px rgba(201,168,76,0.25); }
+
+/* ============================================================
+   WHY US
+============================================================ */
+.why-us__container { max-width: 1200px; margin: 0 auto; }
+.why-us__grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: start; }
+.why-us__title {
+    font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 300; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.2;
+}
+.why-us__title-gold { color: var(--gold); font-weight: 600; }
+.why-us__intro { font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.8; }
+.why-us__features { display: flex; flex-direction: column; gap: 0; }
+.why-us__feature {
+    display: flex; gap: 1.2rem; padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+}
+.why-us__feature:first-child { padding-top: 0; }
+.why-us__feature-num {
+    font-family: var(--font-display); font-size: 1.2rem; color: var(--gold);
+    font-weight: 600; flex-shrink: 0; line-height: 1.4;
+}
+.why-us__feature-title { font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.35rem; font-weight: 600; }
+.why-us__feature-text { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7; }
+
+/* Credentials Grid */
+.why-us__credentials { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.why-us__cred-card {
+    background: var(--bg-primary); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius); padding: 1.5rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+.why-us__cred-card:hover { border-color: var(--border); box-shadow: var(--shadow-card); }
+.why-us__cred-icon { margin-bottom: 0.8rem; }
+.why-us__cred-card h4 { font-family: var(--font-display); font-size: 1rem; color: var(--gold); margin-bottom: 0.35rem; font-weight: 600; }
+.why-us__cred-card p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.6; }
+
+/* ============================================================
+   TEAM
+============================================================ */
+.team__container { max-width: 1200px; margin: 0 auto; }
+.team__header { text-align: center; margin-bottom: 3.5rem; }
+.team__title {
+    font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 300; color: var(--text-primary); line-height: 1.2;
+}
+.team__title-gold { color: var(--gold); font-weight: 600; }
+.team__grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 1.2rem; align-items: start; }
+.team__card {
+    background: var(--bg-card); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius); overflow: hidden;
+    transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+.team__card:hover { border-color: var(--border); box-shadow: var(--shadow-card-hover); transform: translateY(-3px); }
+.team__card--featured { background: linear-gradient(180deg, var(--bg-card) 0%, #161c2a 100%); border-color: var(--border); }
+.team__card-visual { position: relative; background: var(--bg-primary); padding: 1.5rem; display: flex; flex-direction: column; align-items: center; }
+.team__card-avatar { display: flex; align-items: center; justify-content: center; }
+.team__card-avatar--sm { opacity: 0.85; }
+.team__card-ribbon {
+    position: absolute; top: 1rem; right: -2rem;
+    background: var(--gold); color: #0a0c0f;
+    font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.3rem 2.5rem; transform: rotate(35deg);
+    font-weight: 600;
+}
+.team__card-info { padding: 1.2rem; }
+.team__card--featured .team__card-info { padding: 1.5rem; }
+.team__card-name { font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.2rem; font-weight: 600; }
+.team__card--featured .team__card-name { font-size: 1.35rem; }
+.team__card-role { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.04em; margin-bottom: 0.5rem; }
+.team__card-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.75rem; }
+.team__card-tags span {
+    font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid var(--border); padding: 0.2rem 0.5rem; border-radius: 10px;
+}
+.team__card-bio { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.7; }
+
+/* ============================================================
+   CONTACT
+============================================================ */
+.contact__container { max-width: 1200px; margin: 0 auto; }
+.contact__grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 5rem; }
+.contact__title {
+    font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 300; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.2;
+}
+.contact__title-gold { color: var(--gold); font-weight: 600; }
+.contact__intro { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8; }
+.contact__details { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem; }
+.contact__detail { display: flex; gap: 0.9rem; align-items: flex-start; }
+.contact__detail-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    background: var(--bg-primary); border: 1px solid var(--border-subtle);
+    border-radius: 6px; display: flex; align-items: center; justify-content: center;
+}
+.contact__detail-label { display: block; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.15rem; }
+.contact__detail-value { display: block; font-size: 0.85rem; color: var(--text-secondary); }
+.contact__fee-note {
+    display: flex; gap: 0.8rem; align-items: flex-start;
+    background: var(--bg-primary); border: 1px solid var(--border-subtle);
+    border-radius: 6px; padding: 1rem; margin-bottom: 1.5rem;
+    font-size: 0.78rem; color: var(--text-secondary); line-height: 1.6;
+}
+.contact__fee-icon { flex-shrink: 0; font-size: 1rem; }
+.contact__social { display: flex; gap: 0.6rem; }
+.contact__social-link {
+    width: 36px; height: 36px; border: 1px solid var(--border-subtle);
+    border-radius: 6px; display: flex; align-items: center; justify-content: center;
+    transition: border-color var(--transition), background var(--transition);
+}
+.contact__social-link:hover { border-color: var(--gold); background: var(--gold-dim); }
+
+/* Contact Form */
+.contact__form-wrap {
+    background: var(--bg-primary); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius); padding: 2.5rem;
+}
+.contact__form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.contact__form-group { margin-bottom: 1.2rem; }
+.contact__form-label { display: block; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.45rem; }
+.contact__form-input {
+    width: 100%; padding: 0.7rem 0.9rem;
+    background: var(--bg-secondary); border: 1px solid var(--border-subtle);
+    border-radius: 4px; color: var(--text-primary); font-size: 0.85rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none; -webkit-appearance: none; appearance: none;
+}
+.contact__form-input::placeholder { color: var(--text-muted); }
+.contact__form-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-dim); }
+.contact__form-input.error { border-color: #e04848; }
+.contact__form-select { background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8a92' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.8rem center; padding-right: 2.2rem; cursor: pointer; }
+.contact__form-textarea { resize: vertical; min-height: 100px; }
+.contact__form-btn {
+    width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.85rem; background: var(--gold); color: #0a0c0f;
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600;
+    border-radius: 2px; transition: all var(--transition);
+}
+.contact__form-btn:hover { background: var(--gold-light); box-shadow: 0 4px 20px rgba(201,168,76,0.3); }
+.contact__form-note { font-size: 0.7rem; color: var(--text-muted); text-align: center; margin-top: 1rem; }
+.contact__form-success {
+    display: none; flex-direction: column; align-items: center; text-align: center;
+    gap: 0.8rem; padding: 2rem 0;
+}
+.contact__form-success.show { display: flex; }
+.contact__form-success h4 { font-family: var(--font-display); font-size: 1.3rem; color: var(--gold); }
+.contact__form-success p { font-size: 0.82rem; color: var(--text-secondary); }
+
+/* ============================================================
+   FOOTER
+============================================================ */
+.footer { background: #080a0d; padding: 4rem 1.5rem 2rem; }
+.footer__container { max-width: 1200px; margin: 0 auto; }
+.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border-subtle); }
+.footer__brand-logo { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+.footer__brand-logo span { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; letter-spacing: 0.15em; color: var(--gold); }
+.footer__brand-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
+.footer__col-title { font-family: var(--font-display); font-size: 0.95rem; color: var(--text-primary); margin-bottom: 1rem; font-weight: 600; letter-spacing: 0.02em; }
+.footer__col-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer__col-list a { font-size: 0.8rem; color: var(--text-muted); transition: color var(--transition); }
+.footer__col-list a:hover { color: var(--gold); }
+.footer__col-list li:not(a) { font-size: 0.8rem; color: var(--text-muted); }
+.footer__bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 1.8rem; flex-wrap: wrap; gap: 1rem; }
+.footer__bottom p { font-size: 0.72rem; color: var(--text-muted); }
+.footer__bottom-links { display: flex; gap: 1.5rem; }
+.footer__bottom-links a { font-size: 0.72rem; color: var(--text-muted); transition: color var(--transition); }
+.footer__bottom-links a:hover { color: var(--gold); }
+
+/* ============================================================
+   BACK TO TOP
+============================================================ */
+.back-to-top {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 50;
+    width: 44px; height: 44px; background: var(--bg-card);
+    border: 1px solid var(--border-subtle); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-secondary); opacity: 0; transform: translateY(16px);
+    transition: all var(--transition); pointer-events: none;
+}
+.back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.back-to-top:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+
+/* ============================================================
+   ACTIVE NAV LINK
+============================================================ */
+.header__nav-link.active { color: var(--gold); }
+.header__nav-link.active::after { width: 100%; }
+
+/* ============================================================
+   SELECT OPTION DARK STYLING (Firefox/Chrome)
+============================================================ */
+.contact__form-select option { background: var(--bg-secondary); color: var(--text-primary); }
+
+/* ============================================================
+   SCROLLBAR STYLING (webkit)
+============================================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+
+/* ============================================================
+   REVEAL ANIMATIONS (Intersection Observer based)
+============================================================ */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+[data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delays via data attribute */
+[data-reveal-delay="80"]  { transition-delay: 0.08s; }
+[data-reveal-delay="100"] { transition-delay: 0.1s; }
+[data-reveal-delay="120"] { transition-delay: 0.12s; }
+[data-reveal-delay="160"] { transition-delay: 0.16s; }
+[data-reveal-delay="200"] { transition-delay: 0.2s; }
+[data-reveal-delay="240"] { transition-delay: 0.24s; }
+[data-reveal-delay="250"] { transition-delay: 0.25s; }
+[data-reveal-delay="320"] { transition-delay: 0.32s; }
+[data-reveal-delay="340"] { transition-delay: 0.34s; }
+[data-reveal-delay="360"] { transition-delay: 0.36s; }
+[data-reveal-delay="380"] { transition-delay: 0.38s; }
+[data-reveal-delay="400"] { transition-delay: 0.4s; }
+[data-reveal-delay="420"] { transition-delay: 0.42s; }
+[data-reveal-delay="480"] { transition-delay: 0.48s; }
+[data-reveal-delay="500"] { transition-delay: 0.5s; }
+[data-reveal-delay="560"] { transition-delay: 0.56s; }
+[data-reveal-delay="640"] { transition-delay: 0.64s; }
+
+/* ============================================================
+   HERO TITLE LINE STAGGER (child-based)
+============================================================ */
+.hero__title .hero__title-line {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero__title.revealed .hero__title-line:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
+.hero__title.revealed .hero__title-line:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+.hero__title.revealed .hero__title-line:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.45s; }
+
+/* ============================================================
+   FLOATING GLYPH ANIMATION
+============================================================ */
+.hero__glyph {
+    animation: glyphDrift 18s ease-in-out infinite alternate;
+}
+@keyframes glyphDrift {
+    0%   { transform: translateY(-50%) rotate(0deg) scale(1); }
+    100% { transform: translateY(-50%) rotate(4deg) scale(1.04); }
+}
+
+/* ============================================================
+   ABOUT VISUAL - subtle float
+============================================================ */
+.about__visual-frame {
+    animation: visualFloat 6s ease-in-out infinite;
+}
+@keyframes visualFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+/* ============================================================
+   SERVICE CARD ICON GLOW ON HOVER
+============================================================ */
+.services__card:hover .services__card-icon svg path,
+.services__card:hover .services__card-icon svg circle,
+.services__card:hover .services__card-icon svg rect {
+    filter: drop-shadow(0 0 4px rgba(201,168,76,0.35));
+    transition: filter 0.4s ease;
+}
+
+/* ============================================================
+   CREDENTIAL CARD — subtle entrance stagger
+============================================================ */
+.why-us__cred-card {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+    transition: opacity 0.55s cubic-bezier(0.4,0,0.2,1),
+                transform 0.55s cubic-bezier(0.4,0,0.2,1),
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+}
+.why-us__visual.revealed .why-us__cred-card { opacity: 1; transform: translateY(0) scale(1); }
+.why-us__visual.revealed .why-us__cred-card:nth-child(1) { transition-delay: 0.05s; }
+.why-us__visual.revealed .why-us__cred-card:nth-child(2) { transition-delay: 0.15s; }
+.why-us__visual.revealed .why-us__cred-card:nth-child(3) { transition-delay: 0.25s; }
+.why-us__visual.revealed .why-us__cred-card:nth-child(4) { transition-delay: 0.35s; }
+
+/* ============================================================
+   GOLD SHIMMER — subtle ambient on gold elements
+============================================================ */
+@keyframes goldShimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+.hero__title-line--gold,
+.about__title-gold,
+.services__title-gold,
+.why-us__title-gold,
+.team__title-gold,
+.contact__title-gold {
+    background: linear-gradient(90deg, #C9A84C 0%, #e8d48b 40%, #C9A84C 60%, #e8d48b 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: goldShimmer 4s linear infinite;
+}
+
+/* ============================================================
+   SCROLL INDICATOR PULSE
+============================================================ */
+.hero__scroll-line {
+    animation: scrollPulse 2.2s ease-in-out infinite;
+}
+
+/* ============================================================
+   FORM FOCUS RIPPLE
+============================================================ */
+.contact__form-input:focus {
+    animation: inputFocusPulse 0.4s ease;
+}
+@keyframes inputFocusPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(201,168,76,0.25); }
+    100% { box-shadow: 0 0 0 3px rgba(201,168,76,0.08); }
+}
+
+
+    /* ============================================================
+   TABLET: ≤ 1024px
+============================================================ */
+@media (max-width: 1024px) {
+    .about__grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about__visual { max-width: 400px; margin: 0 auto; }
+    .why-us__grid { grid-template-columns: 1fr; gap: 3rem; }
+    .why-us__credentials { max-width: 500px; }
+    .team__grid { grid-template-columns: 1fr 1fr; }
+    .contact__grid { grid-template-columns: 1fr; gap: 3rem; }
+    .footer__grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+/* ============================================================
+   TABLET-SMALL: ≤ 768px
+============================================================ */
+@media (max-width: 768px) {
+    /* Header — hide desktop nav, show hamburger */
+    .header__nav { display: none; }
+    .header__lang-btn { display: none; }
+    .header__cta { display: none; }
+    .header__hamburger { display: flex; }
+
+    /* Hero */
+    .hero { padding: 6rem 1.25rem 3.5rem; min-height: auto; padding-top: 100px; padding-bottom: 80px; }
+    .hero__glyph { width: 300px; height: 300px; right: -15%; top: 15%; transform: none; opacity: 0.4; }
+    .hero__stats { gap: 1.5rem; }
+    .hero__stat-divider { display: none; }
+    .hero__stat-number { font-size: 1.4rem; }
+
+    /* Sections padding */
+    .about, .services, .why-us, .team, .contact { padding: 5rem 1.25rem; }
+
+    /* About */
+    .about__visual-frame { aspect-ratio: auto; padding: 1.5rem; }
+
+    /* Services grid: 2 columns */
+    .services__grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .services__cta-bar { flex-direction: column; text-align: center; padding: 2rem; }
+
+    /* Team: single column */
+    .team__grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+
+    /* Contact form */
+    .contact__form-wrap { padding: 1.8rem 1.25rem; }
+    .contact__form-row { grid-template-columns: 1fr; }
+
+    /* Footer */
+    .footer__grid { grid-template-columns: 1fr 1fr; }
+    .footer__bottom { flex-direction: column; align-items: flex-start; }
+}
+
+/* ============================================================
+   MOBILE: ≤ 480px
+============================================================ */
+@media (max-width: 480px) {
+    /* Hero */
+    .hero { padding-top: 90px; padding-bottom: 60px; }
+    .hero__title-line { font-size: clamp(2.2rem, 11vw, 2.8rem); }
+    .hero__title-line--thin { font-size: clamp(1.6rem, 7vw, 2rem); }
+    .hero__actions { flex-direction: column; width: 100%; }
+    .hero__btn { width: 100%; justify-content: center; }
+    .hero__stats { flex-direction: column; gap: 1rem; align-items: center; }
+    .hero__stat-divider { display: block; width: 40px; height: 1px; background: var(--border); }
+    .hero__scroll { display: none; }
+    .hero__glyph { display: none; }
+    .hero__bg-lines { display: none; }
+
+    /* Sections */
+    .about, .services, .why-us, .team, .contact { padding: 4rem 1rem; }
+
+    /* Services: 1 column */
+    .services__grid { grid-template-columns: 1fr; }
+    .services__card { padding: 1.5rem 1.2rem; }
+
+    /* About pillars: 1 col */
+    .about__pillars { grid-template-columns: 1fr; gap: 0.5rem; }
+
+    /* Why Us credentials: 1 col */
+    .why-us__credentials { grid-template-columns: 1fr; }
+
+    /* Footer */
+    .footer { padding: 3rem 1rem 1.5rem; }
+    .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer__bottom-links { flex-wrap: wrap; gap: 1rem; }
+
+    /* Contact */
+    .contact__form-wrap { padding: 1.5rem 1rem; }
+
+    /* Back to top */
+    .back-to-top { bottom: 1.2rem; right: 1.2rem; width: 40px; height: 40px; }
+}
+
+/* ============================================================
+   VERY SMALL: ≤ 360px
+============================================================ */
+@media (max-width: 360px) {
+    .header__logo-sub { display: none; }
+    .header__logo-name { font-size: 1.05rem; }
+    .hero__badge { font-size: 0.6rem; }
+}
+
+/* ============================================================
+   LANDSCAPE SHORT SCREENS
+============================================================ */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero { min-height: auto; padding-top: 80px; padding-bottom: 40px; }
+    .hero__scroll { display: none; }
+}
+    
+</style> 
+
+
+</head>
+<body>
+
+<div id="preloader" class="preloader">
+    <div class="preloader__inner">
+        <svg viewBox="0 0 60 60" fill="none" width="60" height="60">
+            <path d="M30 5 L55 50 L5 50 Z" stroke="#C9A84C" stroke-width="1.5" fill="none" class="preloader__triangle"/>
+        </svg>
+        <span class="preloader__text">M</span>
+    </div>
+</div>
+
+<header class="header" id="header">
+    <div class="header__container">
+        <a href="#" class="header__logo" aria-label="Home">
+            <div class="header__logo-mark">
+                <svg viewBox="0 0 48 48" fill="none" width="40" height="40">
+                    <path d="M24 4 L44 40 L4 40 Z" stroke="#C9A84C" stroke-width="1.2" fill="none"/>
+                    <path d="M24 14 L36 36 L12 36 Z" stroke="#C9A84C" stroke-width="0.5" fill="none" opacity="0.4"/>
+                    <circle cx="24" cy="28" r="2.5" fill="#C9A84C"/>
+                </svg>
+            </div>
+            <div class="header__logo-text">
+                <span class="header__logo-name">ALJASEM</span>
+                <span class="header__logo-sub">LAW FIRM & LEGAL CONSULTING</span>
+            </div>
+        </a>
+        <nav class="header__nav" aria-label="Primary">
+            <ul class="header__nav-list">
+                <li><a href="#about" class="header__nav-link">About</a></li>
+                <li><a href="#services" class="header__nav-link">Services</a></li>
+                <li><a href="#why-us" class="header__nav-link">Why Us</a></li>
+                <li><a href="#team" class="header__nav-link">Team</a></li>
+                <li><a href="#contact" class="header__nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header__actions">
+            <button class="header__lang-btn" id="langToggle" aria-label="Switch language">
+                <span class="header__lang-en">EN</span>
+                <span class="header__lang-divider">/</span>
+                <span class="header__lang-ar">عربي</span>
+            </button>
+            <a href="#contact" class="header__cta">
+                <span>Consult Now</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <button class="header__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu__overlay" id="menuOverlay"></div>
+        <nav class="mobile-menu__panel">
+            <button class="mobile-menu__close" id="menuClose" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="mobile-menu__logo">ALJASEM</div>
+            <ul class="mobile-menu__list">
+                <li><a href="#about" class="mobile-menu__link">About</a></li>
+                <li><a href="#services" class="mobile-menu__link">Services</a></li>
+                <li><a href="#why-us" class="mobile-menu__link">Why Us</a></li>
+                <li><a href="#team" class="mobile-menu__link">Team</a></li>
+                <li><a href="#contact" class="mobile-menu__link">Contact</a></li>
+            </ul>
+            <a href="#contact" class="mobile-menu__cta">Free Consultation</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero" id="hero">
+    <div class="hero__bg-lines" aria-hidden="true">
+        <div class="hero__bg-line hero__bg-line--1"></div>
+        <div class="hero__bg-line hero__bg-line--2"></div>
+        <div class="hero__bg-line hero__bg-line--3"></div>
+    </div>
+    <div class="hero__glyph" aria-hidden="true">
+        <svg viewBox="0 0 200 200" fill="none">
+            <circle cx="100" cy="100" r="90" stroke="#C9A84C" stroke-width="0.3" opacity="0.15"/>
+            <circle cx="100" cy="100" r="70" stroke="#C9A84C" stroke-width="0.3" opacity="0.1"/>
+            <circle cx="100" cy="100" r="50" stroke="#C9A84C" stroke-width="0.3" opacity="0.07"/>
+            <path d="M100 10 L190 155 L10 155 Z" stroke="#C9A84C" stroke-width="0.5" fill="none" opacity="0.12"/>
+        </svg>
+    </div>
+    <div class="hero__container">
+        <div class="hero__badge" data-reveal>
+            <span class="hero__badge-dot"></span>
+            <span>Kuwait's Premier Legal Consulting Group</span>
+        </div>
+        <h1 class="hero__title" data-reveal data-reveal-delay="100">
+            <span class="hero__title-line">Excellence in</span>
+            <span class="hero__title-line hero__title-line--gold">Legal Protection</span>
+            <span class="hero__title-line hero__title-line--thin">&amp; Strategic Counsel</span>
+        </h1>
+        <p class="hero__description" data-reveal data-reveal-delay="250">
+            Led by INTERPOL-certified expert Mohammad ALJASEM, our firm delivers comprehensive legal solutions across all branches of law — from corporate governance and international arbitration to criminal defense and intellectual property protection.
+        </p>
+        <div class="hero__actions" data-reveal data-reveal-delay="380">
+            <a href="#contact" class="hero__btn hero__btn--primary">
+                <span>Schedule Consultation</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#services" class="hero__btn hero__btn--secondary"><span>Our Services</span></a>
+        </div>
+        <div class="hero__stats" data-reveal data-reveal-delay="500">
+            <div class="hero__stat">
+                <span class="hero__stat-number" data-count="14">14</span>
+                <span class="hero__stat-label">Years Experience</span>
+            </div>
+            <div class="hero__stat-divider"></div>
+            <div class="hero__stat">
+                <span class="hero__stat-number">12+</span>
+                <span class="hero__stat-label">Areas of Law</span>
+            </div>
+            <div class="hero__stat-divider"></div>
+            <div class="hero__stat">
+                <span class="hero__stat-number">24/7</span>
+                <span class="hero__stat-label">Legal Call Center</span>
+            </div>
+            <div class="hero__stat-divider"></div>
+            <div class="hero__stat">
+                <span class="hero__stat-number">100%</span>
+                <span class="hero__stat-label">Client Dedication</span>
+            </div>
+        </div>
+    </div>
+    <div class="hero__scroll" aria-label="Scroll down">
+        <div class="hero__scroll-line"></div>
+        <span class="hero__scroll-text">Scroll</span>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="about__container">
+        <div class="about__grid">
+            <div class="about__visual" data-reveal>
+                <div class="about__visual-frame">
+                    <svg viewBox="0 0 320 400" fill="none" class="about__visual-svg">
+                        <rect x="40" y="60" width="240" height="280" rx="4" fill="#0f1117" stroke="#C9A84C" stroke-width="0.5" opacity="0.3"/>
+                        <rect x="70" y="90" width="12" height="220" fill="#C9A84C" opacity="0.12"/>
+                        <rect x="154" y="90" width="12" height="220" fill="#C9A84C" opacity="0.08"/>
+                        <rect x="238" y="90" width="12" height="220" fill="#C9A84C" opacity="0.12"/>
+                        <path d="M40 90 L160 40 L280 90" stroke="#C9A84C" stroke-width="0.8" fill="none" opacity="0.5"/>
+                        <circle cx="160" cy="200" r="3" fill="#C9A84C" opacity="0.6"/>
+                        <line x1="160" y1="200" x2="160" y2="280" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+                        <line x1="160" y1="200" x2="110" y2="230" stroke="#C9A84C" stroke-width="0.8" opacity="0.4"/>
+                        <line x1="160" y1="200" x2="210" y2="230" stroke="#C9A84C" stroke-width="0.8" opacity="0.4"/>
+                        <circle cx="110" cy="232" r="8" stroke="#C9A84C" stroke-width="0.6" fill="none" opacity="0.35"/>
+                        <circle cx="210" cy="232" r="8" stroke="#C9A84C" stroke-width="0.6" fill="none" opacity="0.35"/>
+                        <rect x="140" y="278" width="40" height="6" fill="#C9A84C" opacity="0.3"/>
+                    </svg>
+                </div>
+                <div class="about__visual-accent"></div>
+                <div class="about__visual-tag">
+                    <span class="about__visual-tag-icon">⚖</span>
+                    <span>Est. in Kuwait City</span>
+                </div>
+            </div>
+            <div class="about__content">
+                <div class="about__label" data-reveal>
+                    <span class="about__label-line"></span>
+                    <span>About Us</span>
+                </div>
+                <h2 class="about__title" data-reveal data-reveal-delay="80">
+                    Trusted Legal Excellence<br><span class="about__title-gold">Since Day One</span>
+                </h2>
+                <p class="about__text" data-reveal data-reveal-delay="160">
+                    Mohammad ALJASEM Law Firm and Legal Consulting Group is characterized by an advanced work system built on field and administrative experience across all branches of law — commercial, corporate, civil, criminal, administrative, personal status, inheritance, insurance, labor, tax, arbitration, and more.
+                </p>
+                <div class="about__mission" data-reveal data-reveal-delay="240">
+                    <div class="about__mission-bar"></div>
+                    <div>
+                        <h3 class="about__mission-title">Our Mission</h3>
+                        <p class="about__mission-text">
+                            To serve as the comprehensive legal department for all our clients — providing protection and integrated solutions through the latest information technology, an electronic coordination system, and dedicated follow-up on every legal matter.
+                        </p>
+                    </div>
+                </div>
+                <div class="about__pillars" data-reveal data-reveal-delay="320">
+                    <div class="about__pillar">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span>Strategic Depth</span>
+                    </div>
+                    <div class="about__pillar">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#C9A84C" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span>24/7 Availability</span>
+                    </div>
+                    <div class="about__pillar">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#C9A84C" stroke-width="1.5"/></svg>
+                        <span>Expert Team</span>
+                    </div>
+                    <div class="about__pillar">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span>Client Protection</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services" id="services">
+    <div class="services__container">
+        <div class="services__header">
+            <div class="services__label" data-reveal><span class="services__label-line"></span><span>Practice Areas</span></div>
+            <h2 class="services__title" data-reveal data-reveal-delay="80">Comprehensive Legal <span class="services__title-gold">Services</span></h2>
+            <p class="services__subtitle" data-reveal data-reveal-delay="160">Full-spectrum legal coverage across all branches of Kuwaiti and international law</p>
+        </div>
+        <div class="services__grid">
+            <article class="services__card" data-reveal data-reveal-delay="0">
+                <div class="services__card-number">01</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="4" y="6" width="24" height="20" rx="2" stroke="#C9A84C" stroke-width="1.5"/><path d="M4 12h24M10 18h6M10 22h10" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+                <h3 class="services__card-title">Commercial Law</h3>
+                <p class="services__card-desc">Contract drafting, business disputes, commercial transactions, and corporate governance across all sectors.</p>
+            </article>
+            <article class="services__card" data-reveal data-reveal-delay="80">
+                <div class="services__card-number">02</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M16 4L6 9v10l10 5 10-5V9L16 4z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 4v22M6 9l10 5 10-5" stroke="#C9A84C" stroke-width="1.2"/></svg></div>
+                <h3 class="services__card-title">Corporate Law</h3>
+                <p class="services__card-desc">Company establishment, mergers & acquisitions, corporate structuring, and shareholder dispute resolution.</p>
+            </article>
+            <article class="services__card" data-reveal data-reveal-delay="160">
+                <div class="services__card-number">03</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="10" stroke="#C9A84C" stroke-width="1.5"/><path d="M16 10v6l4 3" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <h3 class="services__card-title">Civil Law</h3>
+                <p class="services__card-desc">Property disputes, rental cases, compensation claims, and civil litigation at all court levels.</p>
+            </article>
+            <article class="services__card" data-reveal data-reveal-delay="240">
+                <div class="services__card-number">04</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M16 6L8 10v8l8 4 8-4v-8l-8-4z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 16l2 2 5-5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <h3 class="services__card-title">Criminal Defense</h3>
+                <p class="services__card-desc">Full criminal case representation from investigation through prosecution to court proceedings and appeals.</p>
+            </article>
+            <article class="services__card" data-reveal data-reveal-delay="320">
+                <div class="services__card-number">05</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M8 28V8l8-4 8 4v20" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 4v24" stroke="#C9A84C" stroke-width="0.8"/><rect x="9" y="12" width="4" height="4" stroke="#C9A84C" stroke-width="1"/><rect x="19" y="12" width="4" height="4" stroke="#C9A84C" stroke-width="1"/><rect x="9" y="20" width="4" height="4" stroke="#C9A84C" stroke-width="1"/><rect x="19" y="20" width="4" height="4" stroke="#C9A84C" stroke-width="1"/></svg></div>
+                <h3 class="services__card-title">Administrative Law</h3>
+                <p class="services__card-desc">Challenging administrative decisions, grievance procedures across all government ministries and authorities.</p>
+            </article>
+            <article class="services__card" data-reveal data-reveal-delay="400">
+                <div class="services__card-number">06</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M16 6c-4 0-8 2-8 6 0 2.5 2 4.5 4 5.5V24h8v-6.5c2-1 4-3 4-5.5 0-4-4-6-8-6z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 24h8M13 28h6" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+                <h3 class="services__card-title">Labor & Employment</h3>
+                <p class="services__card-desc">Labor dispute resolution, employment rights enforcement for both private and governmental sectors.</p>
+            </article>
+            <article class="services__card" data-reveal data-reveal-delay="480">
+                <div class="services__card-number">07</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="6" y="8" width="20" height="16" rx="2" stroke="#C9A84C" stroke-width="1.5"/><path d="M6 13h20M10 19h5" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+                <h3 class="services__card-title">Insurance Law</h3>
+                <p class="services__card-desc">Insurance policy analysis, compensation claim processing, and disputes with insurance companies.</p>
+            </article>
+            <article class="services__card" data-reveal data-reveal-delay="560">
+                <div class="services__card-number">08</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="8" stroke="#C9A84C" stroke-width="1.5"/><path d="M16 10v8M12 12l4-2 4 2" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <h3 class="services__card-title">Arbitration</h3>
+                <p class="services__card-desc">International and local commercial arbitration at Kuwait Commercial Arbitration Center and GCC chambers.</p>
+            </article>
+            <article class="services__card" data-reveal data-reveal-delay="640">
+                <div class="services__card-number">09</div>
+                <div class="services__card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M10 6h12v20l-6-4-6 4V6z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 12h4M14 16h4" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+                <h3 class="services__card-title">Intellectual Property</h3>
+                <p class="services__card-desc">Patent registration, trademark protection, copyright enforcement, and IP dispute resolution.</p>
+            </article>
+        </div>
+        <div class="services__cta-bar" data-reveal>
+            <div class="services__cta-content">
+                <h3>Need legal guidance for your case?</h3>
+                <p>Our team is available 24/7. First consultation is complimentary.</p>
+            </div>
+            <a href="#contact" class="services__cta-btn">
+                <span>Contact Us</span>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="why-us" id="why-us">
+    <div class="why-us__container">
+        <div class="why-us__grid">
+            <div class="why-us__content">
+                <div class="why-us__label" data-reveal><span class="why-us__label-line"></span><span>Why Choose Us</span></div>
+                <h2 class="why-us__title" data-reveal data-reveal-delay="80">Why Mohammad ALJASEM<br><span class="why-us__title-gold">Group?</span></h2>
+                <p class="why-us__intro" data-reveal data-reveal-delay="160">Our firm combines decades of legal expertise with cutting-edge technology to deliver results that protect and advance your interests.</p>
+                <div class="why-us__features">
+                    <div class="why-us__feature" data-reveal data-reveal-delay="240">
+                        <div class="why-us__feature-num">01</div>
+                        <div><h4 class="why-us__feature-title">Expert Legal Team</h4><p class="why-us__feature-text">Led by Mohammad Aljasem, we offer unparalleled legal expertise across various fields with an international network of affiliated offices.</p></div>
+                    </div>
+                    <div class="why-us__feature" data-reveal data-reveal-delay="320">
+                        <div class="why-us__feature-num">02</div>
+                        <div><h4 class="why-us__feature-title">Strategic Solutions</h4><p class="why-us__feature-text">We deliver results-driven strategies to achieve your legal goals efficiently, combining field experience with scientific rigor.</p></div>
+                    </div>
+                    <div class="why-us__feature" data-reveal data-reveal-delay="400">
+                        <div class="why-us__feature-num">03</div>
+                        <div><h4 class="why-us__feature-title">Dedicated Support</h4><p class="why-us__feature-text">Personalized guidance throughout your legal journey with our integrated electronic system for case tracking and follow-up.</p></div>
+                    </div>
+                    <div class="why-us__feature" data-reveal data-reveal-delay="480">
+                        <div class="why-us__feature-num">04</div>
+                        <div><h4 class="why-us__feature-title">International Reach</h4><p class="why-us__feature-text">Strong bilateral agreements with accredited offices across MENA and beyond, serving as a bridge between Kuwait and the global legal arena.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="why-us__visual" data-reveal data-reveal-delay="200">
+                <div class="why-us__credentials">
+                    <div class="why-us__cred-card">
+                        <div class="why-us__cred-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#C9A84C" stroke-width="0.8"/><path d="M16 6 L26 24 L6 24 Z" stroke="#C9A84C" stroke-width="0.6" fill="none" opacity="0.5"/><circle cx="16" cy="18" r="2" fill="#C9A84C" opacity="0.6"/></svg>
+                        </div>
+                        <h4>INTERPOL Certified</h4>
+                        <p>Certified Expert in International Law Enforcement Cooperation</p>
+                    </div>
+                    <div class="why-us__cred-card">
+                        <div class="why-us__cred-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#C9A84C" stroke-width="0.8"/><path d="M16 8 L20 18 L12 18 Z" stroke="#C9A84C" stroke-width="0.6" fill="none" opacity="0.5"/><line x1="16" y1="18" x2="16" y2="24" stroke="#C9A84C" stroke-width="0.6" opacity="0.5"/><line x1="10" y1="20" x2="22" y2="20" stroke="#C9A84C" stroke-width="0.5" opacity="0.35"/></svg>
+                        </div>
+                        <h4>Arbitrator</h4>
+                        <p>Kuwait Commercial Arbitration Center — GCC Chamber</p>
+                    </div>
+                    <div class="why-us__cred-card">
+                        <div class="why-us__cred-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#C9A84C" stroke-width="0.8"/><rect x="8" y="10" width="16" height="10" rx="1" stroke="#C9A84C" stroke-width="0.6" fill="none" opacity="0.5"/><path d="M16 4v6" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/></svg>
+                        </div>
+                        <h4>UN Lecturer</h4>
+                        <p>Training law enforcement agencies of UN member states</p>
+                    </div>
+                    <div class="why-us__cred-card">
+                        <div class="why-us__cred-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#C9A84C" stroke-width="0.8"/><path d="M16 6l-8 5 8 5 8-5-8-5z" stroke="#C9A84C" stroke-width="0.6" fill="none" opacity="0.5"/><path d="M10 19v4l6 2 6-2v-4" stroke="#C9A84C" stroke-width="0.5" fill="none" opacity="0.4"/></svg>
+                        </div>
+                        <h4>Master's Degree</h4>
+                        <p>Criminal Law · Law & Police Sciences · IT Diploma</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="team" id="team">
+    <div class="team__container">
+        <div class="team__header">
+            <div class="team__label" data-reveal><span class="team__label-line"></span><span>Our Team</span></div>
+            <h2 class="team__title" data-reveal data-reveal-delay="80">The Minds Behind <span class="team__title-gold">Your Protection</span></h2>
+        </div>
+        <div class="team__grid">
+            <div class="team__card team__card--featured" data-reveal>
+                <div class="team__card-visual">
+                    <div class="team__card-avatar">
+                        <svg viewBox="0 0 120 140" fill="none" width="100" height="116">
+                            <circle cx="60" cy="40" r="26" fill="#C9A84C" opacity="0.13" stroke="#C9A84C" stroke-width="0.4"/>
+                            <path d="M18 140 C18 92 38 72 60 72 C82 72 102 92 102 140" fill="#C9A84C" opacity="0.09"/>
+                            <path d="M55 70 L60 86 L65 70" fill="#C9A84C" opacity="0.18"/>
+                        </svg>
+                    </div>
+                    <div class="team__card-ribbon">Founder &amp; CEO</div>
+                </div>
+                <div class="team__card-info">
+                    <h3 class="team__card-name">Mohammad ALJASEM</h3>
+                    <p class="team__card-role">Managing Partner — Criminal Law Specialist</p>
+                    <div class="team__card-tags">
+                        <span>INTERPOL Expert</span>
+                        <span>UN Lecturer</span>
+                        <span>Arbitrator</span>
+                    </div>
+                    <p class="team__card-bio">14+ years in investigation and case management. Former Regional Specialized Officer at INTERPOL HQ, Lyon, France. Master's in Criminal Law.</p>
+                </div>
+            </div>
+            <div class="team__card" data-reveal data-reveal-delay="120">
+                <div class="team__card-visual">
+                    <div class="team__card-avatar team__card-avatar--sm">
+                        <svg viewBox="0 0 80 94" fill="none" width="70" height="82">
+                            <circle cx="40" cy="28" r="18" fill="#C9A84C" opacity="0.1" stroke="#C9A84C" stroke-width="0.3"/>
+                            <path d="M12 94 C12 66 26 50 40 50 C54 50 68 66 68 94" fill="#C9A84C" opacity="0.07"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="team__card-info">
+                    <h3 class="team__card-name">Senior Legal Counsel</h3>
+                    <p class="team__card-role">Corporate & Commercial Law</p>
+                    <p class="team__card-bio">Specializing in corporate structuring, M&amp;A transactions, and commercial dispute resolution across Kuwait and the GCC.</p>
+                </div>
+            </div>
+            <div class="team__card" data-reveal data-reveal-delay="240">
+                <div class="team__card-visual">
+                    <div class="team__card-avatar team__card-avatar--sm">
+                        <svg viewBox="0 0 80 94" fill="none" width="70" height="82">
+                            <circle cx="40" cy="28" r="18" fill="#C9A84C" opacity="0.1" stroke="#C9A84C" stroke-width="0.3"/>
+                            <path d="M12 94 C12 66 26 50 40 50 C54 50 68 66 68 94" fill="#C9A84C" opacity="0.07"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="team__card-info">
+                    <h3 class="team__card-name">Legal Researcher</h3>
+                    <p class="team__card-role">Administrative & Labor Law</p>
+                    <p class="team__card-bio">Expert in administrative case analysis, labor rights enforcement, and grievance procedures across government sectors.</p>
+                </div>
+            </div>
+            <div class="team__card" data-reveal data-reveal-delay="360">
+                <div class="team__card-visual">
+                    <div class="team__card-avatar team__card-avatar--sm">
+                        <svg viewBox="0 0 80 94" fill="none" width="70" height="82">
+                            <circle cx="40" cy="28" r="18" fill="#C9A84C" opacity="0.1" stroke="#C9A84C" stroke-width="0.3"/>
+                            <path d="M12 94 C12 66 26 50 40 50 C54 50 68 66 68 94" fill="#C9A84C" opacity="0.07"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="team__card-info">
+                    <h3 class="team__card-name">Sports Legal Advisor</h3>
+                    <p class="team__card-role">Sports & General Authority Law</p>
+                    <p class="team__card-bio">Legal advisor at the General Authority for Sports, providing legal opinion on procedural and administrative matters.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="contact__container">
+        <div class="contact__grid">
+            <div class="contact__info">
+                <div class="contact__label" data-reveal><span class="contact__label-line"></span><span>Contact</span></div>
+                <h2 class="contact__title" data-reveal data-reveal-delay="80">Let's Discuss<br><span class="contact__title-gold">Your Case</span></h2>
+                <p class="contact__intro" data-reveal data-reveal-delay="160">Our legal team is available around the clock to address your concerns.</p>
+                <div class="contact__details" data-reveal data-reveal-delay="240">
+                    <div class="contact__detail">
+                        <div class="contact__detail-icon"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 2C6.13 2 3 5.13 3 9c0 5.25 7 11 7 11s7-5.75 7-11c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" stroke="#C9A84C" stroke-width="1.2" fill="none"/></svg></div>
+                        <div><span class="contact__detail-label">Office Location</span><span class="contact__detail-value">Kuwait City, Al Asimah, Kuwait</span></div>
+                    </div>
+                    <div class="contact__detail">
+                        <div class="contact__detail-icon"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M3 5h14v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" stroke="#C9A84C" stroke-width="1.2" fill="none"/><path d="M3 5l7 5 7-5" stroke="#C9A84C" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></div>
+                        <div><span class="contact__detail-label">Email</span><span class="contact__detail-value">info@maljasem.com</span></div>
+                    </div>
+                    <div class="contact__detail">
+                        <div class="contact__detail-icon"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M2 4a2 2 0 012-2h12a2 2 0 012 2v9a2 2 0 01-2 2H6l-4 3V4z" stroke="#C9A84C" stroke-width="1.2" fill="none"/></svg></div>
+                        <div><span class="contact__detail-label">24/7 Legal Call Center</span><span class="contact__detail-value">Available Round the Clock</span></div>
+                    </div>
+                </div>
+                <div class="contact__fee-note" data-reveal data-reveal-delay="340">
+                    <span class="contact__fee-icon">💡</span>
+                    <div><strong>Consultation Fee:</strong> 45 KD per 30 min · Document review: 10 KD/page · Power of attorney: 50 KD</div>
+                </div>
+                <div class="contact__social" data-reveal data-reveal-delay="420">
+                    <a href="#" aria-label="LinkedIn" class="contact__social-link"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M2 7h3v9H2V7zm1.5-5A1.5 1.5 0 105 3.5 1.5 1.5 0 003.5 2zM8 7h2.5v1.2C11 7.5 12.5 7 14 7c3 0 4 1.5 4 4v5h-3v-4.5c0-1-.5-2-1.5-2S12 11 12 12v4.5H8V7z" stroke="#C9A84C" stroke-width="1" fill="none"/></svg></a>
+                    <a href="#" aria-label="Twitter" class="contact__social-link"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M2 3l6.5 8.5L2 18h1.5L9 12.5 13.5 18H17l-7-9L17 3h-1.5L8.5 7.5 4.5 3H2z" stroke="#C9A84C" stroke-width="1" fill="none"/></svg></a>
+                    <a href="#" aria-label="Facebook" class="contact__social-link"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M15 2h-3a5 5 0 00-5 5v3H5v4h2v7h4v-7h2l1-4h-3V7a1 1 0 011-1h2V2z" stroke="#C9A84C" stroke-width="1" fill="none"/></svg></a>
+                </div>
+            </div>
+            <div class="contact__form-wrap" data-reveal data-reveal-delay="200">
+                <form class="contact__form" id="contactForm" novalidate>
+                    <div class="contact__form-row">
+                        <div class="contact__form-group">
+                            <label for="firstName" class="contact__form-label">First Name</label>
+                            <input type="text" id="firstName" name="firstName" class="contact__form-input" placeholder="Your first name" required>
+                        </div>
+                        <div class="contact__form-group">
+                            <label for="lastName" class="contact__form-label">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" class="contact__form-input" placeholder="Your last name" required>
+                        </div>
+                    </div>
+                    <div class="contact__form-group">
+                        <label for="email" class="contact__form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="contact__form-input" placeholder="you@example.com" required>
+                    </div>
+                    <div class="contact__form-group">
+                        <label for="phone" class="contact__form-label">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="contact__form-input" placeholder="+965 XXXX XXXX">
+                    </div>
+                    <div class="contact__form-group">
+                        <label for="legalArea" class="contact__form-label">Area of Law</label>
+                        <select id="legalArea" name="legalArea" class="contact__form-input contact__form-select">
+                            <option value="" disabled selected>Select area of law</option>
+                            <option value="commercial">Commercial Law</option>
+                            <option value="corporate">Corporate Law</option>
+                            <option value="civil">Civil Law</option>
+                            <option value="criminal">Criminal Defense</option>
+                            <option value="administrative">Administrative Law</option>
+                            <option value="labor">Labor & Employment</option>
+                            <option value="insurance">Insurance Law</option>
+                            <option value="arbitration">Arbitration</option>
+                            <option value="ip">Intellectual Property</option>
+                            <option value="tax">Tax Law</option>
+                            <option value="personal-status">Personal Status & Inheritance</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="contact__form-group">
+                        <label for="message" class="contact__form-label">Case Details</label>
+                        <textarea id="message" name="message" class="contact__form-input contact__form-textarea" placeholder="Briefly describe your legal matter..." rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="contact__form-btn">
+                        <span>Submit Request</span>
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <p class="contact__form-note">We respond within 24 hours. For urgent matters, use our 24/7 call center.</p>
+                    <div class="contact__form-success" id="formSuccess" role="alert">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#C9A84C" stroke-width="1.5"/><path d="M12 20l5 5 11-11" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <h4>Thank you!</h4>
+                        <p>Your request has been received. Our team will be in touch shortly.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__brand">
+                <div class="footer__brand-logo">
+                    <svg viewBox="0 0 48 48" fill="none" width="34" height="34"><path d="M24 4 L44 40 L4 40 Z" stroke="#C9A84C" stroke-width="1" fill="none"/><path d="M24 14 L36 36 L12 36 Z" stroke="#C9A84C" stroke-width="0.5" fill="none" opacity="0.3"/><circle cx="24" cy="28" r="2" fill="#C9A84C"/></svg>
+                    <span>ALJASEM</span>
+                </div>
+                <p class="footer__brand-desc">Kuwait's trusted legal partner. Delivering comprehensive legal protection through expertise, technology, and unwavering dedication.</p>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__col-title">Quick Links</h4>
+                <ul class="footer__col-list"><li><a href="#about">About Us</a></li><li><a href="#services">Our Services</a></li><li><a href="#why-us">Why Choose Us</a></li><li><a href="#team">Our Team</a></li><li><a href="#contact">Contact</a></li></ul>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__col-title">Practice Areas</h4>
+                <ul class="footer__col-list"><li><a href="#services">Commercial Law</a></li><li><a href="#services">Corporate Law</a></li><li><a href="#services">Criminal Defense</a></li><li><a href="#services">Administrative Law</a></li><li><a href="#services">Labor & Employment</a></li><li><a href="#services">Intellectual Property</a></li></ul>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__col-title">Get In Touch</h4>
+                <ul class="footer__col-list">
+                    <li>Kuwait City, Al Asimah, Kuwait</li>
+                    <li>info@maljasem.com</li>
+                    <li>24/7 Legal Call Center</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; <span id="footerYear">2025</span> Mohammad ALJASEM Law Firm & Legal Consulting Group. All rights reserved.</p>
+            <div class="footer__bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Disclaimer</a></div>
+        </div>
+    </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 15V5M5 10l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+
+    /**
+ * Mohammad ALJASEM Law Firm — Main JS
+ * Features: Preloader, Scroll Header, Mobile Menu, Reveal Animations,
+ *            Smooth Scroll, Contact Form, Back-to-Top, Counter Animation, Footer Year
+ */
+(function() {
+    'use strict';
+
+    // ============================================================
+    // PRELOADER
+    // ============================================================
+    window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        setTimeout(function() {
+            preloader.classList.add('done');
+        }, 900);
+    });
+
+    // ============================================================
+    // HEADER — scroll behavior
+    // ============================================================
+    const header = document.getElementById('header');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 60) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        lastScroll = currentScroll;
+    }, { passive: true });
+
+    // ============================================================
+    // MOBILE MENU
+    // ============================================================
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuClose = document.getElementById('menuClose');
+
+    function openMenu() {
+        mobileMenu.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+
+    // Close menu on nav link click
+    document.querySelectorAll('.mobile-menu__link, .mobile-menu__cta').forEach(function(link) {
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu();
+    });
+
+    // ============================================================
+    // SMOOTH SCROLL for anchor links
+    // ============================================================
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            const target = document.querySelector(link.getAttribute('href'));
+            if (!target) return;
+            e.preventDefault();
+            const headerHeight = header.offsetHeight + 16;
+            const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+        });
+    });
+
+    // ============================================================
+    // INTERSECTION OBSERVER — Reveal animations
+    // ============================================================
+    const revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                // Don't unobserve — keep revealed state
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('[data-reveal]').forEach(function(el) {
+        revealObserver.observe(el);
+    });
+
+    // ============================================================
+    // COUNTER ANIMATION (for hero stats)
+    // ============================================================
+    function animateCounter(el) {
+        const target = parseInt(el.getAttribute('data-count'), 10);
+        if (isNaN(target)) return;
+        const duration = 1400;
+        const start = performance.now();
+
+        function update(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(eased * target);
+            el.textContent = current;
+            if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+    }
+
+    const counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.querySelectorAll('[data-count]').forEach(animateCounter);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    const heroStats = document.querySelector('.hero__stats');
+    if (heroStats) counterObserver.observe(heroStats);
+
+    // ============================================================
+    // BACK TO TOP
+    // ============================================================
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 600) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    }, { passive: true });
+
+    backToTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ============================================================
+    // CONTACT FORM
+    // ============================================================
+    const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Basic validation
+        let isValid = true;
+        const requiredInputs = contactForm.querySelectorAll('[required]');
+
+        requiredInputs.forEach(function(input) {
+            input.classList.remove('error');
+            if (!input.value.trim()) {
+                input.classList.add('error');
+                isValid = false;
+            }
+        });
+
+        // Email validation
+        const emailInput = document.getElementById('email');
+        if (emailInput.value.trim()) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value.trim())) {
+                emailInput.classList.add('error');
+                isValid = false;
+            }
+        }
+
+        if (!isValid) return;
+
+        // Simulate submission
+        const btn = contactForm.querySelector('.contact__form-btn');
+        btn.style.opacity = '0.6';
+        btn.style.pointerEvents = 'none';
+
+        setTimeout(function() {
+            // Hide form fields, show success
+            contactForm.querySelectorAll('.contact__form-group, .contact__form-row, .contact__form-btn, .contact__form-note').forEach(function(el) {
+                el.style.display = 'none';
+            });
+            formSuccess.classList.add('show');
+
+            // Reset after 5s
+            setTimeout(function() {
+                contactForm.reset();
+                contactForm.querySelectorAll('.contact__form-group, .contact__form-row, .contact__form-btn, .contact__form-note').forEach(function(el) {
+                    el.style.display = '';
+                });
+                formSuccess.classList.remove('show');
+                btn.style.opacity = '';
+                btn.style.pointerEvents = '';
+            }, 5000);
+        }, 1200);
+    });
+
+    // Remove error state on input
+    contactForm.querySelectorAll('.contact__form-input').forEach(function(input) {
+        input.addEventListener('input', function() {
+            this.classList.remove('error');
+        });
+    });
+
+    // ============================================================
+    // FOOTER YEAR
+    // ============================================================
+    const footerYear = document.getElementById('footerYear');
+    if (footerYear) footerYear.textContent = new Date().getFullYear();
+
+    // ============================================================
+    // ACTIVE NAV LINK on scroll
+    // ============================================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.header__nav-link');
+
+    window.addEventListener('scroll', function() {
+        let current = '';
+        sections.forEach(function(section) {
+            const sectionTop = section.offsetTop - header.offsetHeight - 80;
+            if (window.pageYOffset >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(function(link) {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    }, { passive: true });
+
+})();
+    
+</script>
+    
+</body>
+</html>
